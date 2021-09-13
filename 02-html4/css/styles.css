@@ -1,0 +1,20 @@
+div.adsi {
+    background-color: #8b376f;
+    border: 8px solid #e669bc;
+    border-radius: 150px;
+    color: #fff;
+    height: 240px;
+    line-height: 15rem;
+    font-size: 4rem;
+    font-family: Arial;
+    margin: 200px auto;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.4s ease-in;
+    width: 240px;
+}
+div.adsi:hover {
+    background-color: #373f8b;
+    border: 8px solid #737ee2;
+    transform: scale(1.5) rotate(360deg);
+}
