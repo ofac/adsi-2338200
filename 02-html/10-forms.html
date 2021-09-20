@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <style>
+        * { font-family: Arial;}
+        h3 { margin: 10px 0px 0px 0px;}
+    </style>
+</head>
+<body>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <!-- Personal Data -->
+        <fieldset>
+            <legend><h2>Personal Data</h2></legend>
+            <!-- - - - - - - - - - - - -->
+            <label for="fullname"><h3>FullName:</h3></label>
+            <input type="text" id="fullname" placeholder="FullName" value="Jeremias Springfield" required>
+            <!-- - - - - - - - - - - - -->
+            <label for="birthdate"><h3>BirthDate:</h3></label>
+            <input type="date" id="birthdate" required>
+            <!-- - - - - - - - - - - - -->
+            <label for="age"><h3>Age:</h3></label>
+            <input type="range" min="1" max="100" oninput="vage.value=this.value" required>
+            <output id="vage"></output>
+            <!-- - - - - - - - - - - - -->
+            <label for="photo"><h3>Photo:</h3></label>
+            <input type="file" id="photo">
+            <!-- - - - - - - - - - - - -->
+            <label for="password"><h3>Password:</h3></label>
+            <input type="password" id="password">
+            <!-- - - - - - - - - - - - -->
+        </fieldset>
+        <!-- Intitutional Data -->
+        <fieldset>
+            <legend><h2>Institutional Data</h2></legend>
+            <!-- - - - - - - - - - - - -->
+            <label for="institution"><h3>Institution:</h3></label>
+            <select id="institution" required>
+                <option value="">Select Training Center...</option>
+                <option value="1">Centro de Procesos Industriales y Construcción</option>
+                <option value="2">Automatización Industrial</option>
+                <option value="3">Comercio y Servivicios</option>
+                <option value="4">Formación Cafetera</option>
+            </select>
+            <!-- - - - - - - - - - - - -->
+            <h3>Trimester:</h3>
+            <label><input type="radio" name="trimester" onclick="vprog.value='25'"> First </label>
+            <br>
+            <label><input type="radio" name="trimester" onclick="vprog.value='50'"> Second </label>
+            <br>
+            <label><input type="radio" name="trimester" onclick="vprog.value='75'"> Third </label>
+            <br>
+            <label><input type="radio" name="trimester" onclick="vprog.value='100'"> Fourth </label>
+            <br>
+            <progress max="100" id="vprog"> </progress>
+            <!-- - - - - - - - - - - - -->
+            <h3>Programs</h3>
+            <label><input type="checkbox" name="program"> Mathematics</label>
+            <br>
+            <label><input type="checkbox" name="program"> English</label>
+            <br>
+            <label><input type="checkbox" name="program"> Ethic</label>
+            <br>
+            <!-- - - - - - - - - - - - -->
+            <label for="description"><h3>Program Description:</h3></label>
+            <textarea id="description" cols="40" rows="4" placeholder="Program Description" required></textarea>
+            <!-- - - - - - - - - - - - -->
+        </fieldset>
+
+        <input type="submit" value="Send Data">
+        <input type="reset" value="Clear Form">
+
+
+    </form>
+</body>
+</html>
