@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        section {
+            text-align: center;
+        }
+        /* Specificity: (0,0,2) = 2 */
+        section button {
+            border: 4px solid #0b2921;
+            background-color: #175747;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 2rem;
+            padding: 20px;
+        }
+        /* Specificity: (0,0,1) = 1 */
+        button {
+            background-color: #535717;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="./">⬅️</a> Specificity</h1>
+        </header>
+        <section>
+            <button> Click Me</button>
+        </section>
+    </main>
+</body>
+</html>
