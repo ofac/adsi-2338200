@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borders</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        section div {
+            border-width: 2px;
+            border-style: solid;
+            height: 160px;
+            font-size: 1.4rem;
+            line-height: 10rem;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        section div.box1 {
+            /* Normal */
+            border-top-width: 10px;
+            border-right-width: 20px;
+            border-bottom-width: 10px;
+            border-left-width: 20px;
+            /* ShortHand */
+            border-width: 10px 20px;
+        }
+        section div.box2 {
+            border-width: 4px;
+            /* Normal */
+            border-top-style: solid;
+            border-right-style: dotted;
+            border-bottom-style: dashed;
+            border-left-style: double;
+            /* ShortHand */
+            border-style: solid dotted dashed double;
+        }
+        section div.box3 {
+            border-width: 10px;
+            /* Normal */
+            border-top-color: yellow;
+            border-right-color: blue;
+            border-bottom-color: red;
+            border-left-color: aqua;
+            /* ShortHand */
+            border-color: yellow blue red aqua;
+        }
+        section div.box4 {
+            /* Normal */
+            border-width: 4px;
+            border-style: dotted;
+            border-color: crimson;
+            /* ShortHand */
+            border: 4px dotted crimson;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="./">⬅️</a> Borders</h1>
+        </header>
+        <section>
+            <div class="box1">
+                BORDER WIDTH
+            </div>
+            <div class="box2">
+                BORDER STYLE
+            </div>
+            <div class="box3">
+                BORDER COLOR
+            </div>
+            <div class="box4">
+                BORDER
+            </div>
+        </section>
+    </main>
+</body>
+</html>

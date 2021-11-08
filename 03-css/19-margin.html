@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margin</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        div.box-parent {
+            border: 2px dashed #193a5a;
+        }
+        div.box-child {
+            background-color: #ccc;
+            height: 140px;
+            font-size: 2rem;
+            text-align: center;
+            line-height: 9rem;
+
+            /* Normal */
+            margin-top: 80px;
+            margin-right: auto;
+            margin-bottom: 80px;
+            margin-left: auto; 
+            /* ShortHand */
+            margin: 80px auto;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="./">⬅️</a> Margin</h1>
+        </header>
+        <section>
+            <div class="box-parent">
+                <div class="box-child">BOX</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

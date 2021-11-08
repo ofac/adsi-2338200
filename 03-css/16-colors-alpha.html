@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Alpha</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        figure.mario {
+            background: url(images/marioparty.png) no-repeat center;
+            background-size: contain;
+            height: 70vh;
+        }
+        figure.mario div {
+            height: 17.5vh;
+        }
+        figure.mario div.color1 {
+            background-color: rgba(0,0,0,.8);
+        }
+        figure.mario div.color2 {
+            background-color: hsla(0, 100%, 0%, .6);
+        }
+        figure.mario div.color3 {
+            background-color: #00000066;
+        }
+        figure.mario div.color4 {
+            background-color: rgba(0,0,0,.2);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="./">⬅️</a> Color Alpha</h1>
+        </header>
+        <section>
+            <figure class="mario">
+                <div class="color1"></div>
+                <div class="color2"></div>
+                <div class="color3"></div>
+                <div class="color4"></div>
+            </figure>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Percentage</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        div.row1,
+        div.row2 {
+            margin: 0 auto;
+        }
+        div.row div {
+            color: rgb(0%,0%,0%);
+            display: inline-block;
+            font-size: 1.4rem;
+            margin-left: -5px;
+            height: 200px;
+            line-height: 13rem;
+            text-align: center;
+            width: 20%;
+        }
+        div.row3 {
+            margin: 0 auto;
+            width: 80%;
+        }
+        div.row3 div {
+            width: 25%;
+        }
+        div.row4 {
+            margin: 0 auto;
+            width: 60%;
+        }
+        div.row4 div {
+            width: 33.33%;
+        }
+        div.row div.text-white {
+            color: rgb(100%,100%,100%);
+        }
+        div.row div.maroon { background-color: rgb(50%,0%,0%); }
+        div.row div.red    { background-color: rgb(100%,0%,0%); }
+        div.row div.orange { background-color: rgb(100%,65%,0%); }
+        div.row div.yellow { background-color: rgb(100%,100%,0%); }
+        div.row div.olive  { background-color: rgb(50%,50%,0%); }
+
+        div.row div.purple  { background-color: rgb(50%,0%,50%); }
+        div.row div.fuchsia { background-color: rgb(100%,0%,100%); }
+        div.row div.white   { background-color: rgb(100%,100%,100%); }
+        div.row div.lime    { background-color: rgb(0%,100%,0%); }
+        div.row div.green   { background-color: rgb(0%,50%,0%); }
+
+        div.row div.navy { background-color: rgb(0%,0%,50%); }
+        div.row div.blue { background-color: rgb(0%,0%,100%); }
+        div.row div.aqua { background-color: rgb(0%, 100%,100%); }
+        div.row div.teal { background-color: rgb(0%, 50%,50%); }
+
+        div.row div.black  { background-color: rgb(0%,0%,0%); }
+        div.row div.silver { background-color: rgb(75%,75%,75%); }
+        div.row div.gray   { background-color: rgb(50%,50%,50%); }
+
+
+        @media screen and (max-width: 986px ) {
+            div.row div {
+                font-size: 0.8rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="./">⬅️</a> RGB Percentage</h1>
+        </header>
+        <section>
+            <div class="row row1">
+                <div class="maroon text-white">rgb(50%,0%,0%)</div>
+                <div class="red">rgb(100%,0%,0%)</div>
+                <div class="orange">rgb(100%65%,0%)</div>
+                <div class="yellow">rgb(100%,100%,0%)</div>
+                <div class="olive text-white">rgb(50%,50%,0%)</div>
+            </div>
+            <div class="row row2">
+                <div class="purple text-white">rgb(50%,0%,50%)</div>
+                <div class="fuchsia">rgb(100%,0,100%)</div>
+                <div class="white">rgb(100%,100%,100%)</div>
+                <div class="lime">rgb(0%,100%,0%)</div>
+                <div class="green text-white">rgb(0%,50%,0%)</div>
+            </div>
+            <div class="row row3">
+                <div class="navy text-white">rgb(0%,0%,50%)</div>
+                <div class="blue text-white">rgb(0%,0%,100%)</div>
+                <div class="aqua">rgb(0%,100%,100%)</div>
+                <div class="teal text-white">rgb(0%,50%,50%)</div>
+            </div>
+            <div class="row row4">
+                <div class="black text-white">rgb(0%, 0%, 0%)</div>
+                <div class="silver">rgb(75%,75%,75%)</div>
+                <div class="gray text-white">rgb(50%,50%,50%)</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
