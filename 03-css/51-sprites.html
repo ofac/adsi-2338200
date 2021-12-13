@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprites</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        section {
+            margin: 200px auto;
+            width: 256px;
+        }
+        main div#sprite {
+            background: url(images/anim-sprite.png) no-repeat;
+            height: 256px;
+            width: 256px;
+        }
+        main div#sprite.sp1 { background-position: 0px 0px ;}
+        main div#sprite.sp2 { background-position: -256px 0px ;}
+        main div#sprite.sp3 { background-position: -512px 0px ;}
+        main div#sprite.sp4 { background-position: -768px 0px ;}
+        main div#sprite.sp5 { background-position: -1024px 0px ;}
+        main div#sprite.sp6 { background-position: -1280px 0px ;}
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Sprites</h1>
+        </header>
+        <section>
+            <div id="sprite"></div>
+        </section>
+    </main>
+    <script>
+        let sp = document.getElementById('sprite');
+        let ct = 1;
+        let ns = 6;
+        let si = setInterval(function() {
+            sp.className = '';
+            sp.classList.add('sp'+ct);
+            if (ct == ns) {
+                ct = 1;
+            } else {
+                ct++;
+            }
+        }, 80);
+    </script>
+</body>
+</html>

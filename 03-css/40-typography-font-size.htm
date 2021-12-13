@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography Font Size</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        section {
+            margin: 40px auto;
+            width: 200px;
+        }
+		/* Absolutes */
+		ul.absolutes li.fs1 { font-size: xx-small; }
+		ul.absolutes li.fs2 { font-size: x-small;  }
+		ul.absolutes li.fs3 { font-size: small;    }
+		ul.absolutes li.fs4 { font-size: medium;   }
+		ul.absolutes li.fs5 { font-size: large;    }
+		ul.absolutes li.fs6 { font-size: x-large;  }
+		ul.absolutes li.fs7 { font-size: xx-large; }
+		/* Relatives */
+		ul.relatives li.fs1 { font-size: smaller; }
+		ul.relatives li.fs2 { font-size: larger;  }
+		/* Sizes */
+		ul.sizes li.fs1 { font-size: 16px;  }
+		ul.sizes li.fs2 { font-size: 2em;   }
+		ul.sizes li.fs3 { font-size: 1.5ex; }
+	</style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Typography Font Size</h1>
+        </header>
+        <section>
+            <h4>Absolute:</h4>
+            <ul class="absolutes">
+                <li class="fs1">xx-small</li>
+                <li class="fs2">x-small</li>
+                <li class="fs3">small</li>
+                <li class="fs4">medium</li>
+                <li class="fs5">large</li>
+                <li class="fs6">x-large</li>
+                <li class="fs7">xx-large</li>
+            </ul>
+            <h4>Relative:</h4>
+            <ul class="relatives">
+                <li class="fs1">smaller</li>
+                <li class="fs2">larger</li>
+            </ul>
+            <h4>Size:</h4>
+            <ul class="sizes">
+                <li class="fs1">16px</li>
+                <li class="fs2">2em</li>
+                <li class="fs3">1.5ex</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

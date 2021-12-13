@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Spacing</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        section {
+            margin: 40px auto;
+            width: 526px;
+        }
+        main article {
+            border: 1px solid #777;
+            display: inline-block;
+            height: 250px;
+            vertical-align: top;
+            padding: 4px;
+            width: 250px;
+        }
+        main article.ls p { letter-spacing: 8px; }
+        main article.ws p { word-spacing: 16px; }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Text Spacing</h1>
+        </header>
+        <section>
+            <article class="ls">
+                <h3>letter-spacing: 8px</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, reprehenderit? Amet voluptates labore assumenda esse architecto. </p>
+            </article>
+            <article class="ws">
+                <h3>word-spacing: 16px</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, reprehenderit? Amet voluptates labore assumenda esse architecto. </p>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

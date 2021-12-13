@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Indent</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        section {
+            margin: 40px auto;
+            width: 526px;
+        }
+        main article {
+            border: 1px solid #777;
+            display: inline-block;
+            vertical-align: top;
+            padding: 4px;
+            width: 250px;
+        }
+        main article.ti1 { text-indent: 0px; }
+        main article.ti2 { text-indent: 2em; }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Text Indent</h1>
+        </header>
+        <section>
+            <article class="ti1">
+                <h3>text-indent: 0px</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, reprehenderit? Amet voluptates labore assumenda esse architecto. </p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, reprehenderit? Amet voluptates labore assumenda esse architecto. </p>
+            </article>
+            <article class="ti2">
+                <h3>text-indent: 2em</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, reprehenderit? Amet voluptates labore assumenda esse architecto. </p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, reprehenderit? Amet voluptates labore assumenda esse architecto. </p>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

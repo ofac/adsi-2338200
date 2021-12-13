@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Classes</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        section {
+            margin: 40px auto;
+            position: relative;
+            width: 400px;
+        }
+        menu { padding-left: 0px; }
+        menu ul {
+            list-style: none;
+            padding-left: 0px;
+        }
+        menu ul li {
+            display: inline-block;
+            vertical-align: top;
+        }
+        menu ul li a:link,
+        menu ul li a:visited {
+            background-color: #4a8d5e;
+            color: #fff;
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+        menu ul li a:hover {
+            background-color: #4f6386;
+        }
+        menu ul li a:active {
+            background-color: #864f66;
+        }
+        menu ul li:first-child a {
+            background-color: #214b2e;
+            color: #e9d88d;
+        }
+        /* - - - */
+        input {
+            border: 1px solid #777;
+            padding: 10px 20px;
+            outline: none;
+        }
+        input:focus {
+            background-color: #ddd;
+            border: 1px solid #214b2e;
+        }
+        /* - - - */
+        p:first-line {
+            background-color: #a5db68;
+        }
+        p:first-letter {
+            font-size: 4em;
+        }
+        /* - - - */
+        div.box {
+            background-color: #3a6283;
+            height: 100px;
+            width: 100px;
+        }
+        div.box:after {
+            background-color: #d459ba88;
+            content: "👽";
+            height: 100px;
+            position: absolute;
+            left: 20px;
+            width: 100px;
+        }
+        div.box:before {
+            background-color: #72d45988;
+            content: "Alien";
+            height: 100px;
+            position: absolute;
+            left: 40px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Pseudo Classes</h1>
+        </header>
+        <section>
+            <h3>:link, :visited, :active, :hover, :first-child</h3>
+            <menu>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Services</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </menu>
+            <h3>:focus</h3>
+            <input type="text" placeholder="Ingresar Nombre y Apellidos">
+            <h3>:first-line, :first-letter</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium sunt nemo possimus blanditiis ex officiis, atque quo quod reprehenderit soluta mollitia aspernatur iure perspiciatis tenetur animi similique corporis, consequatur accusantium!</p>
+            <h3>:after, :before</h3>
+            <div class="box"></div>
+        </section>
+    </main>
+</body>
+</html>

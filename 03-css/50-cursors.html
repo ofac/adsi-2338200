@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursors</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        section {
+            margin: 40px auto;
+            width: 400px;
+        }
+        main div {
+            border: 1px solid #777;
+            padding: 4px;
+            height: 140px;
+            margin: 10px 0px;
+        }
+        main div h3 {
+            margin: 0px;
+        }
+        main div.cursor1 { cursor: move; }
+        main div.cursor2 { cursor: help; }
+        main div.cursor3 { cursor: crosshair; }
+        main div.cursor4 { cursor: url(images/pointer.png), pointer; }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Cursors</h1>
+        </header>
+        <section>
+            <div class="cursor1">
+                <h3>cursor: move</h3>
+            </div>
+            <div class="cursor2">
+                <h3>cursor: help</h3>
+            </div>
+            <div class="cursor3">
+                <h3>cursor: crosshair</h3>
+            </div>
+            <div class="cursor4">
+                <h3>cursor: url(images/pointer.png), pointer</h3>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

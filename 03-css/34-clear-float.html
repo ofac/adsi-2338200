@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Float</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        div.bigbox {
+            border: 2px solid #777;
+            padding: 0px 8px;
+        }
+        div.bigbox img {
+            float: left;
+        } 
+        div.bigbox p {
+            border: 1px solid #777;
+        }
+        div.bigbox p.clear {
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Clear Float</h1>
+        </header>
+        <section>
+            <h2>Float position in the image</h2>
+            <div class="bigbox">
+                <img src="images/steve.png" alt="">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum magni vel ea itaque, totam eius nisi reiciendis optio doloribus quod sunt nemo consequuntur!
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum magni vel ea itaque, totam eius nisi reiciendis optio doloribus quod sunt nemo consequuntur!
+                </p>
+            </div>
+            <h2>Paragraph 2 with clear</h2>
+            <div class="bigbox">
+                <img src="images/steve.png" alt="">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum magni vel ea itaque, totam eius nisi reiciendis optio doloribus quod sunt nemo consequuntur!
+                </p>
+                <p class="clear">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum magni vel ea itaque, totam eius nisi reiciendis optio doloribus quod sunt nemo consequuntur!
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

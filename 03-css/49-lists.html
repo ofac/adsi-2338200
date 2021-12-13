@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        section {
+            margin: 40px auto;
+            width: 200px;
+        }
+        ol.ol1 { list-style-type: decimal; }
+        ol.ol2 { 
+            list-style-type: upper-roman; 
+            list-style-position: inside;
+        }
+        ol.ol3 { list-style-type: lower-greek; }
+        /* - - - */
+        ul.ul1 { list-style-type: disc;   }
+        ul.ul2 { list-style-type: circle; }
+        ul.ul3 { list-style-type: square; }
+        /* - - - */
+        ul.img { list-style-image: url(images/basketball.png); }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Lists</h1>
+        </header>
+        <section>
+            <h3>Ordered:</h3>
+            <ol class="ol1">
+                <li>Write Code</li>
+                <li>Compile Code</li>
+                <li>Fix Errors</li>
+                <li>Compile Again</li>
+            </ol>
+            <ol class="ol2">
+                <li>Write Code</li>
+                <li>Compile Code</li>
+                <li>Fix Errors</li>
+                <li>Compile Again</li>
+            </ol>
+            <ol class="ol3">
+                <li>Write Code</li>
+                <li>Compile Code</li>
+                <li>Fix Errors</li>
+                <li>Compile Again</li>
+            </ol>
+            <h3>Unordered</h3>
+            <ul class="ul1">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JS</li>
+            </ul>
+            <ul class="ul2">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JS</li>
+            </ul>
+            <ul class="ul3">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JS</li>
+            </ul>
+            <h3>List with Images</h3>
+            <ul class="img">
+                <li>Bulls Chicago</li>
+                <li>LA Lakers</li>
+                <li>New York Knicks</li>
+                <li>Miami Heat</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

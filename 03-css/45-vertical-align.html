@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Align</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        section {
+            margin: 40px auto;
+            width: 500px;
+        }
+        main section div {
+            border: 1px solid #777;
+            display: inline-block;
+            height: 82px;
+            vertical-align: top;
+            width: 160px;
+        }
+        main section div.va1 span { vertical-align: baseline; }
+        main section div.va2 span { vertical-align: top;      }
+        main section div.va3 img { vertical-align: middle;   }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Vertical Align</h1>
+        </header>
+        <section>
+            <div class="va1"><img src="images/icon-help.png" width="80px"><span>Baseline</span></div>
+            <div class="va2"><img src="images/icon-help.png" width="80px"><span>Top</span></div>
+            <div class="va3"><img src="images/icon-help.png" width="80px"><span>Middle</span></div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overflow</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        main section {
+            height: 50vh;
+            margin: 0 auto;
+            width: 500px;
+        }
+        main div {
+            border: 1px solid #777;
+            display: inline-block;
+            height: 180px;
+            padding: 10px;
+            vertical-align: top;
+            width: 140px;
+        }
+        main div h3 {
+            background-color: #ccc;
+            margin: 0px;
+            padding: 4px;
+        }
+        main div.visible { overflow: visible; }
+        main div.hidden  { overflow: hidden;  }
+        main div.scroll  { overflow: scroll;  }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Overflow</h1>
+        </header>
+        <section>
+            <div class="visible">
+                <h3>overflow:visible</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi vero odit tenetur beatae quisquam quas in autem facilis quidem totam laborum aperiam, cupiditate omnis quaerat officiis inventore dolor excepturi labore.</p>
+            </div>
+            <div class="hidden">
+                <h3>overflow:hidden</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi vero odit tenetur beatae quisquam quas in autem facilis quidem totam laborum aperiam, cupiditate omnis quaerat officiis inventore dolor excepturi labore.</p>
+            </div>
+            <div class="scroll">
+                <h3>overflow:scroll</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi vero odit tenetur beatae quisquam quas in autem facilis quidem totam laborum aperiam, cupiditate omnis quaerat officiis inventore dolor excepturi labore.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
