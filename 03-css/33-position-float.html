@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position Float</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        div.bigbox {
+            border: 2px solid #777;
+            padding: 0px 8px;
+        }
+        div.bigbox div {
+            background-color: #fff;
+            border: 1px solid #777;
+            height: 50px;
+            line-height: 3em;
+            margin: 8px 0px; 
+            text-align: center;
+            width: 160px;
+            padding: 8px;
+        }
+        div.bigbox div.float {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Position Float</h1>
+        </header>
+        <section>
+            <h2>Normal Position</h2>
+            <div class="bigbox">
+                <div class="box1">Box 1</div>
+                <div class="box2">Box 2</div>
+                <div class="box3">Box 3</div>
+            </div>
+            <h2>Float Position in Box 1</h2>
+            <div class="bigbox">
+                <div class="box1 float">Box 1</div>
+                <div class="box2">Box 2</div>
+                <div class="box3">Box 3</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

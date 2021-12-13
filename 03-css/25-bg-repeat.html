@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Repeat</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        div {
+            background-image: url(images/steve.png);
+            border: 2px solid #777;
+            height: 399px;
+            margin: 25px auto;
+            width: 600px;
+        }
+        div h2 {
+            background-color: rgba(256, 256, 256, 0.6);
+            margin: 0px;
+            padding: 5px;
+            text-align: center;
+        }
+        div.br1 { background-repeat: repeat; }
+        div.br2 { background-repeat: repeat-x; }
+        div.br3 { background-repeat: repeat-y; }
+        div.br4 { background-repeat: no-repeat; }
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a> Background Repeat</h1>
+        </header>
+        <section>
+            <div class="br1">
+                <h2>background-repeat: repeat</h2>
+            </div>
+            <div class="br2">
+                <h2>background-repeat: repeat-x</h2>
+            </div>
+            <div class="br3">
+                <h2>background-repeat: repeat-y</h2>
+            </div>
+            <div class="br4">
+                <h2>background-repeat: no-repeat</h2>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
