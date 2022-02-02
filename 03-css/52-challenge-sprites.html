@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Sprites</title>
+    <style>
+        body {
+            background-color: #17a053;
+            border: 10px solid #fff;
+            margin: 0;
+        }
+        main header div.logo {
+            background: url(images/spriteweb.png) no-repeat -20px -400px;
+            height: 180px;
+            margin: 0px auto;
+            width: 180px;
+        }
+        main header {
+            margin: 0 auto;
+            width: 908px;
+        }
+        main header div.menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        main header div.menu ul li {
+            background-color: #00000066;
+            border-bottom: 4px solid #fff;
+            color: #fff;
+            font-family: Verdana;
+            display: inline-block;
+            margin: 4px 23px 0px 0px;
+            padding: 16px 20px;
+            text-transform: uppercase;
+            text-align: center;
+            transition: 0.5s background-color ease-in,
+                        0.5s 0.5s border-bottom ease-out; 
+            width: 120px;
+        }
+        main header div.menu ul li:last-child {
+            margin-right: 0px;
+        }
+         main header div.menu ul li:hover {
+            background-color: #000000bb;
+            border-bottom: 4px solid #fad000;
+            cursor: pointer;
+         }
+        main section.gallery {
+            background-color: #00000066;
+            margin: 40px auto;
+            width: 908px;
+        }
+        main section.gallery div {
+            background: url(images/spriteweb.png) no-repeat -470px -6px;
+            border: 2px solid #fff;
+            cursor: pointer;
+            display: inline-block;
+            margin: 20px 0px 20px 4px;
+            position: relative;
+            height: 200px;
+            width: 280px;
+        }
+        main section.gallery div:first-child {
+            margin-left: 20px;
+        }
+        main section.gallery div h3 {
+            background-color: #ffffff88;
+            margin: 0;
+            text-align: center;
+            font-family: Verdana;
+            font-size: 1rem;
+            padding: 20px 10px;
+            position: absolute;
+            width: 260px;
+            transition: 0.2s all ease-in;
+            bottom: 0;
+        }
+        main section.gallery div:hover h3 {
+            background-color: #ffffffcc;
+            bottom: 141px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- H E A D E R -->
+        <header>
+            <div class="logo"></div>
+            <div class="menu">
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Portfolio</li>
+                    <li>Services</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+        </header>
+        <!-- G A L L E R Y -->
+        <section class="gallery">
+            <div class="gallery01">
+                <h3>Sprite 01</h3>
+            </div>
+            <div class="gallery02">
+                <h3>Sprite 02</h3>
+            </div>
+            <div class="gallery03">
+                <h3>Sprite 03</h3>
+            </div>
+        </section>
+
+
+
+
+        <section class="content"></section>
+        <footer></footer>
+    </main>
+</body>
+</html>
