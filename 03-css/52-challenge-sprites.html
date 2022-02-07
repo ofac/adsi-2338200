@@ -9,6 +9,7 @@
         body {
             background-color: #17a053;
             border: 10px solid #fff;
+            color: #333;
             margin: 0;
         }
         main header div.logo {
@@ -36,8 +37,7 @@
             padding: 16px 20px;
             text-transform: uppercase;
             text-align: center;
-            transition: 0.5s background-color ease-in,
-                        0.5s 0.5s border-bottom ease-out; 
+            transition: 0.5s all ease-in; 
             width: 120px;
         }
         main header div.menu ul li:last-child {
@@ -46,6 +46,7 @@
          main header div.menu ul li:hover {
             background-color: #000000bb;
             border-bottom: 4px solid #fad000;
+            transform: translateY(-10px);
             cursor: pointer;
          }
         main section.gallery {
@@ -79,9 +80,96 @@
             bottom: 0;
         }
         main section.gallery div:hover h3 {
-            background-color: #ffffffcc;
+            background-color: #ffffffdd;
             bottom: 141px;
         }
+        main section.content {
+            background-color: #00000066;
+            margin: 40px auto;
+            padding: 20px;
+            width: 868px; 
+        }
+        main section.content article {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            transition: all 0.2s ease-in
+        }
+        main section.content article:hover {
+            transform: scale(1.02);
+            cursor: pointer;
+            color: #17a053;
+        }
+        main section.content article:last-child {
+            margin-bottom: 0;
+        }
+        main section.content article div {
+            display: inline-block;
+            vertical-align: top;
+        }
+        main section.content article div.image1,
+        main section.content article div.image2 {
+            height: 148px;
+            width: 200px;
+        }
+        main section.content article div.text {
+            font-family: Verdana;
+            text-align: justify;
+            line-height: 1.5rem;
+            width: 408px;
+        }
+        main section.content article div.image1 {
+            margin-top: 24px;
+            background: url(images/spriteweb.png) no-repeat -240px -490px;
+            transition: all 0.8s ease-in;
+        }
+        main section.content article:hover div.image1 {
+            transform: rotateY(360deg);
+        }
+        main section.content article div.image2 {
+            background: url(images/spriteweb.png) no-repeat 0px -216px;
+        }
+        footer {
+            background-color: #fff;
+            margin: 40px auto;
+            padding: 20px;
+            width: 868px; 
+        }
+        footer div.image-footer {
+            background: url(images/spriteweb.png) no-repeat -510px -420px;
+            height: 200px;
+            margin: 20px auto;
+            width: 240px;
+            transition: all 0.2s ease-in;
+        }
+        footer:hover div.image-footer {
+            transform: scale(1.2);
+        }
+        footer div.menu-footer ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        footer div.menu-footer ul li {
+            border-bottom: 4px solid #fff;
+            color: #333;
+            font-family: Verdana;
+            display: inline-block;
+            margin: 4px 23px 0px 0px;
+            padding: 16px 20px;
+            text-transform: uppercase;
+            text-align: center;
+            transition: 0.5s all ease-in;
+            width: 110px;
+        }
+        footer div.menu-footer ul li:last-child {
+            margin-right: 0px;
+        }
+        footer div.menu-footer ul li:hover {
+            border-bottom: 4px solid #17a053;
+            cursor: pointer;
+            transform: translateY(-10px);
+         }
     </style>
 </head>
 <body>
@@ -111,12 +199,41 @@
                 <h3>Sprite 03</h3>
             </div>
         </section>
-
-
-
-
-        <section class="content"></section>
-        <footer></footer>
+        <section class="content">
+            <article>
+                <div class="image1"></div>
+                <div class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed itaque nihil possimus fugiat doloribus quis ab rem error nemo? Ipsa error officia eos nulla dolores earum tempore voluptate alias illum consequatur, fuga, nobis repellat architecto maiores!
+                </div>
+                <div class="image2"></div>
+            </article>
+            <article>
+                <div class="image1"></div>
+                <div class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed itaque nihil possimus fugiat doloribus quis ab rem error nemo? Ipsa error officia eos nulla dolores earum tempore voluptate alias illum consequatur, fuga, nobis repellat architecto maiores!
+                </div>
+                <div class="image2"></div>
+            </article>
+            <article>
+                <div class="image1"></div>
+                <div class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed itaque nihil possimus fugiat doloribus quis ab rem error nemo? Ipsa error officia eos nulla dolores earum tempore voluptate alias illum consequatur, fuga, nobis repellat architecto maiores!
+                </div>
+                <div class="image2"></div>
+            </article>
+        </section>
+        <footer>
+            <div class="image-footer"></div>
+            <div class="menu-footer">
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Portfolio</li>
+                    <li>Services</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+        </footer>
     </main>
 </body>
 </html>
