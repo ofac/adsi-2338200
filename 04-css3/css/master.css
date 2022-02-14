@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+body {
+    background: linear-gradient(#fcdfac, #11677c);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #08313b;
+    margin: 0px;
+    min-height: 100vh;
+}
+main {
+    border-radius: 6px;
+    padding: 20px;
+}
+main header h1 {
+    background-color: #08313b;
+    border-radius: 6px;
+    color: #fcdfac;
+    padding: 20px;
+    position: relative;
+    margin-top: 0;
+    text-align: center;
+}
+main header h1 a:link,
+main header h1 a:visited {
+    text-decoration: none;
+    display: block;
+    position: absolute;
+    transition: all 0.2s ease-in;
+}
+main header h1 a:hover {
+    transform: translateX(-6px);
+}
