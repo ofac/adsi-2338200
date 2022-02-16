@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border Radius</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        div.box {
+            background-color: #08313b33;
+            border: 4px solid #08313b;
+            height: 180px;
+            margin: 0 auto;
+            width: 180px;
+        }
+        div.box1 {
+            border-radius: 50%;
+        }
+        div.box2 {
+            border-radius: 40px 0;
+        }
+        div.box3 {
+            border-radius: 140px 0px 0px 140px;
+        }
+        div.box4 {
+            border-radius: 140px 0px 140px 140px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a>Border Radius</h1>
+        </header>
+        <section>
+            <h2>border-radius: 50%</h2>
+            <div class="box box1"></div>
+            <h2>border-radius: 40px 0px</h2>
+            <div class="box box2"></div>
+            <h2>border-radius: 140px 0px 0px 140px</h2>
+            <div class="box box3"></div>
+            <h2>border-radius: 140px 0px 140px 140px</h2>
+            <div class="box box4"></div>
+        </section>
+    </main>
+</body>
+</html>

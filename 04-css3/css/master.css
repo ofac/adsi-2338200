@@ -10,6 +10,8 @@ body {
 main {
     border-radius: 6px;
     padding: 20px;
+    margin: 0 auto;
+    width: 80%;
 }
 main header h1 {
     background-color: #08313b;
@@ -29,4 +31,10 @@ main header h1 a:visited {
 }
 main header h1 a:hover {
     transform: translateX(-6px);
+}
+main section h2 {
+    border-bottom: 4px dotted #08313b;
+    font-size: 1.4rem;
+    padding-bottom: 10px;
+    text-align: center;
 }

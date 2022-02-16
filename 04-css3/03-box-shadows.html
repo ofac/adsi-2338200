@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Shadow</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        div.box {
+            background-color: #fff;
+            border: 4px solid #08313b;
+            height: 180px;
+            margin: 0 auto;
+            width: 180px;
+        }
+        div.box1 {
+            box-shadow: 0 0 12px #08313b;
+        }
+        div.box2 {
+            box-shadow: -10px -10px 24px 4px #08313b;
+        }
+        div.box3 {
+            box-shadow: 0 -4px 24px #08313b inset;
+        }
+        div.box4 {
+            box-shadow: 4px   4px 0 4px #1daccf,
+                        8px   8px 0 6px #11657a,
+                        12px 12px 0 8px #08313b;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a>Box Shadow</h1>
+        </header>
+        <section>
+            <h2>box-shadow: 0 0 12px #08313b</h2>
+            <div class="box box1"></div>
+            <h2>box-shadow: -10px -10px 24px 4px #08313b</h2>
+            <div class="box box2"></div>
+            <h2>box-shadow: 0 -4px 24px #08313b inset</h2>
+            <div class="box box3"></div>
+            <h2>
+                box-shadow: 4px 4px 0 4px #08313b,
+                            8px 8px 0 6px #08313b,
+                           12px 12px 0 8px #08313b
+            </h2>
+            <div class="box box4"></div>
+        </section>
+    </main>
+</body>
+</html>
