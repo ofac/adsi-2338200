@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Clip</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        div.box {
+            background: linear-gradient(45deg, #0c2a31, #8df06f);
+            height: 400px;
+            font-size: 16rem;
+            font-weight: 600;
+            margin: 20px auto;
+            text-align: center;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            width: 80%;
+        }
+        @media (max-width: 1024px) {
+            div.box {
+                font-size: 10rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅️</a>Background Clip</h1>
+        </header>
+        <section>
+            <h2>Example:</h2>
+            <div class="box">ADSI</div>
+        </section>
+    </main>
+</body>
+</html>
