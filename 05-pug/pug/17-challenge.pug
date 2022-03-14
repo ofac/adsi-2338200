@@ -1,0 +1,19 @@
+doctype
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		title Challenge PUG (Colors)
+	body
+		h1 Challenge PUG (Colors)
+		hr
+		table(width="400px")
+			- var i = 1
+			- var r = 250
+			- var g = 250
+			- var b = 250
+			while i <= 10
+				tr
+					td(style="background-color: rgb("+r+","+g+","+b+"); height: 40px")
+					- i++
+					- r-=25
+					- g-=25
