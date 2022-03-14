@@ -1,5 +1,5 @@
 # adsi-2338200
-> Repositorio del Tecnólogo en Análisis y Desarrollo de Sistemas de Información
+> Repository of the Technologist in Analysis and Development of Information Systems
 ---
 
 | Theme | Description | Link
