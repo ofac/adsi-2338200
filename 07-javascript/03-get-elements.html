@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Element(s)</title>
     <link rel="stylesheet" href="css/menu.css">
+    <style>
+        p {
+            padding-left: 20px;
+        }
+        button {
+            margin-top: 28px;
+            border: none;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
     <main>
@@ -19,25 +29,51 @@
         </header>
         <section>
             <h3 id="year"></h3>
+            <!--  -->
             <ul>
                 <li>Bulbasaur</li>
                 <li>Squirtle</li>
                 <li>Charmander</li>
             </ul>
             <h3 id="nli"></h3>
+            <!--  -->
+            <p class="paragraph">Lorem Ipsum Dolor</p>
+            <p class="paragraph">Lorem Ipsum Dolor</p>
+            <h3 id="np"></h3>
+            <!--  -->
+            <button class="btn first">Button 1</button>
+            <button class="btn">Button 2</button>
+            <button class="btn">Button 3</button>
         </section>
     </main>
     <script>
+        // Change DOM (Document Object Model)
         // getElementById
         let year  = document.getElementById('year')
         let nli   = document.getElementById('nli')
+        let np    = document.getElementById('np')
         let ndate = new Date
-        year.innerText = 'Current Year: \n' + ndate.getFullYear()
+        year.innerText = 'Current Year: ' + ndate.getFullYear()
         // getElementsByTagName
         let lis = document.getElementsByTagName('li')
         nli.innerText = 'There are: ' + lis.length + 
                         ' list elements \n' + 'Last element value is: ' +
                         lis[lis.length-1].textContent
+        // getElementsByClassName
+        let nps = document.getElementsByClassName('paragraph')
+        nps[nps.length-1].style.color = '#aa0'
+        np.innerText = 'There are: ' + nps.length +
+                       ' <p> with class paragraph'
+        // querySelector(s)
+        let btn  = document.querySelector('button.first')
+        let btns = document.querySelectorAll('button.btn')
+        btn.style.marginLeft = '120px'
+        btns[1].style.backgroundColor = '#aa0'
+
+
+
+
+
     </script>
 </body>
 </html>
