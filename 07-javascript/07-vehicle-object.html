@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Object</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        main {
+            background: url(images/vehicle/bg-light.svg) no-repeat center;
+            border: none;
+            transition: all 0.5s ease-in;
+        }
+        main.darkmode {
+            background: url(images/vehicle/bg-dark.svg) no-repeat center;
+        }
+        header a:link,
+        header a:visited {
+            color: #f7db72;
+            top: 40px;
+            left: 20px;
+        }
+        section {
+             position: relative;
+        } 
+        main.darkmode section button.btnDarkMode {
+            background: url(images/vehicle/btn-lightmode.svg) no-repeat center;
+        }
+        section button.btnDarkMode {
+            background: url(images/vehicle/btn-darkmode.svg) no-repeat center;
+            border: none;
+            cursor: pointer;
+            height: 50px;
+            left: 345px;
+            position: absolute;
+            top: 34px;
+            text-indent: -9999px;
+            transition: transform 0.2s ease;
+            width: 50px;
+        }
+        section button.btnDarkMode:hover {
+            transform: scale(1.2) rotate(45deg);
+        }
+        section ul.attributes {
+            position: absolute;
+            list-style: none;
+            top: 200px;
+            left: -20px;
+            /* flex */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 21px;
+            flex-direction: row;
+        }
+        main.darkmode section ul.attributes li {
+            color: #f7db72;
+        }
+        section ul.attributes li {
+            color: #fff;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            text-align: center;
+            width: 80px;
+        }
+         main.darkmode figure.landscape {
+            background-color: #292929;
+         }
+        figure.landscape {
+            background-color: #f7db72;
+            border-radius: 10px;
+            height: 268px;
+            position: absolute;
+            left: -14px;
+            top: 268px;
+            width: 368px;
+        }
+        nav.changeVehicle {
+            height: 68px;
+            position: absolute;
+            top: 384px;
+            left: 20px;
+            overflow: hidden;
+            width: 380px;
+            /* flex */
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        nav.changeVehicle button {
+            border: none;
+            cursor: pointer;
+            height: 68px;
+            text-indent: -9999px;
+            transition: transform 0.2s ease;
+            width: 40px;
+        }
+        main.darkmode nav.changeVehicle button.prev {
+            background: url(images/vehicle/btn-dark-prev.svg) no-repeat center;
+        }
+        main.darkmode nav.changeVehicle button.next {
+            background: url(images/vehicle/btn-dark-next.svg) no-repeat center;
+        }
+        nav.changeVehicle button.prev {
+            background: url(images/vehicle/btn-prev.svg) no-repeat center;
+        }
+        nav.changeVehicle button.next {
+            background: url(images/vehicle/btn-next.svg) no-repeat center;
+        }
+        nav.changeVehicle button.prev:hover {
+            transform: translateX(-10px);
+        }
+        nav.changeVehicle button.next:hover {
+            transform: translateX(10px);
+        }
+        nav.controls {
+            height: 30px;
+            overflow: hidden;
+            position: absolute;
+            left: 50px;
+            top: 636px;
+            width: 322px;
+            /* flex */
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }
+        nav.controls button {
+            border: none;
+            cursor: pointer;
+            height: 30px;
+            text-indent: -9999px;
+            transition: transform 0.2s ease;
+            width: 30px;
+        }
+        nav.controls button.btnStart {
+            background: url(images/vehicle/btn-start.svg) no-repeat center;
+        }
+        nav.controls button.btnForward {
+            background: url(images/vehicle/btn-forward.svg) no-repeat center;
+        }
+        nav.controls button.btnStop {
+            background: url(images/vehicle/btn-stop.svg) no-repeat center;
+        }
+        nav.controls button.btnBackward {
+            background: url(images/vehicle/btn-backward.svg) no-repeat center;
+        }
+        nav.controls button.btnTurnOff {
+            background: url(images/vehicle/btn-turnoff.svg) no-repeat center;
+        }
+        nav.controls button:hover {
+            transform: scale(1.25) rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </header>
+        <section>
+            <button class="btnDarkMode"> Dark Mode </button>
+            <ul class="attributes">
+                <li class="brand"></li>
+                <li class="refer"></li>
+                <li class="model"></li>
+                <li class="color"></li>
+            </ul>
+            <figure class="landscape">
+            </figure>
+            <nav class="changeVehicle">
+                <button class="prev">Prev</button>
+                <button class="next">Next</button>
+            </nav>
+            <nav class="controls">
+                <button class="btnStart">Start</button>
+                <button class="btnForward">Forward</button>
+                <button class="btnStop">Stop</button>
+                <button class="btnBackward">Backward</button>
+                <button class="btnTurnOff">TurnOff</button>
+            </nav>
+        </section>
+    </main>
+    <script>
+        // Elements
+        const main = document.querySelector('main')
+        // Buttons
+        const btnDarkMode = document.querySelector('button.btnDarkMode') 
+        // Attributes
+        const brand = document.querySelector('li.brand')
+        const refer = document.querySelector('li.refer')
+        const model = document.querySelector('li.model')
+        const color = document.querySelector('li.color')
+        // Object 
+        const vehicle = {
+            // Attributes
+            attributes: [
+                { brand: 'Toyota',  refer: 'Yaris',  model: 2020, color: 'Black', image: '' },
+                { brand: 'Renault', refer: 'Clio',   model: 2018, color: 'Red',   image: '' },
+                { brand: 'Ford',    refer: 'Fiesta', model: 2016, color: 'Green', image: '' },
+                { brand: 'Fiat',    refer: '500',    model: 2007, color: 'Blue',  image: '' }
+            ],
+            // Methods
+            showAttributes: function()  {
+                brand.innerText = this.attributes[0].brand
+                refer.innerText = this.attributes[0].refer
+                model.innerText = this.attributes[0].model
+                color.innerText = this.attributes[0].color
+            },
+            darkMode: function() {
+                main.classList.toggle('darkmode')
+            },
+            start: function() {
+                alert('Start')
+            },
+            forWard: function() {
+                alert('ForWard')
+            },
+            stop: function() {
+                alert('Stop')
+            },
+            backWard: function() {
+                alert('BackWard')
+            },
+            turnOff: function() {
+                alert('Turn Off')
+            }
+        }
+
+        // - - - 
+        vehicle.showAttributes()
+        // Actions
+        btnDarkMode.onclick = () => {
+            vehicle.darkMode()
+        }
+    </script>
+</body>
+</html>
