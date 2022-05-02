@@ -64,17 +64,45 @@
             text-align: center;
             width: 80px;
         }
-         main.darkmode figure.landscape {
+         /* main.darkmode figure.landscape {
             background-color: #292929;
-         }
+         } */
         figure.landscape {
-            background-color: #f7db72;
             border-radius: 10px;
             height: 268px;
             position: absolute;
+            pointer-events: none;
             left: -14px;
             top: 268px;
             width: 368px;
+        }
+        figure.landscape div.layer03 {
+            background: url(images/vehicle/day03.svg) repeat-x;
+            border-radius: 10px;
+            height: 268px;
+            position: absolute;
+            width: 368px;
+            animation: animLayers 20s linear infinite;
+        }
+        figure.landscape div.layer02 {
+            background: url(images/vehicle/day02.svg) repeat-x;
+            border-radius: 10px;
+            height: 268px;
+            position: absolute;
+            width: 368px;
+            animation: animLayers 10s linear infinite;
+        }
+        figure.landscape div.layer01 {
+            background: url(images/vehicle/day01.svg) repeat-x;
+            border-radius: 10px;
+            height: 268px;
+            position: absolute;
+            width: 368px;
+            animation: animLayers 5s linear infinite;
+        }
+        @keyframes animLayers {
+            0%   { background-position: 0; }
+            100% { background-position: -736px; }
         }
         nav.changeVehicle {
             height: 68px;
@@ -114,6 +142,17 @@
         }
         nav.changeVehicle button.next:hover {
             transform: translateX(10px);
+        }
+        section img {
+            height: 60px;
+            display: flex;
+            left: 50%;
+            object-fit: contain;
+            position: absolute;
+            transform: translateX(-50%);
+            top: 490px;
+            width: 140px;
+            z-index: 9;
         }
         nav.controls {
             height: 30px;
@@ -172,7 +211,11 @@
                 <li class="model"></li>
                 <li class="color"></li>
             </ul>
+            <img src="" class="image">
             <figure class="landscape">
+                <div class="layer03"></div>
+                <div class="layer02"></div>
+                <div class="layer01"></div>
             </figure>
             <nav class="changeVehicle">
                 <button class="prev">Prev</button>
@@ -188,30 +231,36 @@
         </section>
     </main>
     <script>
+        // Variables
+        var cindex = 0
         // Elements
         const main = document.querySelector('main')
         // Buttons
         const btnDarkMode = document.querySelector('button.btnDarkMode') 
+        const btnPrev     = document.querySelector('button.prev') 
+        const btnNext     = document.querySelector('button.next') 
         // Attributes
         const brand = document.querySelector('li.brand')
         const refer = document.querySelector('li.refer')
         const model = document.querySelector('li.model')
         const color = document.querySelector('li.color')
+        const image = document.querySelector('img.image')
         // Object 
         const vehicle = {
             // Attributes
             attributes: [
-                { brand: 'Toyota',  refer: 'Yaris',  model: 2020, color: 'Black', image: '' },
-                { brand: 'Renault', refer: 'Clio',   model: 2018, color: 'Red',   image: '' },
-                { brand: 'Ford',    refer: 'Fiesta', model: 2016, color: 'Green', image: '' },
-                { brand: 'Fiat',    refer: '500',    model: 2007, color: 'Blue',  image: '' }
+                { brand: 'Toyota',  refer: 'Yaris',  model: 2020, color: 'Orange', image: 'images/vehicle/car01.png' },
+                { brand: 'Renault', refer: 'Clio',   model: 2018, color: 'Green',  image: 'images/vehicle/car02.png' },
+                { brand: 'Ford',    refer: 'Fiesta', model: 2016, color: 'Blue',   image: 'images/vehicle/car03.png' },
+                { brand: 'Fiat',    refer: '500',    model: 2007, color: 'Red',    image: 'images/vehicle/car04.png' }
             ],
             // Methods
-            showAttributes: function()  {
-                brand.innerText = this.attributes[0].brand
-                refer.innerText = this.attributes[0].refer
-                model.innerText = this.attributes[0].model
-                color.innerText = this.attributes[0].color
+            showAttributes: function(index)  {
+                brand.innerText = this.attributes[index].brand
+                refer.innerText = this.attributes[index].refer
+                model.innerText = this.attributes[index].model
+                color.innerText = this.attributes[index].color
+                image.setAttribute('src', this.attributes[index].image)
             },
             darkMode: function() {
                 main.classList.toggle('darkmode')
@@ -234,10 +283,22 @@
         }
 
         // - - - 
-        vehicle.showAttributes()
+        vehicle.showAttributes(0)
         // Actions
         btnDarkMode.onclick = () => {
             vehicle.darkMode()
+        }
+        btnNext.onclick = () => {
+            if (cindex < vehicle.attributes.length-1) {
+                cindex++
+                vehicle.showAttributes(cindex)
+            }
+        }
+        btnPrev.onclick = () => {
+            if (cindex > 0) {
+                cindex--
+                vehicle.showAttributes(cindex)
+            }
         }
     </script>
 </body>
