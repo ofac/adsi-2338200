@@ -76,13 +76,35 @@
             top: 268px;
             width: 368px;
         }
+        /* Move Parallax */
+        figure.landscape.move div.layer03 {
+            animation: animLayers 20s linear infinite;
+        }
+        figure.landscape.move div.layer02 {
+            animation: animLayers 10s linear infinite;
+        }
+        figure.landscape.move div.layer02 {
+            animation: animLayers 5s linear infinite;
+        }
+        /* Stop Parallax */
+        figure.landscape.stop div.layer03,
+        figure.landscape.stop div.layer02,
+        figure.landscape.stop div.layer01 {
+            animation-play-state: paused;
+        }
+        /* Reverse Parallax */
+        figure.landscape.reverse div.layer03,
+        figure.landscape.reverse div.layer02,
+        figure.landscape.reverse div.layer01 {
+            animation-direction: reverse;
+        }
+        /* - - - */
         figure.landscape div.layer03 {
             background: url(images/vehicle/day03.svg) repeat-x;
             border-radius: 10px;
             height: 268px;
             position: absolute;
             width: 368px;
-            animation: animLayers 20s linear infinite;
         }
         figure.landscape div.layer02 {
             background: url(images/vehicle/day02.svg) repeat-x;
@@ -90,7 +112,6 @@
             height: 268px;
             position: absolute;
             width: 368px;
-            animation: animLayers 10s linear infinite;
         }
         figure.landscape div.layer01 {
             background: url(images/vehicle/day01.svg) repeat-x;
@@ -98,8 +119,18 @@
             height: 268px;
             position: absolute;
             width: 368px;
-            animation: animLayers 5s linear infinite;
         }
+        /* DarkMode Parallax */
+        main.darkmode figure.landscape div.layer03 { 
+            background: url(images/vehicle/night03.svg) repeat-x; 
+        }
+        main.darkmode figure.landscape div.layer02 { 
+            background: url(images/vehicle/night02.svg) repeat-x; 
+        }
+        main.darkmode figure.landscape div.layer01 { 
+            background: url(images/vehicle/night01.svg) repeat-x; 
+        }
+        /* - - - */
         @keyframes animLayers {
             0%   { background-position: 0; }
             100% { background-position: -736px; }
@@ -154,6 +185,15 @@
             width: 140px;
             z-index: 9;
         }
+        /* Animation Vehicle startEngine */
+        section img.start {
+            animation: animStartEngine 0.15s ease infinite;
+        }
+        @keyframes animStartEngine {
+            0%   { top: 490px; }
+            100% { top: 488px; }
+        }
+        /* - - - */
         nav.controls {
             height: 30px;
             overflow: hidden;
@@ -233,12 +273,21 @@
     <script>
         // Variables
         var cindex = 0
+        // Booleans
+        var engine = false
+        var move   = false
         // Elements
-        const main = document.querySelector('main')
+        const main  = document.querySelector('main')
+        const fland = document.querySelector('figure.landscape')
         // Buttons
         const btnDarkMode = document.querySelector('button.btnDarkMode') 
         const btnPrev     = document.querySelector('button.prev') 
         const btnNext     = document.querySelector('button.next') 
+        const btnStart    = document.querySelector('button.btnStart')
+        const btnForward  = document.querySelector('button.btnForward')
+        const btnStop     = document.querySelector('button.btnStop')
+        const btnBackward = document.querySelector('button.btnBackward')
+        const btnTurnOff  = document.querySelector('button.btnTurnOff')
         // Attributes
         const brand = document.querySelector('li.brand')
         const refer = document.querySelector('li.refer')
@@ -266,19 +315,38 @@
                 main.classList.toggle('darkmode')
             },
             start: function() {
-                alert('Start')
+                if (!engine) {
+                    image.classList.add('start')
+                    engine = true
+                }
             },
             forWard: function() {
-                alert('ForWard')
+                if (engine && !move) {
+                    fland.classList.add('move')
+                    fland.classList.remove('reverse')
+                    fland.classList.remove('stop')
+                    move = true
+                }
             },
             stop: function() {
-                alert('Stop')
+                if (engine && move) {
+                    fland.classList.add('stop')
+                    move = false
+                }
             },
             backWard: function() {
-                alert('BackWard')
+                if (engine && !move) {
+                    fland.classList.add('move')
+                    fland.classList.remove('stop')
+                    fland.classList.add('reverse')
+                    move = true
+                }
             },
             turnOff: function() {
-                alert('Turn Off')
+                if (engine && !move) {
+                    image.classList.remove('start')
+                    engine = false
+                }
             }
         }
 
@@ -288,6 +356,22 @@
         btnDarkMode.onclick = () => {
             vehicle.darkMode()
         }
+        btnStart.onclick = () => {
+            vehicle.start()
+        }
+        btnForward.onclick = () => {
+            vehicle.forWard()
+        }
+        btnStop.onclick = () => {
+            vehicle.stop()
+        }
+        btnBackward.onclick = () => {
+            vehicle.backWard()
+        }
+        btnTurnOff.onclick = () => {
+            vehicle.turnOff()
+        }
+        // - - -
         btnNext.onclick = () => {
             if (cindex < vehicle.attributes.length-1) {
                 cindex++
