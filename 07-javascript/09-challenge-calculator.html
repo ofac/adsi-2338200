@@ -132,23 +132,23 @@
                 <section class="buttons">
                     <button class="btn-clear"></button>
                     <button class="btn-back"></button>
-                    <button class="btn-pow"></button>
-                    <button class="btn-mod"></button>
-                    <button class="btn-1"></button>
-                    <button class="btn-2"></button>
-                    <button class="btn-3"></button>
-                    <button class="btn-prod"></button>
-                    <button class="btn-4"></button>
-                    <button class="btn-5"></button>
-                    <button class="btn-6"></button>
-                    <button class="btn-subs"></button>
-                    <button class="btn-7"></button>
-                    <button class="btn-8"></button>
-                    <button class="btn-9"></button>
-                    <button class="btn-add"></button>
-                    <button class="btn-div"></button>
-                    <button class="btn-0"></button>
-                    <button class="btn-dot"></button>
+                    <button class="btn-pow"  data-opr="**"></button>
+                    <button class="btn-mod"  data-opr="%"></button>
+                    <button class="btn-1"    data-num="1"></button>
+                    <button class="btn-2"    data-num="2"></button>
+                    <button class="btn-3"    data-num="3"></button>
+                    <button class="btn-prod" data-opr="*"></button>
+                    <button class="btn-4"    data-num="4"></button>
+                    <button class="btn-5"    data-num="5"></button>
+                    <button class="btn-6"    data-num="6"></button>
+                    <button class="btn-subs" data-opr="-"></button>
+                    <button class="btn-7"    data-num="7"></button>
+                    <button class="btn-8"    data-num="8"></button>
+                    <button class="btn-9"    data-num="9"></button>
+                    <button class="btn-add"  data-opr="+"></button>
+                    <button class="btn-div"  data-opr="/"></button>
+                    <button class="btn-0"    data-num="0"></button>
+                    <button class="btn-dot"  data-opr="."></button>
                     <button class="btn-equal"></button>
                 </section>
             </div>
@@ -156,50 +156,174 @@
     </main>
     <script>
         // Value in Display
-        const disValue = document.querySelector('input.value')
+        const display = document.querySelector('input.value')
         // Buttons
         const btnClear = document.querySelector('button.btn-clear')
         const btnBack  = document.querySelector('button.btn-back')
-        const btnPow   = document.querySelector('button.btn-pow')
-        const btnMod   = document.querySelector('button.btn-mod')
-        const btn1     = document.querySelector('button.btn-1')
-        const btn2     = document.querySelector('button.btn-2')
-        const btn3     = document.querySelector('button.btn-3')
-        const btnProd  = document.querySelector('button.btn-prod')
-        const btn4     = document.querySelector('button.btn-4')
-        const btn5     = document.querySelector('button.btn-5')
-        const btn6     = document.querySelector('button.btn-6')
-        const btnSubs  = document.querySelector('button.btn-subs')
-        const btn7     = document.querySelector('button.btn-7')
-        const btn8     = document.querySelector('button.btn-8')
-        const btn9     = document.querySelector('button.btn-9')
-        const btnAdd   = document.querySelector('button.btn-add')
-        const btnDiv   = document.querySelector('button.btn-div')
-        const btn0     = document.querySelector('button.btn-0')
-        const btnDot   = document.querySelector('button.btn-dot')
         const btnEqual = document.querySelector('button.btn-equal')
-        // Actions
-        btn1.onclick = () => {
-            if(validateLength()) {
-                disValue.value += '1'
+        // All Numbers & Operators
+        const btnsNumbers   = document.querySelectorAll('button[data-num]')
+        const btnsOperators = document.querySelectorAll('button[data-opr]')
+        // Logic Value
+        var operStatus = false
+        // Activate Click Event in All Numbers & Operators
+        for (let i = 0; i < btnsNumbers.length; i++) {
+            btnsNumbers[i].onclick = function() {
+                operStatus = true
+                addToDisplay(this.getAttribute('data-num'))
             }
         }
-        btn2.onclick = () => {
-            if(validateLength()) {
-                disValue.value += '2'
+        for (let i = 0; i < btnsOperators.length; i++) {
+            btnsOperators[i].onclick = function() {
+                if(operStatus) {
+                    addToDisplay(this.getAttribute('data-opr'))
+                    operStatus = false
+                }
             }
         }
-        btn3.onclick = () => {
-            if(validateLength()) {
-                disValue.value += '3'
+        // Events
+        document.onkeyup = (evt) => {
+            console.log(evt.keyCode)
+            // 0 - 9     => KeyCodes: 48,49,50,51,52,53,54,55,56,57
+            // BackSpace => keyCode: 8
+            // Enter     => keyCode: 13
+            // Delete    => keyCode: 46
+            // %         => keyCode: 53
+            // +         => keyCode: 187
+            // -         => keyCode: 189
+            // .         => keyCode: 190
+            // /         => keyCode: 191
+            // ^         => keyCode: 219
+            // *         => keyCode: 221
+            switch (evt.keyCode) {
+                case 8:
+                    deleteLastValue()
+                    break;
+                case 13:
+                    showResult()
+                    break;
+                case 46:
+                    clearDisplay()
+                    break;
+                case 48:
+                    addToDisplay(0) 
+                    operStatus = true
+                    break;
+                case 49:
+                    addToDisplay(1)
+                    operStatus = true
+                    break;
+                case 50:
+                    addToDisplay(2)   
+                    operStatus = true
+                    break;
+                case 51:
+                    addToDisplay(3)   
+                    operStatus = true
+                    break;
+                case 52:
+                    addToDisplay(4)   
+                    operStatus = true
+                    break;
+                case 53:
+                    if(evt.shiftKey) {
+                        if(operStatus) {
+                            addToDisplay('%')
+                            operStatus = false
+                        }
+                    } else {
+                        addToDisplay(5)
+                        operStatus = true
+                    }
+                    break;
+                case 54:
+                    addToDisplay(6)   
+                    operStatus = true
+                    break;
+                case 55:
+                    addToDisplay(7)   
+                    operStatus = true
+                    break;
+                case 56:
+                    addToDisplay(8)   
+                    operStatus = true
+                    break;
+                case 57:
+                    addToDisplay(9)   
+                    operStatus = true
+                    break;
+                case 187:
+                    if(operStatus) {
+                        addToDisplay('+')
+                        operStatus = false
+                    }
+                    break;
+                case 189:
+                    if(operStatus) {
+                        addToDisplay('-')
+                        operStatus = false
+                    }
+                    break;
+                case 190:
+                    if(operStatus) {
+                        addToDisplay('.')
+                        operStatus = false
+                    }
+                    break;
+                case 191:
+                    if(operStatus) {
+                        addToDisplay('/')
+                        operStatus = false
+                    }   
+                    break;
+                case 219:
+                    if(operStatus) {
+                        addToDisplay('**') 
+                        operStatus = false
+                    } 
+                    break;
+                case 221: 
+                    if(operStatus) {
+                        addToDisplay('*') 
+                        operStatus = false
+                    }  
+                    break; 
+                default:
+                    break;
             }
         }
         btnClear.onclick = () => {
-            disValue.value = ''
+            clearDisplay()
+        }
+        btnBack.onclick = () => {
+            deleteLastValue()
+        }
+        btnEqual.onclick = () => {
+            showResult()
         }
         // Functions
+        function showResult() {
+            display.value = eval(display.value)
+        }
+        function clearDisplay() {
+            display.value = ''
+            operStatus = false
+        }
+        function deleteLastValue() {
+            display.value = display.value.slice(0, -1)
+            if (isNaN(display.value.slice(-1))) {
+                operStatus = false
+            } else {
+                operStatus = true
+            }
+        }
+        function addToDisplay(c) {
+            if(validateLength()) {
+                display.value += c
+            }
+        }
         function validateLength() {
-            if(disValue.value.length < 21) {
+            if(display.value.length < 18) {
                 return true
             } else {
                 return false

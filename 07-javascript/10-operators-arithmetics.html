@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetics</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        table.operators {
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            margin: 40px auto;
+            width: 380px;
+        }
+        table thead th {
+            background-color: #aa0c;
+            color: #fffc;
+        }
+        table th,
+        table td {
+            background-color: #fffc;
+            border: 1px solid #333;
+            color: #333;
+            padding: 6px;
+        }
+        table thead input {
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-family: Poppins;
+            padding: 8px;
+            width: 120px;
+        }
+        table tbody td:first-child {
+            font-size: 1rem;
+            text-align: center;
+        }
+        table tbody tr:nth-child(even) td {
+            background-color: #fff8;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <h1>Arithmetics</h1>
+        </header>
+        <section>
+            <table class="operators">
+                <thead>
+                    <tr>
+                        <th colspan="5">
+                            <input type="number" placeholder="Y Value">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Description</th>
+                        <th>Example</th>
+                        <th>Y</th>
+                        <th>X</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>+</td>
+                        <td>Addition</td>
+                        <td>x=y+2</td>
+                        <td class="ry"></td>
+                        <td class="rx"></td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>Substraction</td>
+                        <td>x=y-2</td>
+                        <td class="ry"></td>
+                        <td class="rx"></td>
+                    </tr>
+                    <tr>
+                        <td>*</td>
+                        <td>Product</td>
+                        <td>x=y*2</td>
+                        <td class="ry"></td>
+                        <td class="rx"></td>
+                    </tr>
+                    <tr>
+                        <td>/</td>
+                        <td>Division</td>
+                        <td>x=y/2</td>
+                        <td class="ry"></td>
+                        <td class="rx"></td>
+                    </tr>
+                    <tr>
+                        <td>%</td>
+                        <td>Modulus</td>
+                        <td>x=y%2</td>
+                        <td class="ry"></td>
+                        <td class="rx"></td>
+                    </tr>
+                    <tr>
+                        <td>++</td>
+                        <td>Increment(pre)</td>
+                        <td>x=++y</td>
+                        <td class="ry"></td>
+                        <td class="rx"></td>
+                    </tr>
+                    <tr>
+                        <td>++</td>
+                        <td>Increment(post)</td>
+                        <td>x=y++</td>
+                        <td class="ry"></td>
+                        <td class="rx"></td>
+                    </tr>
+                    <tr>
+                        <td>--</td>
+                        <td>Decrement(pre)</td>
+                        <td>x=--y</td>
+                        <td class="ry"></td>
+                        <td class="rx"></td>
+                    </tr>
+                    <tr>
+                        <td>--</td>
+                        <td>Decrement(post)</td>
+                        <td>x=y--</td>
+                        <td class="ry"></td>
+                        <td class="rx"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+        // results
+        const ry    = document.querySelectorAll('td.ry')
+        const rx    = document.querySelectorAll('td.rx')
+        const input = document.querySelector('input')
+        // Events
+        input.oninput = () => {
+            if (input.value != '') {
+                if (input.value.length < 4) {
+                    // Adition +
+                    ry[0].innerText = parseInt(input.value)
+                    rx[0].innerText = parseInt(input.value) + 2
+                    // Substraction -
+                    ry[1].innerText = parseInt(input.value)
+                    rx[1].innerText = parseInt(input.value) - 2
+                    // Product *
+                    ry[2].innerText = parseInt(input.value)
+                    rx[2].innerText = parseInt(input.value) * 2
+                    // Division /
+                    ry[3].innerText = parseInt(input.value)
+                    rx[3].innerText = parseInt(input.value) / 2
+                    // Modulus %
+                    ry[4].innerText = parseInt(input.value)
+                    rx[4].innerText = parseInt(input.value) % 2
+                    // Increment(pre) ++
+                    let y = parseInt(input.value)
+                    ry[5].innerText = ++y
+                    rx[5].innerText = y
+                    // Increment(post) ++
+                    y = parseInt(input.value)
+                    ry[6].innerText = y++
+                    rx[6].innerText = y
+                    // Decrement(pre) --
+                    y = parseInt(input.value)
+                    ry[7].innerText = --y
+                    rx[7].innerText = y
+                    // Decrement(post) --
+                    y = parseInt(input.value)
+                    ry[8].innerText = y--
+                    rx[8].innerText = y
+                } else {
+                    input.value = input.value.slice(0,-1)
+                }
+            } else {
+                for (let i = 0; i < ry.length; i++) {
+                    ry[i].innerText = ''
+                    rx[i].innerText = ''
+                }
+            }
+        }
+    </script>
+</body>
+</html>
