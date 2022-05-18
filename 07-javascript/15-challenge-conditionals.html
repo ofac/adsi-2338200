@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        main {
+            border: none;
+            transition: all 0.2s ease-in;
+        }
+        main.bg-male {
+            background: url(images/conditionals/bg-male.png) no-repeat center;
+        }
+        main {
+            background: url(images/conditionals/bg-female.png) no-repeat center;
+        }
+        header a:link,
+        header a:visited {
+            color: #fff6;
+            top: 6px;
+        }
+        header h1 {
+            color: #fff;
+            font-weight: 400;
+            font-size: 32px;
+            margin-top: 54px;
+        }
+        section {
+            position: relative;
+        }
+        figure {
+            background: url(images/conditionals/female.png) no-repeat center;
+            height: 147px;
+            position: absolute;
+            left: 98px;
+            top: 10px;
+            width: 146px;
+        }
+        figure.gender-male {
+            background: url(images/conditionals/male.png) no-repeat center;
+        }
+        nav.controls {
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: absolute;
+            top: 84px;
+            left: 50%;
+            padding: 0 10px 0 10px;
+            transform: translateX(-50%);
+            width: 320px;
+        }
+        nav.controls button {
+            border: none;
+            cursor: pointer;
+            height: 40px;
+            text-indent: -9999px;
+            transition: transform 0.2s ease-in;
+            width: 40px;
+        }
+        nav.controls button.btnPrev {
+            background: url(images/conditionals/btn-prev.svg) no-repeat center;
+        }
+        nav.controls button.btnNext {
+            background: url(images/conditionals/btn-next.svg) no-repeat center;
+        }
+        nav.controls button.btnPrev:hover {
+            transform: translateX(-8px);
+        }
+        nav.controls button.btnNext:hover {
+            transform: translateX(8px);
+        }
+        div.title {
+            border-top: 2px dashed #fff8;
+            border-bottom: 2px dashed #fff8;
+            height: 40px;
+            line-height: 2.4rem;
+            font-size: 20px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            top: 194px;
+            width: 140px;
+        }
+        div.input {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 364px;
+        }
+        div.input.first {
+            top: 270px;
+        }
+        div.input.last {
+            top: 360px;
+        }
+        div.input label {
+            font-size: 20px;
+        }
+        div.input input {
+            border: none;
+            color: #333;
+            outline: none;
+            font-family: Poppins;
+            font-size: 18px;
+            text-indent: 40px;
+            height: 50px;
+        }
+        div.input input.fullname {
+            background: url(images/conditionals/input-fullname.svg) no-repeat center;
+        }
+        div.input input.birthdate {
+            background: url(images/conditionals/input-birthdate.svg) no-repeat center;
+        }
+        button.btnVal {
+            background: url(images/conditionals/btn-validate.svg) no-repeat center;
+            border: none;
+            cursor: pointer;
+            display: block;
+            height: 60px;
+            position: absolute;
+            top: 480px;
+            left: 28px;
+            text-indent: -9999px;
+            transition: transform 0.2s ease-in;
+            width: 364px;
+        }
+        button.btnVal:hover {
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <main class="bg-male">
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <h1>Select Gender</h1>
+        </header>
+        <section>
+            <figure class="gender-male"></figure>
+            <nav class="controls">
+                <button class="btnPrev">prev</button>
+                <button class="btnNext">next</button>
+            </nav>
+            <div class="title title-male">
+                Male
+            </div>
+            <div class="input first">
+                <label>Fullname:</label>
+                <input type="text" class="fullname">
+            </div>
+            <div class="input last">
+                <label>Birthdate:</label>
+                <input type="date" class="birthdate">
+            </div>
+            <button class="btnVal">Validate</button>
+        </section>
+    </main>
+    <script>
+        // Elements
+        const main = document.querySelector('main')
+        const fig  = document.querySelector('figure')
+        const ttl  = document.querySelector('.title')
+        const btPv = document.querySelector('.btnPrev')
+        const btNx = document.querySelector('.btnNext')
+        const ifn  = document.querySelector('.fullname')
+        const ibd  = document.querySelector('.birthdate')
+        const btVl = document.querySelector('.btnVal')
+        // Important Data
+        var today  = new Date
+        var gender = 'Male'
+        var fname  = null 
+        var bdate  = null
+        // Actions
+        btPv.addEventListener('click', () => {
+            main.classList.toggle('bg-male')
+            fig.classList.toggle('gender-male')
+            changeTitle()
+        })
+        btNx.addEventListener('click', () => {
+            main.classList.toggle('bg-male')
+            fig.classList.toggle('gender-male')
+            changeTitle()
+        })
+        btVl.addEventListener('click', () => {
+            if(ifn.value.length > 3) {
+                fname = ifn.value
+                bdate = ibd.value
+            } else {
+                alert('Please, fill all fields!')
+            }
+        })
+        // Functions
+        function changeTitle() {
+            if(main.classList.contains('bg-male')) {
+                gender = 'Male'
+                ttl.innerText = gender
+            } else {
+                gender = 'Female'
+                ttl.innerText = gender
+            }
+        }
+    </script>
+</body>
+</html>

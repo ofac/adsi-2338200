@@ -1,0 +1,4 @@
+<svg width="360" height="50" viewBox="0 0 360 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect opacity="0.5" x="1" y="1" width="358" height="48" rx="24" fill="white" stroke="#594A98" stroke-width="2"/>
+<path d="M23 20V16V20ZM31 20V16V20ZM22 24H32H22ZM20 34H34C34.5304 34 35.0391 33.7893 35.4142 33.4142C35.7893 33.0391 36 32.5304 36 32V20C36 19.4696 35.7893 18.9609 35.4142 18.5858C35.0391 18.2107 34.5304 18 34 18H20C19.4696 18 18.9609 18.2107 18.5858 18.5858C18.2107 18.9609 18 19.4696 18 20V32C18 32.5304 18.2107 33.0391 18.5858 33.4142C18.9609 33.7893 19.4696 34 20 34Z" stroke="#594A97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
