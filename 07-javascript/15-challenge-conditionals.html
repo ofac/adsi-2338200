@@ -14,6 +14,12 @@
         main.bg-male {
             background: url(images/conditionals/bg-male.png) no-repeat center;
         }
+        main.bg-peace {
+            background: url(images/conditionals/bg-peace.png) no-repeat center;
+        }
+        main.bg-war {
+            background: url(images/conditionals/bg-war.png) no-repeat center;
+        }
         main {
             background: url(images/conditionals/bg-female.png) no-repeat center;
         }
@@ -50,7 +56,8 @@
             position: absolute;
             top: 84px;
             left: 50%;
-            padding: 0 10px 0 10px;
+            /* padding: 0 10px 0 10px; */
+            overflow: inherit;
             transform: translateX(-50%);
             width: 320px;
         }
@@ -87,6 +94,19 @@
             top: 194px;
             width: 140px;
         }
+        div.tage {
+            display: none;
+            border-bottom: 2px dashed #fff8;
+            height: 40px;
+            line-height: 2.4rem;
+            font-size: 20px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            top: 364px;
+            width: 140px;
+        }
         div.input {
             display: flex;
             flex-direction: column;
@@ -116,10 +136,11 @@
         div.input input.fullname {
             background: url(images/conditionals/input-fullname.svg) no-repeat center;
         }
-        div.input input.birthdate {
+        div.input input.age {
             background: url(images/conditionals/input-birthdate.svg) no-repeat center;
         }
-        button.btnVal {
+        button.btnVal,
+        button.btnBack {
             background: url(images/conditionals/btn-validate.svg) no-repeat center;
             border: none;
             cursor: pointer;
@@ -132,7 +153,12 @@
             transition: transform 0.2s ease-in;
             width: 364px;
         }
-        button.btnVal:hover {
+        button.btnBack {
+            display: none;
+            background: url(images/conditionals/btn-back.svg) no-repeat center;
+        }
+        button.btnVal:hover,
+        button.btnBack:hover {
             transform: scale(1.1);
         }
 
@@ -141,7 +167,7 @@
 <body>
     <main class="bg-male">
         <header>
-            <a href="index.html">
+            <a href="index.html" class="back">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
                 </svg>
@@ -157,32 +183,40 @@
             <div class="title title-male">
                 Male
             </div>
+            <div class="tage">18 years</div>
             <div class="input first">
                 <label>Fullname:</label>
                 <input type="text" class="fullname">
             </div>
             <div class="input last">
-                <label>Birthdate:</label>
-                <input type="date" class="birthdate">
+                <label>Age:</label>
+                <input type="number" class="age">
             </div>
             <button class="btnVal">Validate</button>
+            <button class="btnBack">Back</button>
         </section>
     </main>
     <script>
         // Elements
         const main = document.querySelector('main')
+        const h1   = document.querySelector('h1')
+        const back = document.querySelector('.back')
         const fig  = document.querySelector('figure')
+        const nav  = document.querySelector('.controls')
         const ttl  = document.querySelector('.title')
+        const tage = document.querySelector('.tage')
         const btPv = document.querySelector('.btnPrev')
         const btNx = document.querySelector('.btnNext')
+        const inps = document.querySelectorAll('.input')
         const ifn  = document.querySelector('.fullname')
-        const ibd  = document.querySelector('.birthdate')
+        const iag  = document.querySelector('.age')
         const btVl = document.querySelector('.btnVal')
+        const btBk = document.querySelector('.btnBack')
         // Important Data
-        var today  = new Date
+        const msgs = ['You will not go to war!', 'You must go to war!']
         var gender = 'Male'
         var fname  = null 
-        var bdate  = null
+        var age    = null
         // Actions
         btPv.addEventListener('click', () => {
             main.classList.toggle('bg-male')
@@ -195,14 +229,53 @@
             changeTitle()
         })
         btVl.addEventListener('click', () => {
-            if(ifn.value.length > 3) {
+            if(ifn.value.length > 3 && iag.value.length > 0) {
                 fname = ifn.value
-                bdate = ibd.value
+                age   = iag.value
+                // - - -
+                if (gender == 'Female') {
+                    main.classList.toggle('bg-female')
+                    main.classList.add('bg-peace')
+                    h1.innerText = msgs[0]
+                    removeElements()
+                    moveData()
+                } else {
+                    main.classList.toggle('bg-male')
+                    removeElements()
+                    moveData()
+                    if (age >= 18) {
+                        main.classList.add('bg-war')
+                        h1.innerText = msgs[1]
+                    } else {
+                        main.classList.add('bg-peace')
+                        h1.innerText = msgs[0]
+                    }
+                }
             } else {
-                alert('Please, fill all fields!')
+                alert('Please, fill all fields:\n- Fullname\n- Birthdate')
             }
         })
+        btBk.addEventListener('click', () => {
+            window.location.replace('15-challenge-conditionals.html')
+        })
         // Functions
+        function removeElements() {
+            nav.style.display = 'none'
+            back.style.display = 'none'
+            inps[0].style.display = 'none'
+            inps[1].style.display = 'none'
+            btBk.style.display = 'block'
+            btVl.style.display = 'none'
+        }
+        function moveData() {
+            fig.style.top = '130px'
+            ttl.style.top = '320px'
+            ttl.style.width = '220px'
+            ttl.innerText = fname
+            tage.style.display = 'block'
+            tage.style.width = '220px'
+            tage.innerText = age + ' years old'
+        }
         function changeTitle() {
             if(main.classList.contains('bg-male')) {
                 gender = 'Male'

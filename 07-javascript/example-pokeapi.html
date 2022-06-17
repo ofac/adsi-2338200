@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generation 2 Pokemons</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+         ul.list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-column-gap: 20px;
+            grid-row-gap: 20px;
+            justify-items: stretch;
+            align-items: stretch;
+            padding: 0;
+            list-style: none;
+        }
+        ul.list li {
+            background-color: #37a8f9;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px 0;
+            transition: all 0.2s ease-in;
+        }
+        ul.list li:hover {
+            background-color: #114f7b;
+            color: #fff;
+            cursor: pointer;
+        }
+        section.modal {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            align-items: center;
+            color: #fff;
+            top: -1000px;
+            left: 0;
+            width: 100%;
+            background-color: #000c;
+            min-height: 100vh;
+        }
+        section.modal div {
+            border: 4px solid #fff9;
+            border-radius: 8px;
+            background-color: #0009;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        section.modal h2 {
+            margin: 0;
+        }
+        section.modal.close {
+            animation: 0.25s animModalClose ease-in 1 forwards;
+        }
+        section.modal.open {
+            animation: 0.5s animModalOpen ease-in 1 forwards;
+        }
+        @keyframes animModalOpen {
+            0% {
+                opacity: 0;
+                top: -1000px;
+            }
+            100% {
+                 opacity: 1;
+                 top: 0px;
+            }
+        }
+        @keyframes animModalClose {
+            0% {
+                opacity: 1;
+                top: 0px;
+            }
+            100% {
+                opacity: 0;
+                top: -1000px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul class="list"></ul>
+    <section class="modal hide">
+    </section>
+    <script>
+        const list  = document.querySelector('.list')
+        var pkinfo  = ''
+        const modal = document.querySelector('.modal')
+
+        async function allPokemons() {
+            for (let i = 152; i <= 251; i++) {
+                const res       = await fetch('https://pokeapi.co/api/v2/pokemon/'+i);
+                const pokemon   = await res.json();
+                list.innerHTML += "<li data-pk='" + i + "'> " + pokemon.name + " (" + pokemon.id + ") <img src='https://www.serebii.net/swordshield/pokemon/small/" + i +".png'> </li>"
+                if (i == 251) {
+                    addClickEvents()
+                }
+            }
+        }
+        function addClickEvents() {
+            const elms = document.querySelectorAll('.list li')
+            for (let i = 0; i < elms.length; i++) {
+                elms[i].onclick = function() {
+                    showPokemon(this.dataset.pk)
+                }
+            }
+        }
+        async function showPokemon(pk) {
+            let rsi  = await fetch('https://pokeapi.co/api/v2/pokemon/'+pk);
+            let pki  = await rsi.json();
+            let pkt1 = pki.types[0].type.name
+            if(pki.types.length > 1) {
+                let pkt2 = pki.types[1].type.name
+                pkinfo   = "<div><h2>" + pki.id + "</h2><h2> Name: " 
+                                           + pki.name + "</h2>" 
+                                           + "</h3><img src='https://www.serebii.net/swordshield/pokemon/small/" + pk + ".png' width='240px'><h3> Type 1: "
+                                           + pkt1 + "<h3> Type 2: " 
+                                           + pkt2 + "</h3><h3> HP: " 
+                                           + pki.stats[0].base_stat + "</h3></div>"
+            } else {
+                pkinfo   = "<div><h2>" + pki.id + "</h2><h2> Name: " 
+                                           + pki.name + "</h2>" 
+                                           + "</h2><img src='https://www.serebii.net/swordshield/pokemon/small/" + pk + ".png' width='240px'><h2> Type 1: "
+                                           + pkt1 + "<h3> Hp: " 
+                                           + pki.stats[0].base_stat + "</h3></div>"
+            }
+            modal.innerHTML = pkinfo
+            modal.classList.add('open')
+            modal.classList.remove('close')
+        }
+        modal.onclick = function() {
+            modal.classList.add('close')
+            modal.classList.remove('open')
+        }
+        allPokemons()
+    </script>
+</body>
+</html>
