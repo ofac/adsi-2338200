@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Ballotto</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <style>
+        main {
+            border: none;
+            background: url(images/ballotto/bg.png) no-repeat center;
+        }
+        header h1 {
+            text-indent: -9999px;
+            background: url(images/ballotto/title.png) no-repeat center;
+            margin-bottom: 0;
+        }
+        header a:link,
+        header a:visited {
+            color: #fff;
+        }
+        section {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 10pxs;
+        }
+        section p {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 30px;
+        }
+        section div.slider {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+            width: 250px;
+        }
+        section div.slider figure.style {
+            cursor: pointer;
+            height: 80px;
+            width: 80px;
+        }
+        section div.slider figure.ball-normal {
+            background: url(images/ballotto/ball-yellow.png) no-repeat center;
+        }
+        section div.slider figure.ball-merry {
+            background: url(images/ballotto/ball-merry.png) no-repeat center;
+            border: 2px solid #396440;
+            border-radius: 50%;
+        }
+        section div.slider figure.ball-wish {
+            background: url(images/ballotto/ball-wish.png) no-repeat center;
+            border: 2px solid #000;
+            border-radius: 50%;
+        }
+        section div.slider button {
+            cursor: pointer;
+            border: none;
+            height: 30px;
+            width: 30px;
+
+            transition: transform 0.2s ease-in;
+            z-index: 2;
+        }
+        section div.slider button.prev {
+            transform: translatex(6px);
+        }
+        section div.slider button.next {
+            transform: translatex(-6px);
+        }
+        section div.slider button.prev:hover {
+            transform: translatex(2px) scale(1.1);
+        }
+        section div.slider button.next:hover {
+            transform: translatex(-2px) scale(1.1);
+        }
+        section div.slider button.prev {
+            background: url(images/ballotto/btn-prev.png) no-repeat center;
+        }
+        section div.slider button.next {
+            background: url(images/ballotto/btn-next.png) no-repeat center;
+        }
+        .animate__animated.animate__bounceInLeft,
+        .animate__animated.animate__bounceInRight {
+            --animate-duration: 500ms;
+        }
+        .animate__animated.animate__bounceInUp {
+            --animate-duration: 500ms;
+        }
+        section div.balls {
+            position: relative;
+            margin-top: 34px;
+            height: 260px;
+            width: 410px;
+        }
+        section div.balls div.ball {
+            color: #34325f;
+            height: 80px;
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 5rem;
+            position: absolute;
+            text-decoration-line: underline;
+            text-align: center;
+            width: 80px;
+        }
+        section div.balls div.ball.hidden,
+        section div.balls div.sball.hidden {
+            visibility: hidden;
+        }
+        section div.balls div.ball-normal {
+            background: url(images/ballotto/ball-yellow.png) no-repeat center;
+        }
+        section div.balls div.ball-merry {
+            background: url(images/ballotto/ball-merry.png) no-repeat center;
+            border: 2px solid #396440;
+            border-radius: 50%;
+            color: #396440;
+
+        }
+        section div.balls div.ball-wish {
+            background: url(images/ballotto/ball-wish.png) no-repeat center;
+            border: 2px solid #000;
+            border-radius: 50%;
+            color: #fff;
+        }
+        section div.balls div.ball:nth-of-type(1) {
+            left: 0px;
+            top: 170px;
+        }
+        section div.balls div.ball:nth-of-type(2) {
+            left: 64px;
+            top: 90px;
+        }
+        section div.balls div.ball:nth-of-type(3) {
+            left: 164px;
+            top: 50px;
+        }
+        section div.balls div.ball:nth-of-type(4) {
+            right: 64px;
+            top: 90px;
+        }
+        section div.balls div.ball:nth-of-type(5) {
+            right: 0px;
+            top: 170px;
+        }
+        section div.balls div.sball {
+            background: url(images/ballotto/ball-red.png) no-repeat center;
+            color: #e6d6da;
+            height: 100px;
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 6rem;
+            position: absolute;
+            top: 174px;
+            left: 152px;
+            text-align: center;
+            text-decoration-line: underline;
+            width: 100px;
+        }
+        button.btn_play {
+            background: url(images/ballotto/btn-play.png) no-repeat center;
+            border: none;
+            cursor: pointer;
+            margin-top: 60px;
+            height: 60px;
+            text-indent: -9999px;
+            width: 360px;
+
+            transition: transform 0.2s ease-out;
+        }
+        button.btn_play:hover {
+            transform: translateY(-4px) scale(1.05);
+        }
+        button.btn_play:disabled {
+            filter: grayscale(1);
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <h1>Challenge Ballotto</h1>
+        </header>
+        <section>
+            <p>Select Style:</p>
+            <div class="slider">
+                <button class="prev"></button>
+                <figure class="style ball-normal animate__animated"></figure>
+                <button class="next"></button>
+            </div>
+            <div class="balls">
+                <div class="ball ball-normal animate__animated hidden">01</div>
+                <div class="ball ball-normal animate__animated hidden">02</div>
+                <div class="ball ball-normal animate__animated hidden">03</div>
+                <div class="ball ball-normal animate__animated hidden">04</div>
+                <div class="ball ball-normal animate__animated hidden">05</div>
+                <div class="sball animate__animated hidden">06</div>
+            </div>
+            <button class="btn_play">Play</button>
+        </section>
+    </main>
+    <script>
+        const btn_prev    = document.querySelector('.prev')
+        const btn_next    = document.querySelector('.next')
+        const btn_play    = document.querySelector('.btn_play')
+        const ball_style  = document.querySelector('.style')
+        const balls       = document.querySelectorAll('.ball')
+        const sball       = document.querySelector('.sball')
+        const ball_styles = ['ball-normal', 'ball-merry', 'ball-wish'] 
+        const arrballs    = new Array;
+		const arrsball    = new Array;
+        var   num_style   = 1
+
+        btn_next.addEventListener('click', (e) => {
+            if (num_style < ball_styles.length) {
+                ball_style.classList.remove('ball-normal', 'ball-merry', 'ball-wish', 'animate__bounceInLeft', 'animate__bounceInRight')
+                setTimeout(() => {
+                    ball_style.classList.add(ball_styles[num_style])
+                    ball_style.classList.add('animate__bounceInLeft')
+                }, 50)
+                //console.log(num_style)
+                if (num_style == ball_styles.length-1) {
+                    num_style = 0
+                } else {
+                    num_style++
+                }
+            } 
+        })
+        btn_prev.addEventListener('click', (e) => {
+            if (num_style > -1) {
+                ball_style.classList.remove('ball-normal', 'ball-merry', 'ball-wish', 'animate__bounceInLeft', 'animate__bounceInRight')
+                setTimeout(() => {
+                    ball_style.classList.add(ball_styles[num_style])
+                    ball_style.classList.add('animate__bounceInRight')
+                }, 50)
+                //console.log(num_style)
+                if (num_style == 0) {
+                    num_style = 2
+                } else {
+                    num_style--
+                }
+            } 
+        })
+        ball_style.addEventListener('click', (e) => {
+            balls.forEach(function(item, index, arr) {
+                arr[index].classList.remove('ball-normal', 'ball-merry', 'ball-wish')
+            })
+            if (ball_style.classList.contains('ball-normal')) {
+                balls.forEach(function(item, index, arr) {
+                    arr[index].classList.add('ball-normal')
+                })
+            }
+            if (ball_style.classList.contains('ball-merry')) {
+                balls.forEach(function(item, index, arr) {
+                    arr[index].classList.add('ball-merry')
+                })
+            }
+            if (ball_style.classList.contains('ball-wish')) {
+                balls.forEach(function(item, index, arr) {
+                    arr[index].classList.add('ball-wish')
+                })
+            }
+        })
+        btn_play.addEventListener('click', (e) => {
+            btn_play.setAttribute('disabled', true)
+            for (let i = 0; i < 43; i++) {
+			    arrballs[i] = i+1;
+            }
+            for (let i = 0; i < 16; i++) {
+                arrsball[i] = i+1;
+            }
+            balls.forEach(function(item, index, arr) {
+                    arr[index].classList.add('hidden')
+                    arr[index].classList.remove('animate__bounceInUp')
+            })
+            sball.classList.add('hidden')
+            sball.classList.remove('animate__bounceInUp')
+            let inx = 0
+            let seti = setInterval(function() {
+                if(inx < balls.length) {
+                    let rn = Math.ceil(Math.random() * arrballs.length)
+                    balls[inx].textContent = arrballs[rn-1]
+                    arrballs.splice(rn-1,1)
+                    //console.log(arrballs);
+                    balls[inx].classList.remove('hidden')
+                    balls[inx].classList.add('animate__bounceInUp')
+                    inx++
+                } else {
+                    sball.textContent = Math.ceil(Math.random() * 16)
+                    sball.classList.remove('hidden')
+                    sball.classList.add('animate__bounceInUp')
+                    setTimeout(() => {
+                        btn_play.removeAttribute('disabled')
+                    }, 1000);
+                    clearInterval(seti)
+                }
+            },500)
+        })
+        
+
+    </script>
+</body>
+</html>

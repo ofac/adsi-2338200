@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methods Strings</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        textarea,
+        input {
+            border-radius: 10px;
+            border: 2px solid #aa0;
+            padding: 10px;
+        }
+        textarea {
+            display: flex;
+            font-family: 'Poppins';
+            font-size: 1rem;
+            height: 80px;
+            margin: 0px auto;
+            width: 360px;
+        }
+        div.options {
+            display: grid;
+            grid-template-columns: 1fr 20px 1fr;
+            margin: 10px auto;
+            gap: 4px;
+            align-items: center;
+            width: 380px;
+        }
+        div.options label:last-of-type {
+            text-align: right;
+        }
+        button {
+            border: 4px solid #0006;
+            margin: 20px auto;
+            border-radius: 20px;
+            background: #aa0;
+            color: #fff;
+            display: flex;
+            font-size: 1rem;
+            font-family: 'Poppins';
+            padding: 4px 16px;
+            transition: all 0.2s ease-in;
+        }
+        button:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <h1>M. Strings</h1>
+        </header>
+        <section>
+            <textarea class="textarea" placeholder="Write a sentence..."></textarea>
+            <div class="options">
+                <label> 
+                    <input class="r-low" type="radio" name="transform"> 
+                    lowercase  
+                </label>
+                <span>or</span>
+                <label> 
+                    <input class="r-upp" type="radio" name="transform"> 
+                    UPPERCASE  
+                </label>
+                <input type="text" class="word-origin" placeholder="Word Origin">
+                <span>for</span>
+                <input type="text" class="word-replace" placeholder="Word Replace">
+                <input type="text" class="pos-start" placeholder="Start Position">
+                <span>to</span>
+                <input type="text" class="pos-final" placeholder="Final Position">
+            </div>
+            <button class="btn-show">Show String</button>
+            <ul class="result"></ul>
+        </section>
+    </main>
+    <script>
+        // Elements
+        const textarea     = document.querySelector('.textarea')
+        const r_low        = document.querySelector('.r-low')
+        const r_upp        = document.querySelector('.r-upp')
+        const word_origin  = document.querySelector('.word-origin')
+        const word_replace = document.querySelector('.word-replace')
+        const pos_start    = document.querySelector('.pos-start')
+        const pos_final    = document.querySelector('.pos-final')
+        const btn_show     = document.querySelector('.btn-show')
+        const result       = document.querySelector('.result')
+        // Variables
+        var upper = false
+        // Events
+        r_low.onclick    = function() { upper = false  }
+        r_upp.onclick    = function() { upper = true   }
+        btn_show.onclick = function() {
+            let textval = textarea.value
+            if (textval.length > 0) {
+                result.innerHTML  = '<li><strong>Original String:</strong> ' + textval + '</li>'
+                result.innerHTML += '<li><strong>Length String:</strong> ' + textval.length + ' characters </li>'
+                if (upper) {
+                    result.innerHTML += '<li><strong>Uppercase:</strong> ' + textval.toUpperCase() + ' </li>'
+                } else {
+                    result.innerHTML += '<li><strong>Lowercase:</strong> ' + textval.toLowerCase() + ' </li>'
+                }
+                result.innerHTML += '<li><strong>Replacement String:</strong> ' + textval.replace(word_origin.value, word_replace.value) + ' </li>'
+                result.innerHTML += '<li><strong>Cut String:</strong> ' + textval.substring(parseInt(pos_start.value), parseInt(pos_final.value)) + ' </li>'
+            }
+
+        }
+
+
+
+    </script>
+</body>
+</html>

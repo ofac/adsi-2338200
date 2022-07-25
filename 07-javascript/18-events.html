@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        section {
+            overflow-y: auto;
+            height: 560px;
+        }
+        div.block {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 10px 2rem 10px;
+        }
+        output {
+            color: #aa0;
+            font-size: 1.4rem;
+        }
+        button,
+        input, 
+        select {
+            border: 2px solid #aa0;
+            border-radius: 10px;
+            background: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            padding: 8px 16px;
+        } 
+        input {
+            width: 120px;
+        } 
+    </style>
+</head>
+<body onload="welcome()">
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <h1>Events</h1>
+        </header>
+        <section>
+            <h2>Page Load</h2>
+            <div class="block">
+                <output class="msj-load">Page No Load</output>
+            </div>
+            <h2>Double Click</h2>
+            <div class="block">
+                <button class="btn-dbclick">Double Click Me</button>
+                <output class="nums-dbcliks">0 Clicks</output>
+            </div>
+            <h2>Release Key</h2>
+            <div class="block">
+                <input type="text" class="inp-keyup">
+                <output class="msj-keyup">null</output>
+            </div>
+            <h2>Resize Window</h2>
+            <div class="block">
+                <output class="msj-resize">no resize</output>
+            </div>
+            <h2>Change Value</h2>
+            <div class="block">
+                <select class="slt-change">
+                    <option value="" selected disabled>Select Color</option>
+                    <option value="#11111199">Reset</option>
+                    <option value="#ff000033">Red</option>
+                    <option value="#00ff0033">Green</option>
+                    <option value="#0000ff33">Blue</option>
+                </select>
+            </div>
+            <h2>Mouse (over/out)</h2>
+            <div class="block">
+                <img src="images/ryan-1.png" class="img-kakao">
+            </div>
+        </section>
+    </main>
+    <script>
+        // Elements
+        const msj_load     = document.querySelector('.msj-load')
+        const btn_dbclick  = document.querySelector('.btn-dbclick')
+        const nums_dbcliks = document.querySelector('.nums-dbcliks')
+        const inp_keyup    = document.querySelector('.inp-keyup')
+        const msj_keyup    = document.querySelector('.msj-keyup')
+        const msj_resize   = document.querySelector('.msj-resize')
+        const main_bg      = document.querySelector('main')
+        const slt_change   = document.querySelector('.slt-change')
+        const img_kakao    = document.querySelector('.img-kakao')
+        // Variables
+        contdbclicks = 0
+        // Events
+        btn_dbclick.ondblclick = function() {
+            contdbclicks++
+            nums_dbcliks.textContent = contdbclicks + ' clicks'
+        }
+        inp_keyup.onkeyup = function() {
+            if (this.value.length < 12) {
+                msj_keyup.value = this.value
+            }
+            if (this.value.length == 0) {
+                msj_keyup.value = 'null'
+            }
+        }
+        slt_change.onchange = function() {
+            main_bg.style.backgroundColor = this.value
+        }
+        window.onresize = function() {
+            msj_resize.textContent = 'Window Width: ' + window.outerWidth + 'px'
+        }
+        img_kakao.onmouseover = function() {
+            this.src = 'images/ryan-2.png'
+        }
+        img_kakao.onmouseout = function() {
+            this.src = 'images/ryan-1.png'
+        }
+        // Functions
+        function welcome() {
+            msj_load.textContent = 'The page was loaded!'
+        }
+    </script>
+</body>
+</html>
