@@ -13,7 +13,7 @@
 |  7. Javascript | Programming Language (Clien-Side) | [open folder](07-javascript/) |
 |  8. jQuery     | Library Javascript                | [open folder](08-jQuery/)     |
 | 12. PHP        | Server Programming Language       | [open folder](12-php/)        |
-
+| 13. SQL        | Structured Query Language         | [open folder](13-sql/)        |
 
 ---
 
