@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methods Dates</title>
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <h1>Methods Dates</h1>
+        </header>
+        <section>
+            <h2>Methods Get</h2>
+            <ul class="list-get"></ul>
+            <h2>Methods Set</h2>
+            <ul class="list-set"></ul>
+        </section>
+    </main>
+    <script>
+        // Elements
+        const list_get = document.querySelector('.list-get')
+        const list_set = document.querySelector('.list-set')
+        const future   = new Date('01/18/2023 08:00:00')
+        var   today    = new Date
+        
+        // Get
+        list_get.innerHTML  = `<li> <b>Current date:</b> ${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()} </li>`
+        list_get.innerHTML += `<li> <b>Current year:</b> ${today.getFullYear()} </li>`
+        list_get.innerHTML += `<li> <b>Current month:</b> ${today.getMonth()+1} </li>`
+        list_get.innerHTML += `<li> <b>Current weekday:</b> ${today.getDay()} </li>`
+        list_get.innerHTML += `<li> <b>Current hours:</b> ${today.getHours()} </li>`
+        list_get.innerHTML += `<li> <b>Current minutes:</b> ${today.getMinutes()} </li>`
+        list_get.innerHTML += `<li> <b>Current seconds:</b> ${today.getSeconds()} </li>`
+
+        // Set
+        list_set.innerHTML  = `<li> <b>Future date:</b> ${future.getDate()}/${future.getMonth()+1}/${future.getFullYear()} </li>`
+        future.setFullYear('2028')
+        future.setMonth('02')
+        future.setDate('25')
+        list_set.innerHTML += `<li> <b>New year:</b> ${future.getFullYear()} </li>`
+        list_set.innerHTML += `<li> <b>New month:</b> ${future.getMonth()+1} </li>`
+        list_set.innerHTML += `<li> <b>New weekday:</b> ${future.getDay()} </li>`
+
+    </script>
+</body>
+</html>

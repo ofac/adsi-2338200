@@ -1,0 +1,18 @@
+@font-face {
+    font-family: Poppins;
+    src: url(../fonts/Poppins-Light.ttf);
+}
+
+body {
+    background-color: #303840;
+    color: #fff;
+    font-family: Poppins;
+}
+
+main {
+    color: #303840;
+}
+
+.bg-base {
+    background-color:  #303840;
+}

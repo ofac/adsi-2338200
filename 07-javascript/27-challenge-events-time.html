@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge (Events Time)</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        main {
+            border: none;
+            background: none;
+            height: 736px;
+        }
+        main figure.stage01 a:link,
+        main figure.stage01 a:visited {
+            position: absolute;
+            color: #fff;
+            width: 1.8rem;
+            top: 60px;
+            left: 50px;
+            transition: transform 0.2s ease-in;
+            z-index: 9;
+        }
+        main figure.stage01 a:hover {
+            transform: translateX(-6px);
+        }
+        figure.stage {
+            height: 736px;
+            margin: 0px auto;
+            position: relative;
+            width: 414px;
+        }
+        figure.stage.hide, 
+        div.gameover.hide {
+            display: none;
+        }
+        figure.stage01 {
+            background: transparent url(images/starship/bg-stage1.png) no-repeat center;
+        }
+        figure.stage02 {
+            background: transparent url(images/starship/bg-stage2.png) no-repeat center;
+        }
+        figure.stage01 img.logo {
+            left: 81px;
+            position: absolute;
+            top: 143px;
+            z-index: 9;
+        }
+        figure.stage01 div.stars__sm {
+            border-radius: 60px;
+            overflow: hidden;
+            position: absolute;
+            width: 344px; 
+            height: 317px; 
+            left: 34px;
+            top: 54px;
+        }
+        figure.stage01 div.stars__sm div.parallax {
+            background: transparent url(images/starship/stars1.png) repeat-y 0px -716px;
+            height: 634px; 
+            animation: 8s animParallaxSm linear infinite;
+        }
+        @keyframes animParallaxSm {
+            0%   { background-position: 0px -634px; }
+            100% { background-position: 0px 0px;    }
+        }
+        figure.stage01 button#btnPlay {
+            background: url(images/starship/btn.png) no-repeat center;
+            border: none;
+            cursor: pointer;
+            height: 60px;
+            left: 27px;
+            position: absolute;
+            top: 643px;
+            transition: all 0.2s ease-in;
+            width: 360px;
+        }
+         div.gameover button#btnTry {
+            background: url(images/starship/btn.png) no-repeat center;
+            border: none;
+            cursor: pointer;
+            height: 60px;
+            transition: all 0.2s ease-in;
+            width: 360px;
+        }
+        figure.stage01 button#btnPlay:hover,
+        div.gameover button#btnTry:hover {
+            transform: scale(1.05);
+        }
+        figure.stage02 div.info {
+            color: #ffffff;
+            font-family: Poppins;
+            font-weight: 400;
+            font-size: 24px;
+            position: absolute;
+            text-align: center;
+            width: 38px;
+        }
+        figure.stage02 div#points {
+            left: 46px;
+            top: 644px;
+        }
+        figure.stage02 div#time {
+            left: 188px;
+            top: 644px;
+        }
+        figure.stage02 div#lives {
+            left: 328px;
+            top: 644px;
+        }
+        figure.stage02 div.starship {
+            height: 97px;
+            width: 60px;
+            position: absolute;
+            left: 174px;
+            top: 520px;
+            transition: all 0.1s linear;
+            animation: 0.2s animStarShip ease-in infinite;
+            z-index: 9;
+        }
+        figure.stage02 div.starship div.structure {
+            background: url(images/starship/starship-steps.png) no-repeat;
+            height: 97px;
+            width: 60px;
+            animation: animStepsStarShip 0.1s steps(3) infinite;
+        }
+        @keyframes animStepsStarShip {
+            100% { background-position: -180px; }
+        }
+        @keyframes animStarShip {
+            0%, 100% {
+                top: 520px;
+            }
+            50% {
+                top: 516px;
+            }
+        }
+        figure.stage02 div.stars__lg {
+            border-radius: 30px;
+            overflow: hidden;
+            position: absolute;
+            width: 373px; 
+            height: 606px; 
+            left: 20px;
+            top: 20px;
+        }
+        figure.stage02 div.stars__lg div.parallax {
+            background: transparent url(images/starship/stars2.png) repeat-y 0px -1212px;
+            height: 634px; 
+            animation: 8s animParallaxLg linear infinite;
+        }
+        @keyframes animParallaxLg {
+            0%   { background-position: 0px -1212px; }
+            100% { background-position: 0px 0px;    }
+        }
+        figure.stage02 div.asteroid1 {
+            background: url(images/starship/asteroid1.png) no-repeat center;
+        }
+        figure.stage02 div.asteroid2 {
+            background: url(images/starship/asteroid2.png) no-repeat center;
+        }
+        figure.stage02 div.asteroid3 {
+            background: url(images/starship/asteroid3.png) no-repeat center;
+        }
+        figure.stage02 div.box__asteroid {
+            transition: all 0.2s linear;
+            height: 50px;
+            position: absolute;
+            top: 30px;
+            opacity: 0;
+            width: 50px;
+            /* animation: 1s animBAsteroid linear infinite; */
+            z-index: 9;
+        }
+        figure.stage02 div.box__asteroid.time1 {
+            animation: 0.8s animBAsteroid linear 1;
+        }
+        figure.stage02 div.box__asteroid.time2 {
+            animation: 0.7s animBAsteroid 0.1 linear 1;
+        }
+        figure.stage02 div.box__asteroid.time3 {
+            animation: 0.6s animBAsteroid 0.2 linear 1;
+        }
+        figure.stage02 div.asteroid {
+            background-size: contain;
+            height: 50px;
+            width: 50px;
+            animation: 1s animAsteroid linear infinite;
+        }
+        @keyframes animAsteroid {
+            0%   { transform: rotate(0deg);   }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes animBAsteroid {
+            0%   { 
+                opacity: 0;
+                top: 30px; 
+            }
+            100% { 
+                opacity: 1;
+                top: 580px; 
+            }
+        }
+        .animate__animated.animate__shakeX {
+            --animate-duration: 0.4s;
+        }
+        div.gameover {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            top: 50%;
+            left: 50%;
+            width: 360px;
+            transform: translate(-50%, -50%);
+        }
+        div.gameover h2 {
+            color: #fffc;
+             border: none;
+             margin: 0;
+             font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <figure class="stage stage01 animate__animated animate__zoomIn">
+                <a href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <img src="images/starship/logo.png" class="logo">
+                <div class="stars__sm">
+                    <div class="parallax"></div>
+                </div>
+                <button id="btnPlay"></button>
+            </figure>
+            <figure class="stage stage02 hide animate__animated animate__zoomIn">
+                <div class="box__asteroid">
+                    <div class="asteroid"></div>
+                </div>
+                <div class="box__asteroid">
+                    <div class="asteroid"></div>
+                </div>
+                <div class="box__asteroid">
+                    <div class="asteroid"></div>
+                </div>
+
+                <div class="starship">
+                    <div class="structure"></div>
+                </div>
+                <div class="stars__lg">
+                    <div class="parallax"></div>
+                </div>
+                <div class="info" id="points">0</div>
+                <div class="info" id="time">30</div>
+                <div class="info" id="lives">3</div>
+                <div class="gameover hide">
+                    <h2>Game Over</h2>
+                    <button id="btnTry"></button>
+                </div>
+            </figure>
+            <audio id="bgMusic" src="audio/bg-sound.mp3"></audio>
+            <audio id="fxStarShip" src="audio/fx-starship.mp3"></audio>
+        </section>
+    </main>
+    <script>
+        // Globally Variables & Constants 
+        const btnPlay    = document.getElementById('btnPlay')
+        const btnTry     = document.getElementById('btnTry')
+        const stage01    = document.querySelector('figure.stage01')
+        const stage02    = document.querySelector('figure.stage02')
+        const starShip   = document.querySelector('div.starship')
+        const asteroids  = document.querySelectorAll('div.asteroid')
+        const basteroids = document.querySelectorAll('div.box__asteroid')
+        const gameover   = document.querySelector('.gameover')
+        // Music
+        const bgMusic    = document.getElementById('bgMusic')
+        const fxStarShip = document.getElementById('fxStarShip')
+        // Stats
+        var points       = document.getElementById('points')
+        var time         = document.getElementById('time')
+        var lives        = document.getElementById('lives')
+        // Random
+        const posAsteroid  = [40, 184, 320]
+        const imgAsteroid  = ['asteroid1', 'asteroid2', 'asteroid3']
+        const sizeAsteroid = ['contain', '75%', '50%']
+        const timeAsteroid = ['time1', 'time2', 'time3']
+        // Intervals
+        var seti      = null
+        var setiRand  = null
+        var setiCheck = null
+
+        // Object
+        const game = {
+            // Attributes
+            gpoints: 0,
+            gtime: 30,
+            glives: 3,
+            gpos: 174,
+            gmove: true,
+            // Methods
+            playStarShip: function() {
+                this.changeStage()
+                this.countDownTime()
+                this.randomAsteroids()
+                this.playMusic()
+            },
+            changeStage: function() {
+                stage01.classList.add('animate__zoomOut')
+                setTimeout(function() {
+                    stage01.classList.add('hide')
+                    stage02.classList.remove('hide')
+                },500)
+            },
+            countDownTime: function() {
+                seti = setInterval(function() {
+                    if (game.gtime %10 == 0) {
+                        if (game.gtime != 30) {
+                            game.gpoints += 10
+                            points.innerText = game.gpoints
+                        }
+                    }
+                    if (game.gtime < 1) {
+                        time.innerText = '0'
+                        game.gmove = false
+                        clearInterval(seti)
+                        clearInterval(setiRand)
+                        clearInterval(setiCheck)
+                        gameover.classList.remove('hide')
+                    } else {
+                        time.innerText = parseInt(game.gtime--)
+                    }
+                }, 1000)
+            },
+            moveStarShip: function(event) {
+                //console.log(event.keyCode)
+                // left (37)
+                if(game.gmove == true) {
+                    if(event.keyCode == 37) {
+                        if ( game.gpos > 44) {
+                            game.gpos -= 130
+                            starShip.style.left = game.gpos + 'px'
+                            this.playFxSound()
+                        }
+                    }
+                    // right (39)
+                    if(event.keyCode == 39) {
+                        if ( game.gpos < 304) {
+                            game.gpos += 130
+                            starShip.style.left = game.gpos + 'px'
+                            this.playFxSound()
+                        }
+                    }
+                }
+
+            },
+            getRandom: () => {
+                basteroids.forEach((element, index) => {
+                    let rndImg  = Math.floor(Math.random() * imgAsteroid.length)
+                    let rndSize = Math.floor(Math.random() * sizeAsteroid.length)
+                    let rndTime = Math.floor(Math.random() * timeAsteroid.length)
+
+                    asteroids[index].classList.remove('asteroid1', 'asteroid2', 'asteroid3')
+                    asteroids[index].classList.add(imgAsteroid[rndImg])
+                    asteroids[index].style.backgroundSize = sizeAsteroid[rndSize]
+
+                    basteroids[index].classList.remove('time1', 'time2', 'time3')
+                    basteroids[index].classList.add(timeAsteroid[rndTime])
+                })
+            },
+            randomAsteroids: () => {
+
+                basteroids[0].style.left = posAsteroid[0] + 'px'
+                basteroids[1].style.left = posAsteroid[1] + 'px'
+                basteroids[2].style.left = posAsteroid[2] + 'px'
+                game.getRandom()
+                setiRand = setInterval(() => {
+                    game.getRandom()
+                }, 800)
+                setiCheck = setInterval(() => {
+                    basteroids.forEach(element => {
+                        game.checkCrash(starShip, element)  
+                    })
+                },150)
+            },
+            playMusic: function() {
+                bgMusic.play()
+                bgMusic.loop = true
+                bgMusic.volume = 0.1
+            },
+            pauseMusic: function() {
+                bgMusic.pause()
+                bgMusic.currentTime = 0
+            }, 
+            playFxSound: function() {
+                fxStarShip.play()
+                fxStarShip.volume = 0.4
+                fxStarShip.currentTime = 0.1
+            },
+            checkCrash: function(elm1, elm2) {
+                elm1top    = elm1.offsetTop
+                elm1left   = elm1.offsetLeft
+                elm1right  = Number(elm1.offsetLeft) + Number(elm1.offsetWidth)
+                elm1bottom = Number(elm1.offsetTop)  + Number(elm1.offsetHeight)
+
+                elm2top    = elm2.offsetTop
+                elm2left   = elm2.offsetLeft
+                elm2right  = Number(elm2.offsetLeft) + Number(elm2.offsetWidth)
+                elm2bottom = Number(elm2.offsetTop)  + Number(elm2.offsetHeight)
+
+                if (elm1right  > elm2left   && 
+                    elm1left   < elm2right  && 
+                    elm1top    < elm2bottom && 
+                    elm1bottom > elm2top ) {
+                        game.glives--
+                        lives.textContent = parseInt(game.glives)
+                        stage02.classList.remove('animate__zoomIn')
+                        stage02.classList.add('animate__shakeX')
+                        setTimeout(() => {
+                            stage02.classList.remove('animate__shakeX')
+                        }, 400)
+
+                        if(game.glives == 0) {
+                            game.gmove = false
+                            clearInterval(seti)
+                            clearInterval(setiRand)
+                            clearInterval(setiCheck)
+                            gameover.classList.remove('hide')
+                        }
+                        //this.playFxCrash()
+                        //starShip.classList.add('crash')
+                    }
+            }
+        }
+        // Events
+        btnPlay.onclick = function() {
+            game.playStarShip()
+        }
+        btnTry.onclick = function() {
+            window.location.reload()
+        }
+        document.onkeydown = function(event) {
+            game.moveStarShip(event)
+        }
+    </script>
+</body>
+</html>

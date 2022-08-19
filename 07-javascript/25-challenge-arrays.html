@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Arrays</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <style>
+        main {
+            background-color: #f5d98c;
+            border: 4px solid #fff;
+        }
+        main h1 {
+            background: linear-gradient(90deg, #FA9A52 0%, #4965C9 94.58%);
+            background-clip: text;
+            font-size: 2rem;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+        }
+        main a:link,
+        main a:visited {
+            color: #4a66ca;
+        }
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            justify-content: center;
+            align-items: center;
+        }
+        section h3 {
+            border: none;
+            height: 40px;
+            width: 258px;
+        }
+        section h3.title1 {
+            background: url(images/arrays/title01.svg) no-repeat center;
+        }
+        section h3.title2 {
+            background: url(images/arrays/title02.svg) no-repeat center;
+        }
+        section h3.title3 {
+            background: url(images/arrays/title03.svg) no-repeat center;
+        }
+        section nav.villagers {
+            display: grid;
+            grid-template-columns: repeat(4, 60px);
+            justify-content: space-between;
+            height: 170px;
+            overflow: hidden;
+            width: 300px;
+        }
+        section nav.villagers div.villager {
+            height: 75px;
+            opacity: 0.5;
+            width: 60px;
+            transition: opacity 0.2s ease-in;
+        }
+        section nav.villagers div.villager:hover:not(.actived) {
+            opacity: 1;
+            cursor: pointer;
+        }
+        section nav.villagers div.villager.actived {
+            opacity: 1;
+        }
+        section nav.villagers div.villager1,
+        section figure.result div.villager1 {
+            background: url(images/arrays/vill01.png) no-repeat center;
+        }
+        section nav.villagers div.villager2,
+        section figure.result div.villager2 {
+            background: url(images/arrays/vill02.png) no-repeat center;
+        }
+        section nav.villagers div.villager3,
+        section figure.result div.villager3 {
+            background: url(images/arrays/vill03.png) no-repeat center;
+        }
+        section nav.villagers div.villager4,
+        section figure.result div.villager4 {
+            background: url(images/arrays/vill04.png) no-repeat center;
+        }
+        section nav.villagers div.villager5,
+        section figure.result div.villager5 {
+            background: url(images/arrays/vill05.png) no-repeat center;
+        }
+        section nav.villagers div.villager6,
+        section figure.result div.villager6 {
+            background: url(images/arrays/vill06.png) no-repeat center;
+        }
+        section nav.villagers div.villager7,
+        section figure.result div.villager7 {
+            background: url(images/arrays/vill07.png) no-repeat center;
+        }
+        section nav.villagers div.villager8,
+        section figure.result div.villager8 {
+            background: url(images/arrays/vill08.png) no-repeat center;
+        }
+
+        section nav.options {
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            height: 54px;
+        }
+
+        section nav.options input[type=checkbox],
+        section nav.options input[type=number] {
+            -webkit-appearance: none;
+            cursor: pointer;
+            color: #4a66ca;
+            border: none;
+            text-align: center;
+            outline: none;
+            background: url(images/arrays/bg-switch.svg) no-repeat center;
+    
+            height: 54px;
+            width: 114px;
+            transition: background 0.2s ease-in;
+        }
+        section nav.options input[type=number] {
+            font-family: Poppins;
+            font-size: 1rem;
+            line-height: 0rem;
+            padding-bottom: 6px;
+            cursor: text;
+        }
+        section nav.options input[type=checkbox].position {
+            background: url(images/arrays/switch-first.svg) no-repeat center;
+        }
+        section nav.options input[type=checkbox].position:checked {
+            background: url(images/arrays/switch-last.svg) no-repeat center;
+        }
+        section nav.options input[type=checkbox].action {
+            background: url(images/arrays/switch-add.svg) no-repeat center;
+        }
+        section nav.options input[type=checkbox].action:checked {
+            background: url(images/arrays/switch-remove.svg) no-repeat center;
+        }
+        section button {
+            border: none;
+            cursor: pointer;
+            height: 88px;
+            width: 88px;
+            transition: all 0.2s ease-in;
+        }
+        section button:hover {
+            transform: scale(1.1);
+        }
+        section button.btn-add {
+            background: url(images/arrays/btn-add.svg) no-repeat center;
+        }
+        section button.btn-remove {
+            background: url(images/arrays/btn-remove.svg) no-repeat center;
+        }
+
+        div.wrapper {
+            overflow-x: scroll;
+            width: 380px;
+        }
+        section figure.result {
+            display: inline-flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            margin-top: -10px;
+            padding: 0;
+            gap: 10px;
+            height: 80px;
+        }
+        section figure.result div {
+
+            background-size: cover !important;
+            height: 50px;
+            position: relative;
+            width: 50px;
+        }
+        section figure.result div span {
+            background-color: #0009;
+            border-radius: 50%;
+            color: #fff;
+            font-weight: 500;
+            position: absolute;
+            padding: 4px;
+            text-align: center;
+            font-size: 0.4rem;
+            height: 10px;
+            top: 0;
+            left: 0;
+            width: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <h1>Challenge Arrays</h1>
+        </header>
+        <section>
+            <h3 class="title1"></h3>
+            <nav class="villagers">
+                <div class="villager villager1 animate__animated animate__infinite"></div>
+                <div class="villager villager2 animate__animated animate__infinite"></div>
+                <div class="villager villager3 animate__animated animate__infinite"></div>
+                <div class="villager villager4 animate__animated animate__infinite"></div>
+                <div class="villager villager5 animate__animated animate__infinite"></div>
+                <div class="villager villager6 animate__animated animate__infinite"></div>
+                <div class="villager villager7 animate__animated animate__infinite"></div>
+                <div class="villager villager8 animate__animated animate__infinite"></div>
+            </nav>
+            <h3 class="title2"></h3>
+            <nav class="options">
+                <input class="position" type="checkbox">
+                <input class="action" type="checkbox">
+                <input class="num-pos" type="number" min="0" max="99">
+            </nav>
+            <button class="btn btn-add"></button>
+            <h3 class="title3"></h3>
+            <div class="wrapper">
+                <figure class="result">
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Elements
+        const villagers   = document.querySelectorAll('.villager')
+        const sw_action   = document.querySelector('.action')
+        const sw_position = document.querySelector('.position')
+        const btn_action  = document.querySelector('.btn')
+        const result      = document.querySelector('.result')
+        const num_pos     = document.querySelector('.num-pos')
+
+        // Global Variables
+        var slt_villager = null
+        var slt_position = 'first'
+        var slt_action   = 'add'
+        var array_vills  = []
+        // 
+        villagers.forEach((element, index) => {
+            element.addEventListener('click', (e) => {
+                removeAnimation()
+                slt_villager = 'villager' + (index+1)
+                element.classList.add('actived', 'animate__heartBeat')
+            })
+        })
+
+        function removeAnimation() {
+            villagers.forEach(element => {
+                element.classList.remove('actived', 'animate__heartBeat')
+            })
+        }
+
+        sw_position.addEventListener('click', (e) => {
+            if (sw_position.checked == true) {
+                slt_position = 'last'
+            } else {
+                slt_position = 'first'
+            }
+        })
+
+        sw_action.addEventListener('click', (e) => {
+            if (sw_action.checked == true) {
+                slt_action = 'remove'
+                btn_action.classList.remove('btn-add')
+                btn_action.classList.add('btn-remove')
+            } else {
+                slt_action = 'add'
+                btn_action.classList.remove('btn-remove')
+                btn_action.classList.add('btn-add')
+            }
+        })
+
+        btn_action.addEventListener('click', (e) => {
+            if (slt_villager != null) {
+                if (num_pos.value.length > 0) {
+                    if (slt_action == 'add') {
+                        array_vills.splice(num_pos.value, 0, slt_villager); // Add Position
+                    } else {
+                        array_vills.splice(num_pos.value, 1); // Remove Position
+                    }
+                } else {
+                    if (slt_action == 'add') {
+                        if (slt_position == 'first') {
+                            array_vills.unshift(slt_villager)
+                        } else {
+                            array_vills.push(slt_villager)
+                        }
+                    } else {
+                        if (slt_position == 'first') {
+                            array_vills.shift()
+                        } else {
+                            array_vills.pop()
+                        }
+                    }
+                }
+                result.innerHTML = ''
+                for (let i = 0; i < array_vills.length; i++) {
+                    result.innerHTML += `<div class="${array_vills[i]} animate__animated animate__rubberBand"><span>${i}</span></div>`
+                }
+            } else {
+                alert('Please:\n1. Select a Villager')
+            }
+        })
+    </script>
+</body>
+</html>
