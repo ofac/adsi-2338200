@@ -1,0 +1,324 @@
+{
+	"info": {
+		"_postman_id": "c545c02c-5e19-4ea2-a094-208a7c543620",
+		"name": "API Projects",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login (User)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "admin@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register (User)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Jeremias Springfield",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "jeremias@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "default"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "12345",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show All (Projects)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDBmMTI2OGI5NjBiMzBlYWJkMjdiMDZjZjJjM2NhMGEwMzE2YjI3M2YwZWFkNDY0ZDI2NzFhM2ZmNDM0MWYyNDkyM2I5Y2MwNzFiM2NhZDkiLCJpYXQiOjE2NjEzNDM2MjIuMTU3NzI2LCJuYmYiOjE2NjEzNDM2MjIuMTU3NzI4LCJleHAiOjE2OTI4Nzk2MjIuMTUwMTE0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.CffLOMcC4GjOWd6OSFg00YQYWo43uBa1HhS_1klNeFPO7kavHXi9oJxKTqyMm2JZoKbeJswrsQaP_D6FS4yKS2buTiABoZArxwBeCcBzCNVVPNhykVD-dKfR0DeJW267GQfVEG_XbJBOagHgNySK3Xzb7k2-oRXAmAUexUvHDZTnh5LV7KTze0K6AimhmzrVOe_LzORy2269RTyfTYw5DVV5hRJ4DD5XJ8awg2wE71d-U6PGOYstz_ePtsU5QO0kZ-5BoC1M-DkeTiNSetp4MMOj-uJ_GY8BzvIFgr43Q0Kg-fyZCMBNmnu9dx8OLTnjCJz3EF15hTbRj1tYKAbAdln6c3jmo69hOdaGp_l-pJIs7QPqRLw70dZcMPEnFzO3sE3y-dEueE8HPewFsN-uW_pS5TDpbP3v1qN9R1zvk1fMoV-z_8p0ZqrirD_MMvVr_B01m8_gs3ibkXXBs4M22zljA2L8xSxgrriWRMYtkXtENze6joSRzgSmfpmVn284K8HXHGpOGGzQMbvq3jfrfBOrdSCw2yJbubvXt0qiRaXSizjR6cmQqaYd86BbQwR4EK1X3fnAJHSlxJb1Gme75WaUDocGmkx5VoHMdtz3EWqBOwxRmMSKGD5zuv_ASOFNBYrY-C91XEgffOliT_iaGb-1E4fRuuvr6IxcR2efiSs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/projects",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show (Project)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZDg2ZWFiZTUxM2Y1Njc0MDdjOTVlNWE4ZmIxZGYyNTMwOGMwNDAwMzk0M2JhYTNhYzVkY2UxYzAxMzA3MDFjY2E4MWVjODY1ODcxYmUwNzQiLCJpYXQiOjE2NjExODc3MDMuODQ5MDUyLCJuYmYiOjE2NjExODc3MDMuODQ5MDU1LCJleHAiOjE2OTI3MjM3MDMuODQwNzUzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.FV8f0bmNPvBmbted6JX8RnpI7jY2CA1DEIhDfCerpvZ9Uk9oK_PKChCqMYpoEH0lfxxlBdFPfv-qEE9EU7Tp9ybi-wj6ymLwvFKzC1yPnjkSbFySDbUOCunLimRjsv1miqfXBANJfty3N60Uk5aPD5XaK2jefpgNsDz4tj8bBmdB32QZh9-WYu9jutwBg2yNFyh-g4tZVBsxmefdidpox9WhmiUfckgaS60pt_R2CiHXX2_eiep8fFKUDKyR_DeA4al9tzziQr-BrjFzJ1gTi3AzHV_Zgndeq4B5NQ9bh2F51_7Ebk9ZDx6qAE5ABClSDM8Vvb1jscy0-wuBbDBLLsslbuZ5Qyy5fR495TLjaHty4-BV-vYMdLqhCb0oLoOBHUm4FWQ2oXwnQlO59S-VuRWpKZYfWACtq6_CUKs6CecFUkv3mT2NpIjRPCJqjiH5D-w6HfeVnmQqipOnkkEnvMwUReYdEOfsTFgk4gzqE_Pqs7AQKAdfueAlsix6DkSZVwuf-4g70lOALauZy_bRy_fadbBtKzQ-UMuTas_6yIKHPh-reIXPf1gZVdaiaeW1kYPwRmiLfGYvamI6yTrs2uvZ8Oqtgo2I1bhMUC1goE2fWh2--ZZKOGfDU_UC8d5EdiG6RuhulYekezo0kkTrtSkDYFMziK8-jinWt3G9USY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/projects/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"projects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add (Project)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDBmMTI2OGI5NjBiMzBlYWJkMjdiMDZjZjJjM2NhMGEwMzE2YjI3M2YwZWFkNDY0ZDI2NzFhM2ZmNDM0MWYyNDkyM2I5Y2MwNzFiM2NhZDkiLCJpYXQiOjE2NjEzNDM2MjIuMTU3NzI2LCJuYmYiOjE2NjEzNDM2MjIuMTU3NzI4LCJleHAiOjE2OTI4Nzk2MjIuMTUwMTE0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.CffLOMcC4GjOWd6OSFg00YQYWo43uBa1HhS_1klNeFPO7kavHXi9oJxKTqyMm2JZoKbeJswrsQaP_D6FS4yKS2buTiABoZArxwBeCcBzCNVVPNhykVD-dKfR0DeJW267GQfVEG_XbJBOagHgNySK3Xzb7k2-oRXAmAUexUvHDZTnh5LV7KTze0K6AimhmzrVOe_LzORy2269RTyfTYw5DVV5hRJ4DD5XJ8awg2wE71d-U6PGOYstz_ePtsU5QO0kZ-5BoC1M-DkeTiNSetp4MMOj-uJ_GY8BzvIFgr43Q0Kg-fyZCMBNmnu9dx8OLTnjCJz3EF15hTbRj1tYKAbAdln6c3jmo69hOdaGp_l-pJIs7QPqRLw70dZcMPEnFzO3sE3y-dEueE8HPewFsN-uW_pS5TDpbP3v1qN9R1zvk1fMoV-z_8p0ZqrirD_MMvVr_B01m8_gs3ibkXXBs4M22zljA2L8xSxgrriWRMYtkXtENze6joSRzgSmfpmVn284K8HXHGpOGGzQMbvq3jfrfBOrdSCw2yJbubvXt0qiRaXSizjR6cmQqaYd86BbQwR4EK1X3fnAJHSlxJb1Gme75WaUDocGmkx5VoHMdtz3EWqBOwxRmMSKGD5zuv_ASOFNBYrY-C91XEgffOliT_iaGb-1E4fRuuvr6IxcR2efiSs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Project2",
+							"type": "default"
+						},
+						{
+							"key": "budget",
+							"value": "3000",
+							"type": "default"
+						},
+						{
+							"key": "start_date",
+							"value": "2022/08/24",
+							"type": "default"
+						},
+						{
+							"key": "duration",
+							"value": "30",
+							"type": "default"
+						},
+						{
+							"key": "num_employees",
+							"value": "3",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/projects/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"projects",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update (Project)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDBmMTI2OGI5NjBiMzBlYWJkMjdiMDZjZjJjM2NhMGEwMzE2YjI3M2YwZWFkNDY0ZDI2NzFhM2ZmNDM0MWYyNDkyM2I5Y2MwNzFiM2NhZDkiLCJpYXQiOjE2NjEzNDM2MjIuMTU3NzI2LCJuYmYiOjE2NjEzNDM2MjIuMTU3NzI4LCJleHAiOjE2OTI4Nzk2MjIuMTUwMTE0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.CffLOMcC4GjOWd6OSFg00YQYWo43uBa1HhS_1klNeFPO7kavHXi9oJxKTqyMm2JZoKbeJswrsQaP_D6FS4yKS2buTiABoZArxwBeCcBzCNVVPNhykVD-dKfR0DeJW267GQfVEG_XbJBOagHgNySK3Xzb7k2-oRXAmAUexUvHDZTnh5LV7KTze0K6AimhmzrVOe_LzORy2269RTyfTYw5DVV5hRJ4DD5XJ8awg2wE71d-U6PGOYstz_ePtsU5QO0kZ-5BoC1M-DkeTiNSetp4MMOj-uJ_GY8BzvIFgr43Q0Kg-fyZCMBNmnu9dx8OLTnjCJz3EF15hTbRj1tYKAbAdln6c3jmo69hOdaGp_l-pJIs7QPqRLw70dZcMPEnFzO3sE3y-dEueE8HPewFsN-uW_pS5TDpbP3v1qN9R1zvk1fMoV-z_8p0ZqrirD_MMvVr_B01m8_gs3ibkXXBs4M22zljA2L8xSxgrriWRMYtkXtENze6joSRzgSmfpmVn284K8HXHGpOGGzQMbvq3jfrfBOrdSCw2yJbubvXt0qiRaXSizjR6cmQqaYd86BbQwR4EK1X3fnAJHSlxJb1Gme75WaUDocGmkx5VoHMdtz3EWqBOwxRmMSKGD5zuv_ASOFNBYrY-C91XEgffOliT_iaGb-1E4fRuuvr6IxcR2efiSs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Project1M",
+							"type": "default"
+						},
+						{
+							"key": "budget",
+							"value": "1000",
+							"type": "default"
+						},
+						{
+							"key": "start_date",
+							"value": "2022/08/24",
+							"type": "default"
+						},
+						{
+							"key": "duration",
+							"value": "10",
+							"type": "default"
+						},
+						{
+							"key": "num_employees",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/projects/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"projects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete (Project)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDBmMTI2OGI5NjBiMzBlYWJkMjdiMDZjZjJjM2NhMGEwMzE2YjI3M2YwZWFkNDY0ZDI2NzFhM2ZmNDM0MWYyNDkyM2I5Y2MwNzFiM2NhZDkiLCJpYXQiOjE2NjEzNDM2MjIuMTU3NzI2LCJuYmYiOjE2NjEzNDM2MjIuMTU3NzI4LCJleHAiOjE2OTI4Nzk2MjIuMTUwMTE0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.CffLOMcC4GjOWd6OSFg00YQYWo43uBa1HhS_1klNeFPO7kavHXi9oJxKTqyMm2JZoKbeJswrsQaP_D6FS4yKS2buTiABoZArxwBeCcBzCNVVPNhykVD-dKfR0DeJW267GQfVEG_XbJBOagHgNySK3Xzb7k2-oRXAmAUexUvHDZTnh5LV7KTze0K6AimhmzrVOe_LzORy2269RTyfTYw5DVV5hRJ4DD5XJ8awg2wE71d-U6PGOYstz_ePtsU5QO0kZ-5BoC1M-DkeTiNSetp4MMOj-uJ_GY8BzvIFgr43Q0Kg-fyZCMBNmnu9dx8OLTnjCJz3EF15hTbRj1tYKAbAdln6c3jmo69hOdaGp_l-pJIs7QPqRLw70dZcMPEnFzO3sE3y-dEueE8HPewFsN-uW_pS5TDpbP3v1qN9R1zvk1fMoV-z_8p0ZqrirD_MMvVr_B01m8_gs3ibkXXBs4M22zljA2L8xSxgrriWRMYtkXtENze6joSRzgSmfpmVn284K8HXHGpOGGzQMbvq3jfrfBOrdSCw2yJbubvXt0qiRaXSizjR6cmQqaYd86BbQwR4EK1X3fnAJHSlxJb1Gme75WaUDocGmkx5VoHMdtz3EWqBOwxRmMSKGD5zuv_ASOFNBYrY-C91XEgffOliT_iaGb-1E4fRuuvr6IxcR2efiSs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/projects/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"projects",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
