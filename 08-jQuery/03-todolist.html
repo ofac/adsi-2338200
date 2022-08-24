@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Todo List</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        
+                        <div class="card border-dark">
+                          <div class="card-body">
+                            <h2 class="card-title">TODO LIST</h2>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h5>
+                                            <span class="badge rounded-pill bg-dark num_tasks">1</span> 
+                                            <span class="title_tasks">Task</span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5>
+                                            <span class="badge rounded-pill bg-dark num_remains">1</span>
+                                            <span class="title_remains">Remain</span>
+                                        </h5>
+                                    </div>
+                                </div>
+                                <!--  -->
+                                <hr class="border-dark">
+                                <div class="container mt-3 tasks">
+                                    <div class="row p-1 mb-1">
+                                        <div class="form-check d-flex justify-content-between align-items-center">
+                                            <input class="form-check-input" type="checkbox">
+                                            <label class="form-check-label">Learn jQuery</label>
+                                            <button class="btn btn-sm btn-danger">&times;</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  -->
+                                <hr class="border-primary">
+                                <div class="container mt-3">
+                                    <div class="row p-1">
+                                        <div class="d-flex justify-content-between align-items-center p-0">
+                                            <input type="text" class="form-control text_task" placeholder="Add Task">
+                                            <button class="btn btn-success ms-2 btn_add">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  -->
+                            </div>
+                          </div>
+                        </div>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $alert = '<div class="alert alert-danger alert-dismissible fade show " role="alert"> \
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> \
+                        <strong>Error!</strong> Please enter a Task! \
+                      </div>'
+            $num_tasks   = 1
+            $num_remains = 1
+
+            // Add Task 
+            $('.btn_add').click(function(e) {
+                e.preventDefault()
+                // Validate text field
+                if ($('.text_task').val().length > 0) {
+                    $text = $('.text_task').val()
+                    updateTasks('add')
+                    updateRemains('add')
+                    $task = `<div class="row p-1 mb-1">
+                                <div class="form-check d-flex justify-content-between align-items-center">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label">${$text}</label>
+                                    <button class="btn btn-sm btn-danger">&times;</button>
+                                </div>
+                            </div>`
+                            $('.tasks').append($task)
+                            $('.text_task').val('')
+                } else {
+                    $('h2').after($alert)
+                }
+            })
+            // Check Done
+            $('body').on('click', '.form-check-input', function(e) {
+                if ($(this).prop('checked')) {
+                    $(this).next().css('text-decoration', 'line-through')
+                    updateRemains('delete')
+                } else {
+                    $(this).next().css('text-decoration', 'none')
+                    updateRemains('add')
+                }
+            })
+            // Delete Task
+            $('body').on('click', '.btn-danger', function(e) {
+                if (!$(this).prev().prev().prop('checked')) {
+                    updateRemains('delete')
+                }
+                $(this).closest('.row').remove()
+                updateTasks('delete')
+            })
+        })
+        // Functions
+        function updateTasks(act) {
+            if (act == 'add') {
+                $('.num_tasks').text(++$num_tasks)
+            } else {
+                $('.num_tasks').text(--$num_tasks)
+            }
+            $num_tasks > 1 ? $('.title_tasks').text('Tasks') : $('.title_tasks').text('Task')
+        }
+        function updateRemains(act) {
+            if (act == 'add') {
+                $('.num_remains').text(++$num_remains)
+            } else {
+                $('.num_remains').text(--$num_remains)
+            }
+            $num_remains > 1 ? $('.title_remains').text('Remains') : $('.title_remains').text('Remain')
+            if ($num_remains < 0) {
+                $('.num_remains').text($num_remains = 0)
+            }
+        }
+    </script>
+</body>
+</html>

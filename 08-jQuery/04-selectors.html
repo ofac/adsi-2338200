@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+        .display-1 {
+            font-size: 8rem;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html" on>&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Selectors</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text d-flex justify-content-center align-items-center my-5">
+                            <button class="btn btn-danger btn-remove">-</button>
+                            <h2 class="display-1 mx-3">0</h2>
+                            <button class="btn btn-success btn-add">+</button>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $count = 0
+            // Add
+            $('.btn-add').click(function(e) {
+                $('h2').text(++$count)
+            })
+            $('.btn-add').dblclick(function(e) {
+                $('h2').text($count += 10)
+            })
+            // Remove
+            $('.btn-remove').click(function(e) {
+                $('h2').text(--$count)
+            })
+            $('.btn-remove').dblclick(function(e) {
+                $('h2').text($count -= 10)
+            })
+        })
+    </script>
+</body>
+</html>
