@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaining</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+        figure {
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        img {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Template</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        <figure>
+                            <img src="images/drhedo.webp" width="140px">
+                            <figcaption></figcaption>
+                        </figure>
+                        <button class="btn btn-dark">Animate!</button>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('button').click(function(evt) {
+                $('figure img').show()
+                               .animate({width: '240px'}, 2000)
+                               .animate({width: '140px'}, 2000)
+                               .slideUp(1000)
+                               .slideDown(1000)
+                               .fadeOut(2000)
+            })
+        })
+    </script>
+</body>
+</html>

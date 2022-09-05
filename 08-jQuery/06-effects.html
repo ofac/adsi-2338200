@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effects</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Effects</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        <select class="form-select my-2">
+                            <option value="">Select a jQuery Effect...</option>
+                            <option value="1">Hide</option>
+                            <option value="2" disabled>Show</option>
+                            <option value="3">Toggle</option>
+                            <option value="4" disabled>Slide Down</option>
+                            <option value="5">Slide Up</option>
+                            <option value="6">Slide Toggle</option>
+                            <option value="7" disabled>Fade In</option>
+                            <option value="8">Fade Out</option>
+                            <option value="9" disabled>Fade To</option>
+                            <option value="10">Fade Toggle</option>
+                            <option value="11">Animate</option>
+                            <option value="12">Stop</option>
+                        </select>
+                        <figure class="rounded img-thumbnail">
+                            <img src="images/gamma2.webp" width="260px">
+                            <figcaption><h4>Gamma 2</h4></figcaption>
+                        </figure>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $chVisible = true
+            $('select').change(function (evt) {
+                evt.preventDefault()
+                switch ($(this).val()) {
+                    case '1':
+                        $('figure').hide()
+                        $chVisible = false
+                        verifyDisableds()
+                        break;
+                    case '2':
+                        $('figure').show()
+                        $chVisible = true
+                        verifyDisableds()
+                        break;
+                    case '3':
+                        $('figure').toggle()
+                        if($(this).prop('disabled')) {
+                            $chVisible = true
+                        } else {
+                            $chVisible = false
+                        }
+                        verifyDisableds()
+                        break;
+                    case '4':
+                        $('figure').slideDown(2500)
+                        $chVisible = true
+                        verifyDisableds()
+                        break;
+                    case '5':
+                        $('figure').slideUp(2500)
+                        $chVisible = false
+                        verifyDisableds()
+                        break;
+                    case '6':
+                        $('figure').slideToggle()
+                        if($(this).prop('disabled')) {
+                            $chVisible = true
+                        } else {
+                            $chVisible = false
+                        }
+                        verifyDisableds()
+                        break;
+                    case '7':
+                        $('figure').fadeIn(2500)
+                        $chVisible = true
+                        verifyDisableds()
+                        break;
+                    case '8':
+                        $('figure').fadeOut(2500)
+                        $chVisible = false
+                        verifyDisableds()
+                        break;
+                    case '9':
+                        $('figure').fadeTo(2500, 0.4)
+                        $chVisible = true
+                        verifyDisableds()
+                        break;
+                    case '10':
+                        $('figure').fadeToggle()
+                        if($(this).prop('disabled')) {
+                            $chVisible = true
+                        } else {
+                            $chVisible = false
+                        }
+                        verifyDisableds()
+                        break;
+                    case '11':
+                        $('figure img').animate({width: '100px'}, 2500)
+                                       .animate({width: '260px'}, 2500)
+                        break;
+                    case '12':
+                        $('figure').stop()
+                        $('figure img').stop()
+                        break;
+                }
+            }) 
+        })
+        function verifyDisableds() {
+            $('option').each(function () { 
+                if ($(this).text() != 'Toggle' &&
+                    $(this).text() != 'Slide Toggle' &&
+                    $(this).text() != 'Fade Toggle') {
+                    $(this).prop('disabled', !$(this).prop('disabled')) 
+                }
+            })
+        }
+    </script>
+</body>
+</html>

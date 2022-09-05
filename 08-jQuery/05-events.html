@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+        body {
+            transition: all 0.5s ease-in;
+        }
+        figure {
+            background-color: #732222;
+            border: 2px solid #732222;
+            color: #fff;
+            filter: grayscale(1);
+            margin: 10px auto;
+            transition: all 0.5s ease-in;
+            overflow: hidden;
+            width: 204px;
+        }
+        figure.actived {
+            filter: grayscale(0);
+        }
+        figure.actived img {
+            transform: scale(1.4) rotate(-10deg);
+        }
+        figure img {
+            transition: all 0.5s ease-in;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+        figure figcaption {
+            background-color: #732222;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+        }
+        output {
+            width: 99.6%;
+        }
+        svg {
+            width: 160px;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Events</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        <h2>Mouse Events</h2>
+                        <figure>
+                            <img src="images/gamma1.jpeg">
+                            <figcaption>Gamma 1</figcaption>
+                        </figure>
+                        <h2 class="mt-5">Keyboard Events</h2>
+                        <input type="text" class="form-control" placeholder="Enter Text">
+                        <output class="message text-start alert alert-primary my-3">Text</output>
+                        <h2 class="mt-5">Form Events</h2>
+                        <select class="form-select">
+                               <option value="">Select Background Color...</option>
+                                <option value="1">Red</option>
+                                <option value="2">Green</option>
+                                <option value="3">Blue</option>
+                        </select>
+                        <h2 class="mt-5">Window Events</h2>
+                        <small class="d-block">Resize your Window</small>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                        </svg>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Mouse Events
+            $('figure').mouseenter(function (evt) { 
+                evt.preventDefault()
+                $(this).addClass('actived')
+            })
+            $('figure').mouseleave(function (evt) { 
+                evt.preventDefault()
+                $(this).removeClass('actived')
+            })
+            // Keyboard Events
+            $('input').focus(function (evt) { 
+                evt.preventDefault()
+                $(this).removeClass('is-invalid')
+                $(this).addClass('is-valid')
+            })
+            $('input').blur(function (evt) { 
+                evt.preventDefault()
+                $(this).removeClass('is-valid')
+                $(this).addClass('is-invalid')
+            })
+            $('input').keyup(function (evt) {
+                evt.preventDefault()
+                $('.message').text($(this).val())
+            })
+            // Form Events
+            $('select').change(function (evt) {
+                evt.preventDefault()
+                if($(this).val() == '1') {
+                    $('body').css('background-color', '#900')
+                    $('h2').css('color', '#900')
+                }
+                if($(this).val() == '2') {
+                    $('body').css('background-color', '#090')
+                    $('h2').css('color', '#090')
+                }
+                if($(this).val() == '3') {
+                    $('body').css('background-color', '#009')
+                    $('h2').css('color', '#009')
+                }
+            })
+            // Window Events
+            $wIcon = 160
+            $(window).resize(function (evt) {
+                $wDocument = $(document).width()
+                if ($wDocument < 1400) {
+                    $wIcon += 2
+                } else {
+                    $wIcon = 160
+                }
+                $('svg').css('width', $wIcon + 'px') 
+            })
+        })
+    </script>
+</body>
+</html>
