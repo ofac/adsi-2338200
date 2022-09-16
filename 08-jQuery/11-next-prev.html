@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next & Prev</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+        .btn-orange {
+            background-color: #f0a309;
+            color: #fff;
+        }
+        .btn-orange:is(:hover, :focus) {
+            background-color: #f0a309;
+        }
+        figure {
+            margin-bottom: 0;
+            filter: grayscale(1);
+            transition: all 0.5s ease-in;
+        }
+        figure figcaption {
+            opacity: 0;
+        }
+        figure.active {
+            filter: grayscale(0);
+            transform: scale(1.2);
+        }
+        figure.active figcaption {
+             opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Next & Prev</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text my-5">
+                        <div class="controls">
+                                <button class="btn btn-sm btn-orange btnFirst">First</button>
+                                <button class="btn btn-sm btn-orange btnAutoPlay">Auto Play</button>
+                                <button class="btn btn-sm btn-orange btnLast">Last</button>
+                        </div>
+                        <div class="content my-5 d-flex align-items-center justify-content-between">
+                            <button class="btn btnPrev"><img src="images/nextprev/prev.png"></button>
+                            <div class="carousel d-flex align-items-center gap-4">
+                                <figure class="active">
+                                    <img src="images/nextprev/card01.png">
+                                    <figcaption>Goku</figcaption>
+                                </figure>
+                                <figure>
+                                    <img src="images/nextprev/card02.png">
+                                    <figcaption>Krillin</figcaption>
+                                </figure>
+                                <figure>
+                                    <img src="images/nextprev/card03.png">
+                                    <figcaption>Piccolo</figcaption>
+                                </figure>
+                                <figure>
+                                    <img src="images/nextprev/card04.png">
+                                    <figcaption>Trunks</figcaption>
+                                </figure>
+                                <figure>
+                                    <img src="images/nextprev/card05.png">
+                                    <figcaption>Tenshin</figcaption>
+                                </figure>
+                            </div>
+                            <button class="btn btnNext"><img src="images/nextprev/next.png"></button>
+                        </div>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            currentActive()
+            $('.btnFirst').click(function (e) {
+                e.preventDefault()
+                removeActive()
+                $('figure').first().addClass('active')
+                currentActive()
+            })
+            $('.btnLast').click(function (e) {
+                e.preventDefault()
+                removeActive()
+                $('figure').last().addClass('active')
+                currentActive()
+            })
+            $('.btnNext').click(function (e) {
+                e.preventDefault()
+                removeActive()
+                if ($($act).index() < 4) {
+                    $($act).next().addClass('active')
+                } else {
+                    $('figure').first().addClass('active')
+                }
+                currentActive()
+            })
+            $('.btnPrev').click(function (e) {
+                e.preventDefault()
+                removeActive()
+                if ($($act).index() > 0) {
+                    $($act).prev().addClass('active')
+                } else {
+                    $('figure').last().addClass('active')
+                }
+                currentActive()
+            })
+        })
+        function currentActive() {
+            $act = $('figure.active')
+        }
+        function removeActive() {
+             $('figure').removeClass('active')
+        }
+    </script>
+</body>
+</html>

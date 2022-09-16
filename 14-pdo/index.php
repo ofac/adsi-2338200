@@ -56,7 +56,7 @@
                                         <ul class="dropdown-menu dropdown-menu-dark">
                                             <li><a class="dropdown-item" href="show.php?id=<?php echo $pokemon['id'] ?>"><i class="fa fa-search"></i> Show</a></li>
                                             <li><a class="dropdown-item" href="edit.php?id=<?php echo $pokemon['id'] ?>"><i class="fa fa-pen"></i> Edit</a></li>
-                                            <li><a class="dropdown-item bg-danger" href="#"><i class="fa fa-trash"></i> Delete</a></li>
+                                            <li><a class="dropdown-item bg-danger btn-delete" data-id="<?php echo $pokemon['id'] ?>" href="javascript:;"><i class="fa fa-trash"></i> Delete</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -76,11 +76,35 @@
     <script src="public/js/sweetalert2.js"></script>
     <script>
         $(document).ready(function () {
-            // Swal.fire(
-            //     'Good job!',
-            //     'Everything is OK!',
-            //     'success'
-            // )
+            <?php if(isset($_SESSION['message'])): ?>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '<?php echo $_SESSION['message'] ?>',
+                showConfirmButton: false,
+                timer: 2500
+            })
+            <?php endif ?>
+            <?php unset($_SESSION['message']) ?>
+            // - - - - - - - - - - -
+            $('.btn-delete').click(function (e) {
+                e.preventDefault()
+                $id = $(this).attr('data-id')
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#212529',
+                    cancelButtonColor: '#dc3545',
+                    confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.replace('delete.php?id=' + $id)
+                    }
+                })
+            })
+            // - - - - - - - - - -
         })
     </script>
 </body>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add & Remove</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Add & Remove</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text d-flex gap-3 justify-content-center my-5">
+                        <div class="actions d-flex flex-column gap-1">
+                            <input type="text" class="form-control inputText" placeholder="Enter Dragon Name">
+                            <button class="btn btn-dark btnAppend">Append</button>
+                            <button class="btn btn-dark btnPrepend">Prepend</button>
+                            <button class="btn btn-dark btnAfter">After</button>
+                            <button class="btn btn-dark btnBefore">Before</button>
+                        </div>
+                        <div class="content">
+                            <ol class="text-start list-group list-group-numbered" style="width: 240px">
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Caraxes <span class="btn btn-sm btn-danger btnRemove">&times;</span>
+                                </li>
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Syrax <span class="btn btn-sm btn-danger btnRemove">&times;</span>
+                                </li>
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Meleys <span class="btn btn-sm btn-danger btnRemove">&times;</span>
+                                </li>
+                            </ol>
+                            <button class="btn btn-danger form-control mt-2 btnEmpty">Empty</button>
+                        </div>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Remove
+            $('body').on('click', '.btnRemove', function(e)  { 
+                e.preventDefault()
+                $(this).parent().remove()
+            })
+            $('.btnEmpty').click(function (e) { 
+                e.preventDefault()
+                $('ol').empty()
+            })
+            // Add
+            $('.btnAppend').click(function (e) {
+                e.preventDefault()
+                if ($('.inputText').val().length > 0) {
+                    $dragon = `<li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    ${$('.inputText').val()} <span class="btn btn-sm btn-danger btnRemove">&times;</span>
+                              </li>`
+                    $('ol').append($dragon)
+                    $('.inputText').val('')
+                } else {
+                    alert('Please Enter Dragon Name!')
+                }
+            })
+            $('.btnPrepend').click(function (e) {
+                e.preventDefault()
+                if ($('.inputText').val().length > 0) {
+                    $dragon = `<li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    ${$('.inputText').val()} <span class="btn btn-sm btn-danger btnRemove">&times;</span>
+                              </li>`
+                    $('ol').prepend($dragon)
+                    $('.inputText').val('')
+                } else {
+                    alert('Please Enter Dragon Name!')
+                }
+            })
+            $('.btnAfter').click(function (e) {
+                e.preventDefault()
+                $('ol:last').after(`<ol class="text-start list-group list-group-numbered mt-2" style="width: 240px">
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Spyro <span class="btn btn-sm btn-danger btnRemove">&times;</span>
+                                </li>
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Yoshi <span class="btn btn-sm btn-danger btnRemove">&times;</span>
+                                </li>
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Chimuelo <span class="btn btn-sm btn-danger btnRemove">&times;</span>
+                                </li>
+                            </ol>`)
+            })
+            $('.btnBefore').click(function (e) {
+                e.preventDefault()
+                $('ol:first').before(`<ol class="text-start list-group list-group-numbered mb-2" style="width: 240px">
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Sheng Long <span class="btn btn-sm btn-danger btnRemove">&times;</span>
+                                </li>
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Kaido <span class="btn btn-sm btn-danger btnRemove">&times;</span>
+                                </li>
+                                <li class="list-group-item list-group-item-warning d-flex align-items-center justify-content-between">
+                                    Charizard <span class="btn btn-sm btn-danger btnRemove">&times;</span>
+                                </li>
+                            </ol>`)
+            })
+        })
+    </script>
+</body>
+</html>

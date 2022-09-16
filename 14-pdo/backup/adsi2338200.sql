@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-09-2022 a las 15:38:48
+-- Tiempo de generación: 16-09-2022 a las 18:03:18
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.3.15
 
@@ -64,10 +64,10 @@ CREATE TABLE `pokemons` (
 --
 
 INSERT INTO `pokemons` (`id`, `name`, `type`, `strength`, `stamina`, `speed`, `accuracy`, `image`, `trainer_id`) VALUES
-(1, 'pikachu', 'Electric', 90, 80, 96, 79, 'public/images/pokeball.png', 1),
-(2, 'charmander', 'Fire', 95, 78, 80, 82, 'public/images/pokeball.png', 1),
-(3, 'bulbasaour', 'Grass', 80, 88, 70, 75, 'public/images/pokeball.png', 1),
-(4, 'squirtle', 'Water', 70, 90, 75, 90, 'public/images/pokeball.png', 2),
+(1, 'pikachu', 'Electric', 90, 80, 96, 79, 'public/images/1663342522.png', 1),
+(2, 'charmander', 'Fire', 95, 78, 80, 82, 'public/images/1663342476.png', 1),
+(3, 'bulbasaour', 'Grass', 80, 88, 70, 75, 'public/images/1663342398.png', 1),
+(4, 'squirtle', 'Water', 70, 90, 75, 90, 'public/images/1663342493.png', 2),
 (5, 'Snorlax', 'Normal', 180, 320, 50, 180, 'public/images/pokeball.png', 1),
 (6, 'Vaporeon', 'Water', 186, 260, 90, 168, 'public/images/pokeball.png', 2),
 (7, 'Lapras', 'Water', 111, 255, 100, 168, 'public/images/pokeball.png', 1),
@@ -83,7 +83,8 @@ INSERT INTO `pokemons` (`id`, `name`, `type`, `strength`, `stamina`, `speed`, `a
 (17, 'Magnemite', 'Electric', 750, 50, 40, 128, 'public/images/pokeball.png', 4),
 (18, 'Pidgey', 'Normal', 818, 80, 95, 90, 'public/images/pokeball.png', 1),
 (19, 'Gastly', 'Ghost', 750, 60, 60, 82, 'public/images/pokeball.png', 4),
-(20, 'Rattata', 'Normal', 810, 60, 65, 22, 'public/images/pokeball.png', 1);
+(20, 'Rattata', 'Normal', 810, 60, 65, 22, 'public/images/pokeball.png', 1),
+(21, 'Piranio', 'Water', 12, 50, 60, 10, 'public/images/1663342614.png', 2);
 
 -- --------------------------------------------------------
 
@@ -170,7 +171,7 @@ ALTER TABLE `gyms`
 -- AUTO_INCREMENT de la tabla `pokemons`
 --
 ALTER TABLE `pokemons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `trainers`
