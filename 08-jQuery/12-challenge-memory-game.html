@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Memory Game</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+        .modal {
+            color: #333;
+        }
+        div.data {
+            display: flex;
+            justify-content: space-evenly;
+            font-size: 1.2rem;
+            margin: 2rem 0;
+        }
+        div.data svg {
+            width: 2rem;
+        }
+        div.game {
+            display: grid;
+            justify-content: center;
+            gap: 1rem;
+            grid-template-columns: repeat(3, 116px);
+            margin-bottom: 4rem;
+        }
+        div.game div.cardg {
+            border: none;
+            cursor: pointer;
+            height: 116px;
+            position: relative;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            width: 116px;
+        }
+        div.card-face {
+            -webkit-backface-visibility: hidden;
+                    backface-visibility: hidden;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+        div.cardg.is-flipped,
+        div.cardg.match  {
+            transform: rotateY(180deg);
+        }
+        div.card-front {
+            background: url(images/memorygame/card00.png) no-repeat center;
+        }
+        div.card-back {
+            transform: rotateY(180deg);
+        }
+        div.card01 div.card-back {
+            background: url(images/memorygame/card01.png) no-repeat center;
+        }
+        div.card02 div.card-back {
+            background: url(images/memorygame/card02.png) no-repeat center;
+        }
+        div.card03 div.card-back {
+            background: url(images/memorygame/card03.png) no-repeat center;
+        }
+        div.card04 div.card-back {
+            background: url(images/memorygame/card04.png) no-repeat center;
+        }
+        div.card05 div.card-back {
+            background: url(images/memorygame/card05.png) no-repeat center;
+        }
+        div.card06 div.card-back {
+            background: url(images/memorygame/card06.png) no-repeat center;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Challenge Memory Game</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        <div class="data">
+                            <div class="alert alert-danger time">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>0 Second</span>
+                            </div>
+                            <div class="alert alert-primary moves">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                </svg>
+                                <span>0 Moves</span>
+                            </div>
+                        </div>
+                        <div class="game">
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                            <div class="cardg">
+                                <div class="card-face card-front"></div>
+                                <div class="card-face card-back"></div>
+                            </div>
+                        </div>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Modal  -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">🥳 Congratulations:</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            You finish the game successfully!
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Init Game
+            $('.cardg').addClass('is-flipped')
+            setTimeout(() => {
+                $('.cardg').removeClass('is-flipped')
+            }, 2000);
+
+            // Cards & Moves
+            $moves   = 0
+            $cards   = $('.cardg')
+            $bgCards = ['card01', 'card01', 'card02', 'card02',
+                        'card03', 'card03', 'card04', 'card04',
+                        'card05', 'card05', 'card06', 'card06']
+
+            // Ramdon Cards
+            $.each($cards, function (index, value) { 
+                $rn = Math.floor(Math.random() * $bgCards.length)
+                $(this).addClass($bgCards[$rn])
+                $bgCards.splice($rn, 1)
+            })
+
+            // Flipped Cards
+            $('.cardg').click(function (e) {
+                e.preventDefault()
+                if ($('.is-flipped').length < 2) {
+                    $(this).addClass('is-flipped')
+                    if ($('.is-flipped').length == 2) {
+                        $class = $('.is-flipped').attr('class')
+                        $class = $class.split(' ')
+                        if ($('.is-flipped').first().hasClass($class[1]) &&
+                            $('.is-flipped').last().hasClass($class[1])) {
+                                $('.is-flipped').addClass('match')
+                                $('.cardg').removeClass('is-flipped')
+                                if ($('.match').length == 12) {
+                                    clearInterval($gameTime)
+                                    setTimeout(() => {
+                                        $('#exampleModal').modal('show')
+                                    }, 1000)
+                                }
+                        } else {
+                            setTimeout(() => {
+                                $('.cardg').removeClass('is-flipped')
+                            }, 1000)
+                        }
+                        ($moves == 0) ? $m = ' Move' : $m = ' Moves'
+                        $('.moves span').text(++$moves + $m)
+                    }
+                }
+            })
+
+            // Time
+            $tm = 0
+            $gameTime = setInterval(() => {
+                ($tm == 0) ? $s = ' Second' : $s = ' Seconds'
+                $('.time span').text(++$tm + $s)
+            }, 1000); 
+    
+        })
+    </script>
+</body>
+</html>
