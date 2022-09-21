@@ -1,0 +1,191 @@
+body {
+	background: transparent url(../imgs/pattern-leaves.jpg) repeat;
+	color: #534741;
+	font-family: 'LibreFranklin-Regular';
+	font-size: 16px;
+	margin: 0px;
+	padding: 0px;
+}
+
+header.top {
+	background: transparent url(../imgs/top-menu.png) no-repeat center;
+	height: 123px;
+	margin: 0px auto;
+	position: fixed;
+	top: 0px;
+	left: 50%;
+    transform: translateX(-50%);
+	z-index: 999;
+	width: 1368px;
+}
+
+header.top nav.menu ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	width: 744px;
+}
+
+header.top nav.menu ul li {
+	display: inline-block;
+	margin: 12px 0px 0px 0px;
+}
+
+header.top nav.menu ul li a {
+	background: transparent url(../imgs/btn.png) no-repeat center;
+	height: 63px;
+	display: block;
+	color: #efe180;
+	font-family: 'ZillaSlab-Bold';
+	font-size: 18px;
+	line-height: 3.8rem;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.2s ease-in;
+	width: 183px;
+}
+
+header.top nav.menu ul li a:hover {
+	background: transparent url(../imgs/btn-hover.png) no-repeat center;
+	color: #534741;
+}
+
+@keyframes swinging{
+    0%  { transform: rotate(10deg) ;}
+    50% { transform: rotate(-5deg); }
+    100%{ transform: rotate(10deg);}
+}
+
+section.slider {
+	background: transparent url(../imgs/top-slider.png) no-repeat 1px top;
+	height: 630px;
+	margin: 90px auto 0px auto;
+	padding-top: 20px;
+	position: relative;
+	width: 1368px;
+}
+
+section.slider div.logo {
+	background: transparent url(../imgs/logo.png) no-repeat center;
+	height: 404px;
+	margin: 0px auto;
+	width: 604px;
+}
+
+section.section {
+	height: 651px;
+	margin: 40px auto;
+	position: relative;
+	width: 1054px;
+}
+section.welcome {
+	background: transparent url(../imgs/sect01.png) no-repeat center;
+}
+section.explore {
+	background: transparent url(../imgs/sect02.png) no-repeat center;
+}
+section.create {
+	background: transparent url(../imgs/sect03.png) no-repeat center;
+}
+section.share {
+	background: transparent url(../imgs/sect04.png) no-repeat center;
+}
+
+section.section p {
+	line-height: 1.6rem;
+	position: absolute;
+	padding: 10px;
+	top: 40%;
+    transform: translateY(-40%);
+	margin: 10px;
+}
+
+section.welcome p {
+	left: 48px;
+	width: 400px;
+}
+
+section.explore p {
+	color: #3a6890;
+	right: 48px;
+	width: 300px;
+}
+
+section.create p {
+	color: #347b75;
+	left: 48px;
+	width: 300px;
+}
+
+section.share p {
+	color: #443e79;
+	right: 48px;
+	width: 300px;
+}
+
+section.section a.btn {
+	color: #fff;
+	font-family: 'ZillaSlab-Bold';
+	font-size: 24px;
+	display: block;
+	line-height: 6.4rem;
+	height: 119px;
+	position: absolute;
+	bottom: 90px;
+	transition: all 0.2s ease-in;
+	text-align: center;
+	text-decoration: none;
+	width: 307px;
+}
+
+section.explore a.btn {
+	background: transparent url(../imgs/btn-s01.png) no-repeat center;
+	right: 80px;
+}
+section.create a.btn {
+	background: transparent url(../imgs/btn-s02.png) no-repeat center;
+	left: 80px;
+}
+section.share a.btn {
+	background: transparent url(../imgs/btn-s03.png) no-repeat center;
+	right: 80px;
+}
+
+section.section a.btn:hover {
+	transform-origin: 50% 0;
+    animation: swinging 1.5s ease-in-out forwards infinite;
+}
+
+section.explore a.btn:hover {
+	color: #3a6890;
+	background: transparent url(../imgs/btn-s01-hover.png) no-repeat center;
+}
+section.create a.btn:hover {
+	color: #347b75;
+	background: transparent url(../imgs/btn-s02-hover.png) no-repeat center;
+}
+section.share a.btn:hover {
+	color: #443e79;
+	background: transparent url(../imgs/btn-s03-hover.png) no-repeat center;
+}
+
+
+footer.bottom {
+	background: transparent url(../imgs/footer.png) no-repeat center;
+	height: 319px;
+	margin: 40px auto;
+	position: absolute;
+	left: 50%;
+    transform: translateX(-50%);
+	width: 1366px;
+}
+
+footer.bottom p {
+	color: #fff;
+	position: relative;
+	text-align: center;
+	top: 140px;
+	left: 50%;
+    transform: translateX(-50%);
+	width: 340px;
+}

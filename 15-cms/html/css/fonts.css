@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'ZillaSlab-Bold';
+  src: url('../fonts/ZillaSlab-Bold.eot?#iefix') format('embedded-opentype'),  url('../fonts/ZillaSlab-Bold.woff') format('woff'), url('../fonts/ZillaSlab-Bold.ttf')  format('truetype'), url('../fonts/ZillaSlab-Bold.svg#ZillaSlab-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LibreFranklin-Regular';
+  src: url('../fonts/LibreFranklin-Regular.eot?#iefix') format('embedded-opentype'),  url('../fonts/LibreFranklin-Regular.woff') format('woff'), url('../fonts/LibreFranklin-Regular.ttf')  format('truetype'), url('../fonts/LibreFranklin-Regular.svg#LibreFranklin-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
