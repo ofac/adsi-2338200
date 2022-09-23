@@ -1,18 +1,6 @@
-<?php require 'config/app.php' ?>
-<?php include('config/database.php') ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web App Pokemons</title>
-    <link rel="stylesheet" href="public/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="public/css/fontawesome.min.css">
-    <link rel="stylesheet" href="public/css/fonts.css">
-</head>
-<body>
+    <?php $title = 'Edit Pokemon' ?>
+    <?php include 'includes/header.inc' ?>
+    <!--  -->
     <main class="container">
         <section class="row">
             <div class="col-md-6 offset-md-3 my-5">
@@ -142,10 +130,9 @@
         </section>
         <?php $conx = null; ?>
     </main>
-    <script src="public/js/jquery-3.6.0.min.js"></script>
-    <script src="public/js/bootstrap.min.js"></script>
-    <script src="public/js/bootstrap.bundle.min.js"></script>
-    <script src="public/js/sweetalert2.js"></script>
+    <!--  -->
+    <?php include 'includes/scripts.inc' ?>
+    <!--  -->
     <script>
         $(document).ready(function () {
             // - - - - - - - - - - - - - 

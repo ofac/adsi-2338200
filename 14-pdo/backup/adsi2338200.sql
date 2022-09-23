@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-09-2022 a las 18:03:18
+-- Tiempo de generación: 23-09-2022 a las 15:18:46
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.3.15
 
@@ -84,7 +84,7 @@ INSERT INTO `pokemons` (`id`, `name`, `type`, `strength`, `stamina`, `speed`, `a
 (18, 'Pidgey', 'Normal', 818, 80, 95, 90, 'public/images/pokeball.png', 1),
 (19, 'Gastly', 'Ghost', 750, 60, 60, 82, 'public/images/pokeball.png', 4),
 (20, 'Rattata', 'Normal', 810, 60, 65, 22, 'public/images/pokeball.png', 1),
-(21, 'Piranio', 'Water', 12, 50, 60, 10, 'public/images/1663342614.png', 2);
+(21, 'Piraniot', 'Water', 12, 50, 60, 10, 'public/images/1663342614.png', 2);
 
 -- --------------------------------------------------------
 
@@ -96,6 +96,9 @@ CREATE TABLE `trainers` (
   `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `level` int(11) NOT NULL DEFAULT 1,
+  `email` varchar(32) NOT NULL,
+  `photo` varchar(64) NOT NULL DEFAULT 'public/images/trainer.png',
+  `password` varchar(64) NOT NULL DEFAULT '827ccb0eea8a706c4c34a16891f84e7b',
   `gym_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -103,12 +106,12 @@ CREATE TABLE `trainers` (
 -- Volcado de datos para la tabla `trainers`
 --
 
-INSERT INTO `trainers` (`id`, `name`, `level`, `gym_id`) VALUES
-(1, 'Ash Ketchum', 1, 1),
-(2, 'Brock', 5, 2),
-(3, 'Misty', 4, 2),
-(4, 'Serena', 4, 2),
-(5, 'Oak', 9, 1);
+INSERT INTO `trainers` (`id`, `name`, `level`, `email`, `photo`, `password`, `gym_id`) VALUES
+(1, 'Ash Ketchum', 1, 'ash@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 1),
+(2, 'Brock', 5, 'brock@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 2),
+(3, 'Misty', 4, 'misty@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 2),
+(4, 'Serena', 4, 'serena@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 2),
+(5, 'Oak', 9, 'oak@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 1);
 
 -- --------------------------------------------------------
 
@@ -155,6 +158,7 @@ ALTER TABLE `pokemons`
 --
 ALTER TABLE `trainers`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `gym_id` (`gym_id`);
 
 --
