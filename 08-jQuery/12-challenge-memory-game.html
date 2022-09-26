@@ -156,22 +156,59 @@
             </div>
         </div>
     </main>
-    <!-- Modal  -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">🥳 Congratulations:</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            You finish the game successfully!
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
+    <!-- Modals  -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">🥳 Congratulations:</h5>
+            </div>
+            <div class="modal-body">
+                You finish the game successfully!
+                <div class="data my-3">
+                    <h5 class="badge bg-dark">Time: <span class="showTime">00</span></h5>
+                    <h5 class="badge bg-dark">Moves: <span class="showMoves">00</span></h5>
+                </div>
+                <label for="namePlayer"> Player Name:</label>
+                <input type="text" id="namePlayer" class="form-control" placeholder="ofactor11">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark btnSave" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span>Waiting...</span>
+                </button>
+                
+            </div>
+            </div>
         </div>
     </div>
+    <div class="modal fade" id="modalTable" tabindex="-1" aria-labelledby="modalTableLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTableLabel">🥇🥈🥉 Results by Time:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Time</th>
+                            <th>Moves</th>
+                        </tr>
+                    </thead>
+                    <tbody class="results">
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
     </div>
 
     <script src="js/jquery-3.6.0.min.js"></script>
@@ -182,37 +219,44 @@
             $('.cardg').addClass('is-flipped')
             setTimeout(() => {
                 $('.cardg').removeClass('is-flipped')
-            }, 2000);
-
+                // Time
+                $tm = 0
+                $gameTime = setInterval(() => {
+                    ($tm == 0) ? $s = ' Second' : $s = ' Seconds'
+                    $('.time span').text(++$tm + $s)
+                }, 1000)
+            }, 2000)
             // Cards & Moves
             $moves   = 0
             $cards   = $('.cardg')
             $bgCards = ['card01', 'card01', 'card02', 'card02',
                         'card03', 'card03', 'card04', 'card04',
                         'card05', 'card05', 'card06', 'card06']
-
             // Ramdon Cards
             $.each($cards, function (index, value) { 
                 $rn = Math.floor(Math.random() * $bgCards.length)
                 $(this).addClass($bgCards[$rn])
                 $bgCards.splice($rn, 1)
             })
-
             // Flipped Cards
-            $('.cardg').click(function (e) {
+            $('.cardg').not('.match').click(function (e) {
                 e.preventDefault()
                 if ($('.is-flipped').length < 2) {
                     $(this).addClass('is-flipped')
                     if ($('.is-flipped').length == 2) {
                         $class = $('.is-flipped').attr('class')
                         $class = $class.split(' ')
+                        // Match
                         if ($('.is-flipped').first().hasClass($class[1]) &&
                             $('.is-flipped').last().hasClass($class[1])) {
-                                $('.is-flipped').addClass('match')
+                                $('.is-flipped').addClass('match').css('pointer-events', 'none')
                                 $('.cardg').removeClass('is-flipped')
+                                // Win
                                 if ($('.match').length == 12) {
                                     clearInterval($gameTime)
                                     setTimeout(() => {
+                                        $('.showTime').text($tm)
+                                        $('.showMoves').text($moves)
                                         $('#exampleModal').modal('show')
                                     }, 1000)
                                 }
@@ -226,14 +270,60 @@
                     }
                 }
             })
+            // - - -
+            $('#namePlayer').keyup(function (e) {
+                if($(this).val().length > 2) {
+                    $('.btnSave').prop('disabled', false)
+                    $('.btnSave span').first().hide()
+                    $('.btnSave span').last().text('Save')
+                } else {
+                    $('.btnSave').prop('disabled', true)
+                    $('.btnSave span').first().show()
+                    $('.btnSave span').last().text('Waiting...')
+                }
+            })
+            // - - -
+            $('.btnSave').click(function (e) {
+                $('#exampleModal').modal('hide')
+                $playerData = {
+                    'name':  $('#namePlayer').val(),
+                    'time':  $tm,
+                    'moves': $moves
+                }   
+                if(localStorage.length > 0) {
+                    $data = JSON.parse(localStorage.getItem('playerData'))
+                    $data.push($playerData)
+                    localStorage.setItem('playerData', JSON.stringify($data))
+                } else {
+                    localStorage.setItem('playerData', '[]')
+                    $data = JSON.parse(localStorage.getItem('playerData'))
+                    $data.push($playerData)
+                    localStorage.setItem('playerData', JSON.stringify($data))
+                }
+                //console.table(JSON.parse(localStorage.getItem('playerData')))
+                console.table(JSON.parse(localStorage.getItem('playerData')).sort(sortTable))
 
-            // Time
-            $tm = 0
-            $gameTime = setInterval(() => {
-                ($tm == 0) ? $s = ' Second' : $s = ' Seconds'
-                $('.time span').text(++$tm + $s)
-            }, 1000); 
-    
+                $dataTable = JSON.parse(localStorage.getItem('playerData')).sort(sortTable)
+                $index = 1
+                $html  = ''
+                $dataTable.forEach(element => {
+                    //if ($index < 11) {
+                        $html += `<tr ${(element.name == $('#namePlayer').val()) ? 'class="bg-success text-light"' : '' }>
+                                        <td> ${$index++} </td>
+                                        <td> ${element.name} </td>
+                                        <td> ${element.time} </td>
+                                        <td> ${element.moves} </td>
+                                  </tr>`
+                    //}
+                })
+                $('.results').html($html)
+                $('#modalTable').modal('show')
+            })
+            // - - -
+            function sortTable(a, b) {
+                return a.time - b.time;
+            }
+            // - - -
         })
     </script>
 </body>
