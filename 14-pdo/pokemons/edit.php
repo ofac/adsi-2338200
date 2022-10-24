@@ -1,29 +1,29 @@
     <?php $title = 'Edit Pokemon' ?>
-    <?php include 'includes/header.inc' ?>
+    <?php require '../config/app.php' ?>
+    <?php include '../config/database.php'  ?>
+    <?php include '../includes/header.inc' ?>
+    <?php include '../includes/navbar.inc' ?>
+    <?php include '../includes/security.inc' ?>
     <!--  -->
     <main class="container">
         <section class="row">
             <div class="col-md-6 offset-md-3 my-5">
-                <h1 class="text-center">
-                    <i class="fa fa-dragon"></i>
-                    Web App Pokemons
-                </h1>
-                <hr>
                 <a href="index.php" class="btn btn-outline-dark">
                     <i class="fa fa-arrow-left"></i>
                     Back to All Pokemons
                 </a>
-                <h2 class="text-center my-5">
+                <hr>
+                <h1 class="text-center">
                     <i class="fa fa-pen"></i>
                     Edit Pokemon
-                </h2>
+                </h1>
                 <?php $id = $_GET['id'] ?>
                 <?php $pokemon = showPokemon($conx, $id) ?>
                 <?php foreach($pokemon as $pk): ?>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mb-3 text-center">
                         <figure class="figure">
-                            <img src="<?php echo $pk['image'] ?>" width="240" id="preview" class="figure-img img-fluid img-thumbnail rounded">
+                            <img src="<?php echo $base_url . '/' . $pk['image'] ?>" width="240" id="preview" class="figure-img img-fluid img-thumbnail rounded">
                         </figure>
                     </div>
                     <div class="mb-3">
@@ -106,7 +106,7 @@
                         $trainer_id = $_POST['trainer_id'];
                         // Upload Image
                         if(!empty($_FILES['image']['name'])) {
-                            $path  = "public/images/";
+                            $path  = "../public/images/";
                             $image = $path.time().".".pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                         } else {
                             $image = null;
@@ -131,7 +131,7 @@
         <?php $conx = null; ?>
     </main>
     <!--  -->
-    <?php include 'includes/scripts.inc' ?>
+    <?php include '../includes/scripts.inc' ?>
     <!--  -->
     <script>
         $(document).ready(function () {

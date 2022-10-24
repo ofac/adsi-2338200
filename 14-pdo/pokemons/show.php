@@ -1,22 +1,22 @@
     <?php $title = 'Show Pokemon' ?>
-    <?php include 'includes/header.inc' ?>
+    <?php require '../config/app.php' ?>
+    <?php include '../config/database.php'  ?>
+    <?php include '../includes/header.inc' ?>
+    <?php include '../includes/navbar.inc' ?>
+    <?php include '../includes/security.inc' ?>
     <!--  -->
     <main class="container">
         <section class="row">
             <div class="col-md-8 offset-md-2 my-5">
-                <h1 class="text-center">
-                    <i class="fa fa-dragon"></i>
-                    Web App Pokemons
-                </h1>
-                <hr>
                 <a href="index.php" class="btn btn-outline-dark">
                     <i class="fa fa-arrow-left"></i>
                     Back to All Pokemons
                 </a>
-                <h2 class="text-center my-5">
+                <hr>
+                <h1 class="text-center">
                     <i class="fa fa-search"></i>
                     Show Pokemon
-                </h2>
+                </h1>
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <tbody>
@@ -27,7 +27,7 @@
                             <?php foreach($pokemon as $pk): ?>
                                 <tr>
                                     <td colspan="2" class="text-center">
-                                        <img src="<?php echo $pk['image'] ?>" class="img-thumbnail" width="240px">
+                                        <img src="<?php echo $base_url . '/' . $pk['image'] ?>" class="img-thumbnail" width="240px">
                                     </td>
                                 </tr>
                                 <tr>
@@ -72,7 +72,7 @@
         <?php $conx = null; ?>
     </main>
     <!--  -->
-    <?php include 'includes/scripts.inc' ?>
+    <?php include '../includes/scripts.inc' ?>
     <!--  -->
     <script>
         $(document).ready(function () {

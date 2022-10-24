@@ -1,7 +1,13 @@
 <?php
 
     if (isset($_SESSION['tid'])) {
-        echo "<script>
-                window.location.replace('dashboard.php')
-              </script>";
+        if ($_SESSION['trole'] == 'Admin') {
+            echo "<script>
+                    window.location.replace('dashboard-admin.php')
+                </script>";
+        } else {
+            echo "<script>
+                    window.location.replace('dashboard-trainer.php')
+                </script>";
+        }
     }

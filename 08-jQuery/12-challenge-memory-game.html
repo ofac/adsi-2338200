@@ -177,7 +177,7 @@
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                     <span>Waiting...</span>
                 </button>
-                
+
             </div>
             </div>
         </div>
@@ -200,7 +200,7 @@
                         </tr>
                     </thead>
                     <tbody class="results">
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -233,7 +233,7 @@
                         'card03', 'card03', 'card04', 'card04',
                         'card05', 'card05', 'card06', 'card06']
             // Ramdon Cards
-            $.each($cards, function (index, value) { 
+            $.each($cards, function (index, value) {
                 $rn = Math.floor(Math.random() * $bgCards.length)
                 $(this).addClass($bgCards[$rn])
                 $bgCards.splice($rn, 1)
@@ -289,7 +289,7 @@
                     'name':  $('#namePlayer').val(),
                     'time':  $tm,
                     'moves': $moves
-                }   
+                }
                 if(localStorage.length > 0) {
                     $data = JSON.parse(localStorage.getItem('playerData'))
                     $data.push($playerData)

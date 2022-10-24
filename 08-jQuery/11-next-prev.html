@@ -118,6 +118,26 @@
                 currentActive()
             })
         })
+        $('.btnAutoPlay').click(function (e) {
+            $(this).toggleClass('autoplay')
+            if($(this).hasClass('autoplay')) {
+                $(this).text('Stop')
+                $autoInt = setInterval(function() {
+                    if($($act).index() < $('figure').length) {
+                        removeActive()
+                        if ($($act).index() < 4) {
+                            $($act).next().addClass('active')
+                        } else {
+                            $('figure').first().addClass('active')
+                        }
+                        currentActive()
+                    }
+                }, 1000)
+            } else {
+                $(this).text('Auto Play')
+                clearInterval($autoInt)
+            }
+        })
         function currentActive() {
             $act = $('figure.active')
         }

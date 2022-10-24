@@ -2,13 +2,16 @@
     <?php require '../config/app.php' ?>
     <?php include '../config/database.php'  ?>
     <?php include '../includes/header.inc' ?>
+    <?php include '../includes/navbar.inc' ?>
+    <?php include '../includes/security.inc' ?>
+    <?php include '../includes/protect-admin.inc' ?>
     <!--  -->
     <main class="container">
         <section class="row">
             <div class="col-md-8 offset-md-2 my-5">
                 <h1 class="text-center">
-                    <i class="fa fa-dragon"></i>
-                    Web App Pokemons
+                    <i class="fa fa-paw"></i>
+                    Pokemons
                 </h1>
                 <hr>
                 <a href="add.php" class="btn btn-lg btn-outline-success">

@@ -1,5 +1,5 @@
-<?php require 'config/app.php' ?>
-<?php include('config/database.php') ?>
+<?php require '../config/app.php' ?>
+<?php include('../config/database.php') ?>
 
 <?php
     if ($_GET) {

@@ -1,26 +1,26 @@
     <?php $title = 'Add Pokemon' ?>
-    <?php include 'includes/header.inc' ?>
+    <?php require '../config/app.php' ?>
+    <?php include '../config/database.php'  ?>
+    <?php include '../includes/header.inc' ?>
+    <?php include '../includes/navbar.inc' ?>
+    <?php include '../includes/security.inc' ?>
     <!--  -->
     <main class="container">
         <section class="row">
             <div class="col-md-6 offset-md-3 my-5">
-                <h1 class="text-center">
-                    <i class="fa fa-dragon"></i>
-                    Web App Pokemons
-                </h1>
-                <hr>
                 <a href="index.php" class="btn btn-outline-dark">
                     <i class="fa fa-arrow-left"></i>
                     Back to All Pokemons
                 </a>
-                <h2 class="text-center my-5">
+                <hr>
+                <h1 class="text-center">
                     <i class="fa fa-plus"></i>
                     Add Pokemon
-                </h2>
+                </h1>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mb-3 text-center">
                         <figure class="figure">
-                            <img src="public/images/pokeball.png" width="240" id="preview" class="figure-img img-fluid img-thumbnail rounded">
+                            <img src="../public/images/pokeball.png" width="240" id="preview" class="figure-img img-fluid img-thumbnail rounded">
                         </figure>
                     </div>
                     <div class="mb-3">
@@ -66,16 +66,20 @@
                         <label for="accuracy" class="form-label">Accuracy:</label>
                         <input type="number" class="form-control" id="accuracy" name="accuracy" placeholder="Accuracy" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="trainer_id" class="form-label">Trainer:</label>
-                        <select name="trainer_id" id="trainer_id" class="form-select">
-                            <option value="">Select a Trainer...</option>
-                            <?php $trainers = listAllTrainers($conx) ?>
-                            <?php foreach($trainers as $trainer): ?>
-                                <option value="<?php echo $trainer['id'] ?>"><?php echo $trainer['name'] ?></option>
-                            <?php endforeach ?>
-                        </select>
-                    </div>
+                    <?php if ($_SESSION['trole'] == 'Admin'): ?>
+                        <div class="mb-3">
+                            <label for="trainer_id" class="form-label">Trainer:</label>
+                            <select name="trainer_id" id="trainer_id" class="form-select">
+                                <option value="">Select a Trainer...</option>
+                                <?php $trainers = listAllTrainers($conx) ?>
+                                <?php foreach($trainers as $trainer): ?>
+                                    <option value="<?php echo $trainer['id'] ?>"><?php echo $trainer['name'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                         </div>
+                    <?php else: ?>
+                        <input type="hidden" name="trainer_id" value="<?php echo $_SESSION['tid'] ?>">
+                    <?php endif ?>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-success btn-lg form-control">
                             <i class="fa fa-save"></i>
@@ -100,7 +104,7 @@
                         $accuracy   = $_POST['accuracy'];
                         $trainer_id = $_POST['trainer_id'];
                         // Upload Image
-                        $path  = "public/images/";
+                        $path  = "../public/images/";
                         $image = $path.time().".".pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                         
                         if(addPokemon($conx, $name, $type, $strength, $stamina, $speed, $accuracy, $image, $trainer_id)) {
@@ -120,7 +124,7 @@
         <?php $conx = null; ?>
     </main>
     <!--  -->
-    <?php include 'includes/scripts.inc' ?>
+    <?php include '../includes/scripts.inc' ?>
     <!--  -->
     <script>
         $(document).ready(function () {

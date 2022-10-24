@@ -37,10 +37,10 @@
                             <i class="fa fa-lock-open"></i>
                             Login
                         </button>
-                        <button type="reset" class="btn btn-light btn-lg form-control mt-2">
+                        <a href="register.php" class="btn btn-light btn-lg form-control mt-2">
                             <i class="fa fa-users"></i>
                             Register
-                        </button>
+                        </a>
                     </div>
 				</form>
                 <?php
@@ -49,9 +49,15 @@
                         $pass  = md5($_POST['password']);
 
                         if (login($conx, $email, $pass)) {
-                            echo "<script>
-                                    window.location.replace('dashboard.php')
-                                  </script>";
+                            if ($_SESSION['trole'] == 'Admin') {
+                                echo "<script>
+                                        window.location.replace('dashboard-admin.php')
+                                    </script>";
+                            } else {
+                                echo "<script>
+                                        window.location.replace('dashboard-trainer.php')
+                                    </script>";
+                            }
                         } else {
                             $_SESSION['error'] = "Email or Password are incorrect!";
                         }
