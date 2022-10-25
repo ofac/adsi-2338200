@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout (Grids & Columns)</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <style>
+        div.row .col,
+        div.row .col-8,
+        div.row .col-4,
+        div.row .col-md-8,
+        div.row .col-md-4 {
+            background-color: #755a8b;
+            color: #fff;
+            height: 20vh;
+        }
+        div.row .col-12 {
+            background-color: #3b284b;
+            color: #fff;
+        }
+        div.row .col-8,
+        div.row .col-md-8 {
+            background-color: #44755a;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-12 mt-5 mb-5">
+                <h1 class="text-center">Layout (Grids & Columns)</h1>
+                <hr>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <i class="fa fa-home"></i>
+                                Main Menu
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <i class="fa fa-file-code"></i>
+                            Layout (Grids & Columns)
+                        </li>
+                    </ol>
+                </nav>
+
+                <!-- 12 Columns -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 py-2">
+                            <h4 class="text-center">12 Columns</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">Column</div>
+                        <div class="col">Column</div>
+                        <div class="col">Column</div>
+                        <div class="col">Column</div>
+                        <div class="col">Column</div>
+                        <div class="col">Column</div>
+                        <div class="col">Column</div>
+                        <div class="col">Column</div>
+                        <div class="col">Column</div>
+                        <div class="col">Column</div>
+                        <div class="col">Column</div>
+                        <div class="col">Column</div>
+                    </div>
+                </div>
+
+                <!-- 8 Columns / 4 Columns -->
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-12 py-2">
+                            <h4 class="text-center">8 Columns / 4 Columns</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">8 Columns</div>
+                        <div class="col-4">4 Columns</div>
+                    </div>
+                </div>
+
+                <!-- 4 Columns / 4 Columns Offset -->
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-12 py-2">
+                            <h4 class="text-center">4 Columns / 4 Columns Offset</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 offset-4">4 Columns</div>
+                    </div>
+                </div>
+
+                <!-- 4 Columns Medium / 2 Columns Small -->
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-12 py-2">
+                            <h4 class="text-center">4 Columns Medium / 8 Columns Medium</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Columns</div>
+                        <div class="col-md-8">Columns</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
