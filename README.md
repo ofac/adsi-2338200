@@ -12,8 +12,14 @@
 |  6. SASS       | CSS Preprocessor                  | [open folder](06-sass/)       |
 |  7. Javascript | Programming Language (Clien-Side) | [open folder](07-javascript/) |
 |  8. jQuery     | Library Javascript                | [open folder](08-jQuery/)     |
+| 10. Bootstrap  | Framework CSS                     | [open folder](10-bootstrap/)  |
+| 11. Tailwind   | Framework CSS                     | [open folder](11-tailwind/)   |
 | 12. PHP        | Server Programming Language       | [open folder](12-php/)        |
 | 13. SQL        | Structured Query Language         | [open folder](13-sql/)        |
+| 14. PDO        | PHP Data Objects                  | [open folder](14-pdo/)        |
+| 15. CMS        | Content Management System         | [open folder](15-cms/)        |
+| 16. OOP        | Object Oriented Programming       | [open folder](16-oop/)        |
+
 
 ---
 
