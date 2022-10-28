@@ -139,7 +139,7 @@
                 </li>
                 <li class="text-xl 
                          text-white/70">
-                    <a href="07-overwhite-method.php" class="bg-black 
+                    <a href="07-overwrite-method.php" class="bg-black 
                                         bg-opacity-40 
                                         w-96 
                                         p-4 
