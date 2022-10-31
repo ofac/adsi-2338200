@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-10-2022 a las 18:52:43
+-- Tiempo de generación: 31-10-2022 a las 13:41:32
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.3.15
 
@@ -40,7 +40,7 @@ CREATE TABLE `gyms` (
 INSERT INTO `gyms` (`id`, `name`) VALUES
 (1, 'Palette'),
 (2, 'Rocket'),
-(3, 'Rockstone');
+(3, 'Rockstonage');
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,7 @@ INSERT INTO `pokemons` (`id`, `name`, `type`, `strength`, `stamina`, `speed`, `a
 (2, 'charmander', 'Fire', 95, 78, 80, 82, 'public/images/1663342476.png', 1),
 (3, 'bulbasaour', 'Grass', 80, 88, 70, 75, 'public/images/1663342398.png', 1),
 (4, 'squirtle', 'Water', 70, 90, 75, 90, 'public/images/1663342493.png', 2),
-(5, 'Snorlax', 'Normal', 180, 320, 30, 180, '../public/images/1664895287.png', 1),
+(5, 'Snorlax', 'Normal', 180, 320, 30, 180, 'public/images/1664895287.png', 1),
 (6, 'Vaporeon', 'Water', 186, 260, 90, 168, 'public/images/pokeball.png', 2),
 (7, 'Lapras', 'Water', 111, 255, 100, 168, 'public/images/pokeball.png', 1),
 (8, 'Blastoise', 'Water', 720, 158, 70, 222, 'public/images/pokeball.png', 2),
@@ -99,6 +99,7 @@ CREATE TABLE `trainers` (
   `email` varchar(32) NOT NULL,
   `photo` varchar(64) NOT NULL DEFAULT 'public/images/trainer.png',
   `password` varchar(64) NOT NULL DEFAULT '827ccb0eea8a706c4c34a16891f84e7b',
+  `role` varchar(16) NOT NULL DEFAULT 'Trainer',
   `gym_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -106,13 +107,14 @@ CREATE TABLE `trainers` (
 -- Volcado de datos para la tabla `trainers`
 --
 
-INSERT INTO `trainers` (`id`, `name`, `level`, `email`, `photo`, `password`, `gym_id`) VALUES
-(1, 'Ash Ketchum', 1, 'ash@gmail.com', '../public/images/1664899933.png', '827ccb0eea8a706c4c34a16891f84e7b', 1),
-(2, 'Brock', 5, 'brock@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 2),
-(3, 'Misty', 4, 'misty@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 2),
-(4, 'Serena', 4, 'serena@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 2),
-(5, 'Oak', 9, 'oak@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 1),
-(6, 'Zaphir', 3, 'zaphir@gmail.com', '../public/images/1664899920.png', '827ccb0eea8a706c4c34a16891f84e7b', 1);
+INSERT INTO `trainers` (`id`, `name`, `level`, `email`, `photo`, `password`, `role`, `gym_id`) VALUES
+(1, 'Ash Ketchum', 1, 'ash@gmail.com', '../public/images/1664899933.png', '827ccb0eea8a706c4c34a16891f84e7b', 'Admin', 1),
+(2, 'Brock', 5, 'brock@gmail.com', '../public/images/1666626435.png', '827ccb0eea8a706c4c34a16891f84e7b', 'Trainer', 2),
+(3, 'Misty', 4, 'misty@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 'Trainer', 2),
+(4, 'Serena', 4, 'serena@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 'Trainer', 2),
+(5, 'Oak', 9, 'oak@gmail.com', 'public/images/trainer.png', '827ccb0eea8a706c4c34a16891f84e7b', 'Trainer', 1),
+(6, 'Zaphiry', 3, 'zaphir@gmail.com', '../public/images/1664899920.png', '827ccb0eea8a706c4c34a16891f84e7b', 'Trainer', 1),
+(7, 'Kratosmania', 1, 'kratos@gmail.com', 'public/images/1666628935.png', '827ccb0eea8a706c4c34a16891f84e7b', 'Trainer', 3);
 
 -- --------------------------------------------------------
 
@@ -182,7 +184,7 @@ ALTER TABLE `pokemons`
 -- AUTO_INCREMENT de la tabla `trainers`
 --
 ALTER TABLE `trainers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
