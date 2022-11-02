@@ -19,7 +19,8 @@
 | 14. PDO        | PHP Data Objects                  | [open folder](14-pdo/)        |
 | 15. CMS        | Content Management System         | [open folder](15-cms/)        |
 | 16. OOP        | Object Oriented Programming       | [open folder](16-oop/)        |
-
+| 17. MVC        | Model View Controller             | [open folder](17-mvc/)        |
+| 18. Laravel    | Framework PHP                     | [open folder](18-laravel/)    |
 
 ---
 
