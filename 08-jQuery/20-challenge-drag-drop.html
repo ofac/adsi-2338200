@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Challenge Drag & Drop</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+		section.columnst {
+			padding: 5px;
+			background-color: #1f1f1f;
+			margin: 20px auto;
+			width: 380px;
+
+		}
+		section.columnst aside.columnt {
+			display: inline-block;
+			vertical-align: top;
+			width: 120px;
+		}
+		aside.columnt h4 {
+			background-color: #1f1f1f;
+			color: #fff;
+            font-size: 1rem;
+			padding: 10px;
+			margin: 0px;
+		}
+		aside.columnt:nth-child(1) h4 {
+			border-bottom: 4px solid #35f442;
+		}
+		aside.columnt:nth-child(2) h4 {
+			border-bottom: 4px solid #f78a14;
+		}
+		aside.columnt:nth-child(3) h4 {
+			border-bottom: 4px solid #ff232f;
+		}
+		aside.columnt div {
+			background-color: #373737;
+			height: 450px;
+		}
+		aside.columnt div.pk {
+			height: 150px;
+			position: relative;
+			width: 120px;
+		}
+		aside.columnt div.pk#pk11 {
+			background: url(images/pokemons/pk11.png) no-repeat center;
+		}
+		aside.columnt div.pk#pk21 {
+			background: url(images/pokemons/pk21.png) no-repeat center;
+		}
+		aside.columnt div.pk#pk31 {
+			background: url(images/pokemons/pk31.png) no-repeat center;
+		}
+
+		aside.columnt div.pk#pk12 {
+			background: url(images/pokemons/pk12.png) no-repeat center;
+		}
+		aside.columnt div.pk#pk22 {
+			background: url(images/pokemons/pk22.png) no-repeat center;
+		}
+		aside.columnt div.pk#pk32 {
+			background: url(images/pokemons/pk32.png) no-repeat center;
+		}
+
+		aside.columnt div.pk#pk13 {
+			background: url(images/pokemons/pk13.png) no-repeat center;
+		}
+		aside.columnt div.pk#pk23 {
+			background: url(images/pokemons/pk23.png) no-repeat center;
+		}
+		aside.columnt div.pk#pk33 {
+			background: url(images/pokemons/pk33.png) no-repeat center;
+		}
+	</style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b> Challenge Drag & Drop</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        <section class="columnst">
+                            <aside class="columnt">
+                                <h4>Evolution 1</h4>
+                                <div class="stage stage1">
+                                    <div id="pk11" class="pk pk1 animated"></div>
+                                    <div id="pk21" class="pk pk1 animated"></div>
+                                    <div id="pk31" class="pk pk1 animated"></div>
+                                </div>
+                            </aside>
+                            <aside class="columnt">
+                                <h4>Evolution 2</h4>
+                                <div class="stage stage2">
+                                </div>
+                            </aside>
+                            <aside class="columnt">
+                                <h4>Evolution 3</h4>
+                                <div class="stage stage3"></div>
+                            </aside>
+                        </section>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.pk').draggable({
+				containment: '.columnst',
+				cursor: 'move',
+				snap: '.stage',
+				snapMode: 'inner',
+				grid: [120,150],
+				revert: 'invalid'
+			});
+			$('.stage2').droppable({
+				accept: '.pk1',
+				drop: function(evt, ui) {
+					$ui = $(ui.draggable);
+					$ui.removeClass('pk1').addClass('pk2 pulse');
+					$ni = parseInt($ui.attr('id').substring(4,2))+1;
+					$ui.attr('id', 'pk'+$ni);
+				}
+			});
+			$('.stage3').droppable({
+				accept: '.pk2',
+				drop: function(evt, ui) {
+					$ui = $(ui.draggable);
+					$ui.removeClass('pk2').addClass('pk3 tada');
+					$ni = parseInt($ui.attr('id').substring(4,2))+1;
+					$ui.attr('id', 'pk'+$ni);
+				}
+			});
+        });
+    </script>
+</body>
+</html>

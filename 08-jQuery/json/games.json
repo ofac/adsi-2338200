@@ -1,0 +1,42 @@
+{
+	"game1": {
+		"name": "Minecraft",
+		"year": 2019
+	},
+	"game2": {
+		"name": "Grand Theft Auto V",
+		"year": 2013
+	},
+	"game3": {
+		"name": "World of Warcraft",
+		"year": 2004
+	},
+	"game4": {
+		"name": "Fortnite",
+		"year": 2017
+	},
+	"game5": {
+		"name": "The Elder Scroll V",
+		"year": 2011
+	},
+	"game6": {
+		"name": "Resident Evil 4",
+		"year": 2005
+	},
+	"game7": {
+		"name": "Spore",
+		"year": 2008
+	},
+	"game8": {
+		"name": "The Witcher 3",
+		"year": 2015
+	},
+	"game9": {
+		"name": "Final Fantasy",
+		"year": 1987
+	},
+	"game10": {
+		"name": "Mario Bros",
+		"year": 1983
+	}
+}

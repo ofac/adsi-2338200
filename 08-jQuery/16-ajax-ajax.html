@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+		ul.games {
+			list-style: none;
+			padding: 0px;
+			margin: 0px auto;
+			width: 300px;
+		}
+		ul.games li {
+			padding: 8px 4px;
+			border-bottom: 1px solid #4f5c6e;
+		}
+		button.btn-load {
+			background-color: #fff;
+			border: 1px solid #4f5c6e;
+            border-radius: 4px;
+			display: block;
+			margin: 40px auto;
+			color: #4f5c6e;
+			padding: 10px 10px;
+			width: 150px;
+		}
+		button.btn-load:hover {
+			background-color: #4f5c6e;
+			color: #fff;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Ajax</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        <ul class="games"></ul>
+		                <button class="btn-load"> Load Game List </button>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Events
+			$('.btn-load').click(function(event) {
+				// Ajax
+				$.ajax({
+					url: 'json/games.json',
+					dataType: 'json',
+				})
+				.done(function(data) {
+					$('.games').html('');
+					$.each(data, function(index, val) {
+						 $('.games').append('<li>'+val['name']+' - \
+						                   ('+val['year']+')</li>');
+					});
+					console.log("success");
+				})
+				.fail(function() {
+					console.log("error");
+				})
+				.always(function() {
+					console.log("complete");
+				});
+				
+			});
+        });
+    </script>
+</body>
+</html>

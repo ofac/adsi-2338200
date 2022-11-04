@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Drag & Drop</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        section.landscape {
+			background: url(images/bg-pokemon.png) no-repeat center;
+			height: 600px;
+			margin: 20px auto;
+			position: relative;
+			width: 520px;
+		}
+		div.pokeball {
+			background: url(images/pokeball.png) no-repeat center;
+			top: 35px; left: 120px;
+		}
+		div.superball {
+			background: url(images/superball.png) no-repeat center;
+			top: 35px; left: 294px;
+		}
+		div.pokeball,
+		div.superball {
+			background-size: cover;
+			height: 90px;
+			position: absolute;
+			width: 90px;
+			z-index: 9;
+		}
+		div.bulbassaur,
+		div.venussaur {
+			position: absolute;
+		}
+		div.bulbassaur {
+			background: url(images/bulbasaur.png) no-repeat center;
+			background-size: cover;
+			height: 154px;
+			bottom: 20px; left: 10px;
+			width: 154px;
+		}
+		div.venussaur {
+			background: url(images/venussaur.png) no-repeat center;
+			background-size: contain;
+			height: 257px;
+			bottom: 20px; right: 0px;
+			width: 374px;
+		}
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>UI Drag & Drop</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        <section class="landscape">
+                            <div class="drag pokeball"></div>
+                            <div class="drag superball"></div>
+                            <div class="pk bulbassaur"></div>
+                            <div class="pk venussaur"></div>
+                        </section>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('div.drag').draggable({
+				containment: '.landscape',
+				cursor: 'move',
+				snap: '.pk',
+				snapMode: 'inner',
+				revert: 'invalid'
+			});
+			$('div.bulbassaur').droppable({
+				accept: '.drag',
+				drop: function(evt, ui) {
+					$drag = $(ui.draggable);
+					$drop = $(this);
+					$drop.fadeOut(1000);
+					$drag.addClass('animated bounce infinite')
+				}
+			});
+			$('div.venussaur').droppable({
+				accept: '.superball',
+				drop: function(evt, ui) {
+					$drag = $(ui.draggable);
+					$drop = $(this);
+					$drop.fadeOut(1000);
+					$drag.addClass('animated bounce infinite')
+				}
+			});
+        });
+    </script>
+</body>
+</html>

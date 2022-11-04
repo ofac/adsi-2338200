@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensions</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+		section.dimensions {
+			margin: 20px auto;
+			width: 520px;
+		}
+		section.dimensions div {
+			display: inline-block;
+			vertical-align: top;
+		}
+		section.dimensions div.col-left {
+			width: 280px;
+		}
+		section.dimensions div.col-right {
+			width: 220px;
+		}
+		section.dimensions div.col-left div.box {
+			border: 4px solid #4f5c6e;
+			color: #4f5c6e44;
+			height: 240px;
+			font-size: 6em;
+			line-height: 2.4em;
+			padding: 6px;
+			text-align: center;
+			width: 280px;
+		}
+		section.dimensions div.col-right button {
+			background-color: #fff;
+			border: 1px solid #4f5c6e;
+            border-radius: 6px;
+            font-size: 0.6rem;
+			color: #4f5c6e;
+			padding: 10px;
+            margin-bottom: 4px;
+			width: 200px;
+		}
+		section.dimensions div.col-right button:hover {
+			background-color: #4f5c6e;
+			color: #fff;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Dimensions</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        <section class="dimensions">
+                            <div class="col-left">
+                                <div class="box">BOX</div>
+                            </div>
+                            <div class="col-right">
+                                <button class="btn-d1"> Width-Height</button>
+                                <button class="btn-d2"> Width-Height (Padding)</button>
+                                <button class="btn-d3"> Width-Height (Padding/Borders)</button>
+                                <button class="btn-d4"> Width-Height (Window)</button>
+                            </div>
+                        </section>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Events
+			$('button.btn-d1').click(function(event) {
+				$w = $('div.box').width();
+				$h = $('div.box').height();
+				alert("Width: "+$w+"px - Height: "+$h+"px");
+			});
+			$('button.btn-d2').click(function(event) {
+				$w = $('div.box').innerWidth();
+				$h = $('div.box').innerHeight();
+				alert("Width: "+$w+"px - Height: "+$h+"px");
+			});
+			$('button.btn-d3').click(function(event) {
+				$w = $('div.box').outerWidth();
+				$h = $('div.box').outerHeight();
+				alert("Width: "+$w+"px - Height: "+$h+"px");
+			});
+			$('button.btn-d4').click(function(event) {
+				$w = $(window).width();
+				$h = $(window).height();
+				alert("Width: "+$w+"px - Height: "+$h+"px");
+			});
+        });
+    </script>
+</body>
+</html>

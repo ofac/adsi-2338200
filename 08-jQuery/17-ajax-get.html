@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+		select {
+			display: block;
+			margin: 20px auto;
+			width: 160px;
+		}
+		div.loader {
+			background: url(images/loader.gif) no-repeat center;
+			height: 30px;
+			margin: 20px auto;
+			width: 50px;
+		}
+	</style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Get</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        <select class="brands form-select">
+                            <option value="">Select Brand...</option>
+                            <option value="1">SantaCruz</option>
+                            <option value="2">Intense</option>
+                            <option value="3">Yeti</option>
+                        </select>
+                        <div class="loader"></div>
+                        <select class="references form-select"></select>
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+			$('.references').hide();
+			$('.loader').hide();
+			// Events
+			$('.brands').change(function(event) {
+				$brn = $(this).val();
+				if ($brn.length > 0) {
+					$('.loader').show();
+					$('.references').hide();
+					// GET
+					$.get('php/references.php', { brn: $brn }, function(data) {
+						setTimeout(function() {
+							$('.loader').hide();
+							$('.references').fadeIn(1000).html(data);
+						},1000);
+					});
+				} else {
+					$('.references').hide();
+				}
+			});
+        });
+    </script>
+</body>
+</html>
