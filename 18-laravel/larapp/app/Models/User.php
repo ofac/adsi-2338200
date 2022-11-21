@@ -18,8 +18,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'fullname',
         'email',
+        'phone',
+        'birthdate',
+        'gender',
+        'address',
+        'photo',
+        'role',
+        'active',
         'password',
     ];
 
@@ -41,4 +48,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    // RelationShip
+    public function games() {
+        return $this->hasMany('App\Models\Game');
+    }
+
 }
