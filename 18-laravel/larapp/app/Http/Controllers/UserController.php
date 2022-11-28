@@ -14,7 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        //$users = User::all();
+        $users = User::paginate(50);
+        return view('users.index')->with('users', $users);
     }
 
     /**
@@ -24,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.add');
     }
 
     /**

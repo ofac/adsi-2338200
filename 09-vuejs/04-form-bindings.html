@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE JS 3</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <script src="js/tailwind-3.0.23.js"></script>
+</head>
+<body class="bg-gradient-to-t from-[#34495e] to-[#41b883] min-h-screen flex justify-center items-center">
+    <main id="app" class="bg-white/80 relative w-96 h-[640px] rounded-xl shadow-xl">
+        <svg class="w-28 h-28 mx-auto my-6" viewBox="0 0 128 128" width="24" height="24" data-v-5f26462c="">
+            <path fill="#42b883" d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110C128,10,78.8,10,78.8,10z" data-v-5f26462c=""></path><path fill="#35495e" d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z" data-v-5f26462c=""></path>
+        </svg>
+
+        <h1 class="text-center text-3xl font-semibold bg-gradient-to-l from-[#34495e] to-[#41b883] bg-clip-text text-transparent mb-2">{{ title }}</h1>
+        <input type="text" v-model="vtext" class="flex mx-auto p-2 rounded-xl shadow-xl outline-none" placeholder="Type Here" maxlength="26">
+        <output class="flex capitalize my-4 bg-[#34495e] text-white p-4 mx-6"> Text: {{ vtext }}</output>
+        <hr class="border-[#42b883] border border-dashed">
+        <select v-model="fruit" class="flex mx-auto p-2 rounded-xl shadow-xl outline-none w-80 mt-4">
+            <option value="🍊"> Orange </option>
+            <option value="🍎"> Apple </option>
+            <option value="🍐"> Pear </option>
+            <option value="🍋"> Lemon </option>
+            <option value="🍍"> Pineapple </option>
+        </select>
+        <output class="flex items-center capitalize my-4 bg-[#34495e] text-white p-2 mx-6"> Fruit Selected: <i class="text-4xl ml-2">{{ fruit }}</i></output>
+        <hr class="border-[#42b883] border border-dashed">
+        <input type="checkbox" v-model="active" class="flex mx-auto mt-4 scale-[2]">
+        <output class="flex items-center capitalize my-4 bg-[#34495e] text-white p-4 mx-6"> Checked: {{ active }}</output>
+
+        <a href="index.html" class="text-[#34495e] h-14 w-14 absolute hover:scale-125 bottom-2 left-[164px] transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+            </svg>
+        </a>
+    </main>
+    <script src="js/vue3.2.31.js"></script>
+    <script>
+        const form = {
+            data() {
+                return {
+                    title: '04 - Form Bindings',
+                    vtext: '',
+                    fruit: '🍎',
+                    active: false
+                }
+            }
+        }
+        var mountapp = Vue.createApp(form).mount('#app')
+    </script>
+</body>
+</html>

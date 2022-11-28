@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE JS 3</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+        :root {
+            --border-options: 4px solid #34495e;
+        }
+        section div img {
+            transform: scale(4);
+        }
+        section figure img {
+            transform: scale(6);
+        } 
+        section div:nth-child(2) {
+            border-left: var(--border-options);
+            border-right: var(--border-options);
+        }
+        section div:nth-child(4) {
+            border-top: var(--border-options);
+            border-bottom: var(--border-options);
+        }
+        section div:nth-child(5) {
+            border: var(--border-options);
+        }
+        section div:nth-child(6) {
+            border-top: var(--border-options);
+            border-bottom: var(--border-options);
+        }
+        section div:nth-child(8) {
+            border-left: var(--border-options);
+            border-right: var(--border-options);
+        }
+    </style>
+    <script src="js/tailwind-3.0.23.js"></script>
+</head>
+<body class="bg-gradient-to-t from-[#34495e] to-[#41b883] min-h-screen flex justify-center items-center">
+    <main id="app" class="bg-white/80 relative w-96 h-[640px] rounded-xl shadow-xl">
+        <svg class="w-28 h-28 mx-auto my-6" viewBox="0 0 128 128" width="24" height="24" data-v-5f26462c="">
+            <path fill="#42b883" d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110C128,10,78.8,10,78.8,10z" data-v-5f26462c=""></path><path fill="#35495e" d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z" data-v-5f26462c=""></path>
+        </svg>
+
+        <h1 class="text-center text-3xl font-semibold bg-gradient-to-l from-[#34495e] to-[#41b883] bg-clip-text text-transparent mb-6">{{ title }}</h1>
+
+        <!-- Play  -->
+        <section v-if="finished==0" class="grid grid-cols-3 text-center w-10/12 mx-auto mt-10">
+            <div v-for="(mark, index) in board" v-html="mark" @click="addMark(index)" class="h-24 flex justify-center items-center hover:bg-[#41b883]/20 cursor-pointer transition duration-150">
+                {{ mark }} 
+            </div>
+        </section>
+        <!-- Winner -->
+        <section v-else-if="finished==1">
+            <h3 class="text-center font-bold text-xl mt-20">The Winner is: </h3>
+            <figure class="w-6/12 h-40 my-4 bg-white/40 mx-auto flex items-center justify-center rounded-md" v-html="markwin"> {{ markwin }} </figure>
+        </section>
+        <!-- Tie -->
+        <section v-else-if="finished==2">
+            <h3 class="text-center font-bold text-xl mt-20">Tie: </h3>
+            <figure class="w-6/12 h-40 my-4 bg-white/40 mx-auto flex items-center justify-center rounded-md">
+                <img src="images/t.svg">
+            </figure>
+        </section>
+        <!--  -->
+
+        <a href="index.html" class="text-[#34495e] h-14 w-14 absolute hover:scale-125 bottom-2 left-[164px] transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+            </svg>
+        </a>
+    </main>
+    <script src="js/vue3.2.31.js"></script>
+    <script>
+        const tictactoe = {
+            data() {
+                return {
+                    title: '08 - Tic Tac Toe',
+                    board: [ '', '', '', 
+                             '', '', '',
+                             '', '', '' ],
+                    winnerpos: [ [0, 1, 2], 
+                                 [3, 4, 5], 
+                                 [6, 7, 8], 
+                                 [0, 3, 6], 
+                                 [1, 4, 7], 
+                                 [2, 5, 8], 
+                                 [0, 4, 8], 
+                                 [2, 4, 6] ],
+                    marks: ['<img src="images/x.svg">', 
+                            '<img src="images/o.svg">'],
+                    markwin: '',
+                    marked: false,
+                    finished: 0
+                }
+            },
+            methods: {
+                addMark(index) {
+                     if (this.board[index] == '') {
+                        if (this.marked) {
+                            this.board[index] = this.marks[1]
+                        } else {
+                            this.board[index] = this.marks[0]
+                        }
+                        this.marked = !this.marked 
+                        if (this.checkWinner()) {
+                            this.finished = 1;
+                        } else {
+                            if (!this.board.includes('')) { 
+                                this.finished = 2;
+                            }
+                        }
+                     }
+                }, // end addMark
+                checkWinner() {
+                    for (let i of this.winnerpos) {
+                        if (this.board[i[0]] != '' && 
+                            this.board[i[1]] != '' && 
+                            this.board[i[2]] != '' &&
+                            this.board[i[0]] === this.board[i[1]] &&
+                            this.board[i[1]] === this.board[i[2]] ) {
+                                this.markwin  = this.board[i[2]]
+                                return true
+                        }
+                    }
+                } // end checkWinner
+            } // end methods
+        }
+        var mountapp = Vue.createApp(tictactoe).mount('#app')
+    </script>
+</body>
+</html>

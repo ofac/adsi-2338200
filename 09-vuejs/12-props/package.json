@@ -1,0 +1,21 @@
+{
+  "name": "12-props",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 5050"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.5.1",
+    "jenesius-vue-modal": "^1.5.0",
+    "vue": "^3.2.33"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.1",
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.24",
+    "vite": "^2.9.5"
+  }
+}

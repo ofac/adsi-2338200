@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS</title>
+    <link rel="stylesheet" href="css/fonts.css">
+
+    <script src="js/tailwind-3.0.23.js"></script>
+</head>
+<body class="bg-gradient-to-t from-[#34495e] to-[#41b883] min-h-screen flex justify-center items-center">
+    <main id="app" class="bg-white/80 w-96 h-[640px] rounded-xl shadow-xl">
+        <svg class="w-28 h-28 mx-auto my-6" viewBox="0 0 128 128" width="24" height="24" data-v-5f26462c="">
+            <path fill="#42b883" d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110C128,10,78.8,10,78.8,10z" data-v-5f26462c=""></path><path fill="#35495e" d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z" data-v-5f26462c=""></path>
+        </svg>
+
+        <h1 class="text-center text-5xl font-semibold bg-gradient-to-l from-[#34495e] to-[#41b883] bg-clip-text text-transparent">{{ title }}</h1>
+
+        <nav class="flex flex-col items-center gap-2 my-6 overflow-y-auto h-[386px]">
+            <li v-for="link in links" class="list-none h-12 flex items-center w-8/12">
+                <a :href="link.url" class="bg-[#41b883] px-4 py-3 rounded-xl text-white text-left w-full shadow-sm hover:bg-[#35495e] font-light hover:scale-105 transition duration-300">{{ link.text }}</a>
+            </li>
+        </nav>
+
+    </main>
+    <script src="js/vue3.2.31.js"></script>
+    <script>
+        Vue.createApp({
+          data() {
+            return {
+              title: 'Vue JS 3',
+              links: [
+                  { url: '01-rendering.html',       text: '01 - Declarative Rendering' },
+                  { url: '02-attr-binding.html',    text: '02 - Attribute Binding' },
+                  { url: '03-event-listeners.html', text: '03 - Event Listeners' },
+                  { url: '04-form-bindings.html',   text: '04 - Form Bindings' },
+                  { url: '05-conditional.html',     text: '05 - Conditional Rendering' },
+                  { url: '06-list.html',            text: '06 - List Rendering' },
+                  { url: '07-computed.html',        text: '07 - Computed Property' },
+                  { url: '08-tic-tac-toe.html',     text: '08 - Challenge Tic Tac Toe' },
+                  { url: '09-lifecycle.html',       text: '09 - Lifecycle' },
+                  { url: '10-watchers.html',        text: '10 - Watchers' },
+                  { url: '11-components/',          text: '11 - Components' },
+                  { url: '12-props/',               text: '12 - Props' },
+                  { url: '13-emits/',               text: '13 - Emits' },
+                  { url: '14-slots/',               text: '14 - Slots' }
+              ]
+            }
+          }
+        }).mount('#app')
+    </script>
+</body>
+</html>

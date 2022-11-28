@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE JS 3</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <script src="js/tailwind-3.0.23.js"></script>
+</head>
+<body class="bg-gradient-to-t from-[#34495e] to-[#41b883] min-h-screen flex justify-center items-center">
+    <main id="app" class="bg-white/80 relative w-96 h-[640px] rounded-xl shadow-xl">
+        <svg class="w-28 h-28 mx-auto my-6" viewBox="0 0 128 128" width="24" height="24" data-v-5f26462c="">
+            <path fill="#42b883" d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110C128,10,78.8,10,78.8,10z" data-v-5f26462c=""></path><path fill="#35495e" d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z" data-v-5f26462c=""></path>
+        </svg>
+
+        <h1 class="text-center text-3xl font-semibold bg-gradient-to-l from-[#34495e] to-[#41b883] bg-clip-text text-transparent mb-6">{{ title }}</h1>
+
+        <h2 ref="msj" class="text-center font-medium text-2xl my-20">Welcome</h2>
+
+        <button @click="launchConfetti" :class="{hidden: tconfetti}" class="bg-[#34495e] text-white mx-auto py-2 px-10 flex rounded-full capitalize hover:scale-110 transition duration-200 my-1">
+            Throw confetti
+        </button>
+
+        <a href="index.html" class="text-[#34495e] h-14 w-14 absolute hover:scale-125 bottom-2 left-[164px] transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+            </svg>
+        </a>
+    </main>
+    <script src="js/vue3.2.31.js"></script>
+    <script src="js/confetti.min.js"></script>
+    <script>
+        const lifecycle = {
+            mounted() {
+                this.$refs.msj.textContent = 'mounted!'
+                this.launchConfetti()
+            },
+            data() {
+                return {
+                    title: '09 - Lifecycle',
+                    tconfetti: true
+                }
+            },
+            methods: {
+                launchConfetti() {
+                    this.tconfetti = true
+                    const end    = Date.now() + (4 * 1000);
+                    const colors = ['#34495e', '#41b883'];
+                    
+                    (function frame() {
+                        confetti({
+                            particleCount: 2,
+                            angle: 60,
+                            spread: 55,
+                            origin: { x: 0 },
+                            colors: colors
+                        });
+                        confetti({
+                            particleCount: 2,
+                            angle: 120,
+                            spread: 55,
+                            origin: { x: 1 },
+                            colors: colors
+                        });
+                        
+                        if (Date.now() < end) {
+                            requestAnimationFrame(frame);
+                        }
+                    }());
+                    setTimeout(() => {
+                        this.tconfetti = false
+                    },6000)
+                }
+            }
+        }
+        var mountapp = Vue.createApp(lifecycle).mount('#app')
+    </script>
+</body>
+</html>

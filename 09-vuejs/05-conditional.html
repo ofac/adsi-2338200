@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE JS 3</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <script src="js/tailwind-3.0.23.js"></script>
+    <style>
+        .dark { 
+             filter: invert(1) hue-rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-t from-[#34495e] to-[#41b883] min-h-screen flex justify-center items-center">
+    <main id="app" class="shadow-xl">
+        <div :class="{dark: darkmode}" class="bg-white/80 h-[640px] relative w-96 rounded-xl">
+            <svg class="w-28 h-28 mx-auto my-6" viewBox="0 0 128 128" width="24" height="24" data-v-5f26462c="">
+                <path fill="#42b883" d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110C128,10,78.8,10,78.8,10z" data-v-5f26462c=""></path><path fill="#35495e" d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z" data-v-5f26462c=""></path>
+            </svg>
+
+            <h1 class="text-center text-3xl font-semibold bg-gradient-to-l from-[#34495e] to-[#41b883] bg-clip-text text-transparent mb-6">{{ title }}</h1>
+            <h2 v-if="darkmode" class="text-center text-9xl my-4">🌚</h2>
+            <h2 v-else="darkmode" class="text-center text-9xl my-4">🌞</h2>
+            <button v-if="darkmode" @click="toggleDarkMode" class="bg-[#fff] text-[#34495e] mx-auto py-2 px-10 flex rounded-full capitalize hover:scale-110 transition duration-200 my-10 ring-1 ring-[#34495e]"> Light Mode </button>
+            <button v-else="darkmode" @click="toggleDarkMode" class="bg-[#34495e] text-white mx-auto py-2 px-10 flex rounded-full capitalize hover:scale-110 transition duration-200 my-10"> Dark Mode </button>
+
+            <h3 v-if="today==1" class="text-center text-xl my-4">Today is: Monday</h3>
+            <h3 v-else-if="today==2" class="text-center text-xl my-4">Today is: Tuesday</h3>
+            <h3 v-else-if="today==3" class="text-center text-xl my-4">Today is: Wednesday</h3>
+            <h3 v-else-if="today==4" class="text-center text-xl my-4">Today is: Thursday</h3>
+            <h3 v-else-if="today==5" class="text-center text-xl my-4">Today is: Friday</h3>
+            <h3 v-else="today" class="text-center text-xl my-4"> Happy Weekend! </h3>
+
+            <a href="index.html" class="text-[#34495e] h-14 w-14 absolute hover:scale-125 bottom-2 left-[164px] transition duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </main>
+    <script src="js/vue3.2.31.js"></script>
+    <script>
+        let date = new Date
+        const conditional = {
+            data() {
+                return {
+                    title: '05 - Conditional Rendering',
+                    darkmode: false,
+                    today: date.getDay()
+                }
+            },
+            methods: {
+                toggleDarkMode() {
+                    this.darkmode = !this.darkmode;
+                }
+            }
+        }
+        var mountapp = Vue.createApp(conditional).mount('#app')
+    </script>
+</body>
+</html>

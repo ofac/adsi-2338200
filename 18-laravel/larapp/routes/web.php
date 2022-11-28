@@ -55,6 +55,12 @@ Route::get('examplesblade', function() {
     return view('examples');
 });
 
+// CRUD: Resources
+Route::resources([
+    'users'      => \App\Http\Controllers\UserController::class,
+    'categories' => \App\Http\Controllers\CategoryController::class,
+    'games'      => \App\Http\Controllers\GameController::class,
+]);
 
 Auth::routes();
 
