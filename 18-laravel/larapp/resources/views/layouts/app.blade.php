@@ -86,6 +86,59 @@
         </header>
 
         @yield('content')
+
+        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ asset('js/sweetalert2.js') }}"></script>
+        <script>
+            // - - -
+            $('.btn-upload').click(function() {
+                $('#photo').click();
+            });
+            $('#photo').change(function(event) {
+                let reader = new FileReader()
+                reader.onload = function(event) {
+                    $('#preview').attr('src', event.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            })
+            // - - -
+            @if (session('message'))
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: '{{ session('message') }}',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+            @endif
+            // - - -
+            @if (session('error'))
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: '{{ session('error') }}',
+                    showConfirmButton: false,
+                    timer: 4000
+                });
+            @endif 
+            // - - -
+            $('body').on('click', '.btn-delete', function () {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#614883',
+                    cancelButtonColor: '#8F2923',
+                    confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $(this).parent().submit()
+                        }
+                    })
+                })
+                // - - -
+        </script>
     </div>
 </body>
 </html>

@@ -62,6 +62,16 @@ Route::resources([
     'games'      => \App\Http\Controllers\GameController::class,
 ]);
 
+// Group Middleware
+// Route::group(['middleware' => 'admin'], function () {
+//     // CRUD Users
+//     Route::resources([
+//         'users'       => \App\Http\Controllers\UserController::class,
+//         'categories'  => \App\Http\Controllers\CategoryController::class,
+//         'games'       => \App\Http\Controllers\GameController::class
+//     ]);
+// });
+
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
