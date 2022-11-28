@@ -12,6 +12,7 @@
 |  6. SASS       | CSS Preprocessor                  | [open folder](06-sass/)       |
 |  7. Javascript | Programming Language (Clien-Side) | [open folder](07-javascript/) |
 |  8. jQuery     | Library Javascript                | [open folder](08-jQuery/)     |
+|  9. VUE JS     | Framework Javascript              | [open folder](09-vuejs/)      |
 | 10. Bootstrap  | Framework CSS                     | [open folder](10-bootstrap/)  |
 | 11. Tailwind   | Framework CSS                     | [open folder](11-tailwind/)   |
 | 12. PHP        | Server Programming Language       | [open folder](12-php/)        |
