@@ -72,6 +72,19 @@ Route::resources([
 //     ]);
 // });
 
+
+// Search
+Route::post('users/search', [\App\Http\Controllers\UserController::class, 'search']);
+// Route::post('categories/search', [\App\Http\Controllers\CategoryController::class, 'search']);
+// Route::post('games/search', [\App\Http\Controllers\GameController::class, 'search']);
+
+
+// Export
+Route::get('export/users/pdf', [\App\Http\Controllers\UserController::class, 'pdf']);
+Route::get('export/users/excel', [\App\Http\Controllers\UserController::class, 'excel']);
+// Import
+Route::post('import/users', [\App\Http\Controllers\UserController::class, 'import']);
+
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');

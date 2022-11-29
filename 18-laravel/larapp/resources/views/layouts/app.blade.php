@@ -136,7 +136,37 @@
                             $(this).parent().submit()
                         }
                     })
+                    // - - -
                 })
+                // S e a r c h - - -
+                $('body').on('keyup', '#table-search', function (e) {
+                    e.preventDefault()
+                    $q = $(this).val()
+                    $t = $('input[name=_token]').val()
+                    $m = $('#tmodel').val()
+
+                    $('.loader').removeClass('hidden')
+                    $('.table').hide()
+
+                    $sto = setTimeout(function() {
+                        clearTimeout($sto)
+                        $.post($m + '/search', 
+                            {q: $q, _token: $t},
+                            function (data) {
+                                $('.loader').addClass('hidden')
+                                $('#content').html(data)
+                                $('.table').fadeIn('slow')
+                            }
+                        )
+                    }, 2000)
+                    })
+                    // - - -
+                    $('.btn-file').click(function() {
+                        $('#file').click();
+                    });
+                    $('#file').change(function(event) {
+                        $(this).parent().submit();
+                    });
                 // - - -
         </script>
     </div>

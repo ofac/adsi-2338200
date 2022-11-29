@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use PDF;
+use App\Exports\UserExport;
+use App\Imports\UserImport;
 
 class UserController extends Controller
 {
@@ -123,5 +126,26 @@ class UserController extends Controller
             return redirect('users')
                      ->with('message', 'The user: ' . $user->fullname . ' was successfully deleted!');
         }
+    }
+
+    public function search(Request $request) {
+        $users = User::names($request->q)->paginate(50);
+        return view('users.search')->with('users', $users);
+    }
+
+    public function pdf() {
+        $users = User::all();
+        $pdf   = PDF::loadView('users.pdf', compact('users'));
+        return $pdf->download('allusers.pdf');
+    }
+
+    public function excel() {
+        return \Excel::download(new UserExport, 'allusers.xlsx');
+    }
+
+    public function import(Request $request) {
+        $file = $request->file('file');
+        \Excel::import(new UserImport, $file);
+        return redirect()->back()->with('message', 'Users importer successful!');
     }
 }
