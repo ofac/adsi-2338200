@@ -25,7 +25,7 @@
             </div>
 
             <input type="hidden" id="tmodel" value="users">
-            <input type="text" id="table-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5" placeholder="Search for users">
+            <input type="text" id="table-search" class="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-80 pl-10 p-2.5" placeholder="Search for users">
 
             <a href="{{ url('export/users/pdf') }}" class="bg-[#614883] text-white rounded-md p-2 w-38 text-center flex gap-2 items-center hover:scale-105 transition-all duration-500"> 
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

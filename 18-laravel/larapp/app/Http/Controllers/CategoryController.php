@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        //$categories = Category::all();
+        $categories = Category::paginate(50);
+        return view('categories.index')->with('categories', $categories);
     }
 
     /**
@@ -24,7 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -35,7 +41,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $cat = new Category;
+        $cat->name  = $request->name;
+        if ($request->hasFile('image')) {
+            $file = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $file);
+            $cat->image = 'images/' . $file;
+        }
+        $cat->description  = $request->description;
+        if ($cat->save()) {
+            return redirect('categories')
+                     ->with('message', 'The category: ' . $cat->name . ' was successfully added!');
+        }
     }
 
     /**
@@ -46,7 +64,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('categories.show')->with('category', $category);
     }
 
     /**
@@ -57,7 +75,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit')->with('category', $category);
     }
 
     /**
@@ -69,7 +87,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        //$request->all();
+        $category->name  = $request->name;
+        if ($request->hasFile('image')) {
+            $file = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $file);
+            $category->image = 'images/' . $file;
+        }
+        $category->description = $request->description;
+        if ($category->save()) {
+            return redirect('categories')
+                     ->with('message', 'The category: ' . $category->name . ' was successfully edited!');
+        }
     }
 
     /**
@@ -80,6 +109,14 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if ($category->delete()) {
+            return redirect('categories')
+                     ->with('message', 'The category: ' . $category->name . ' was successfully deleted!');
+        }
+    }
+
+    public function search(Request $request) {
+        $cats = Category::names($request->q)->paginate(50);
+        return view('categories.search')->with('categories', $cats);
     }
 }

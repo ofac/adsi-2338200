@@ -19,4 +19,12 @@ class Category extends Model
     public function games() {
         return $this->hasMany('App\Models\Game');
     }
+
+    // Scopes
+    public function scopeNames($cats, $q) {
+        if (trim($q)) {
+            $cats->where('name', 'LIKE', "%$q%");
+        }
+    }
+    
 }

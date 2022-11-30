@@ -48,7 +48,7 @@
                     <li>{{ $message }}</li>
                 @endforeach --}}
 
-                <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST"
+                <form class="w-full px-6 text-[#614883] space-y-6 sm:px-10 sm:space-y-8" method="POST"
                     action="{{ url('users/'.$user->id) }}" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{ $user->id }}">
