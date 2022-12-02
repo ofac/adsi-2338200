@@ -14,8 +14,6 @@
     
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
 </head>
@@ -91,55 +89,17 @@
 
         <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
         <script src="{{ asset('js/sweetalert2.js') }}"></script>
-        <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
         <script>
             // - - -
-            $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: true,
-                responsive:{
-                    0:{
-                        items: 1
-                    },
-                    600:{
-                        items: 2
-                    },
-                    1000:{
-                        items: 3
-                    },
-                    1200:{
-                        items: 4
-                    }
-                }
-            });
-            $('body').on('change', '#idcat', function(event) {
-                event.preventDefault()
-                $idcat = $(this).val()
-                $tk    = $('input[name=_token]').val()
-                $('.loader').removeClass('hidden')
-                $('#content').hide()
-                $sto = setTimeout(function() {
-                    clearTimeout($sto)
-                    $.post('gamesbycat', { 
-                        idcat:  $idcat,
-                        _token: $tk }, function(data) {
-                        $('.loader').addClass('hidden')
-                        $('#content').html(data).fadeIn('slow')
-                    });
-                },1600)
-            })
-            
-            // - - -
             $('.btn-upload').click(function() {
-                $('#photo').click()
-            })
+                $('#photo').click();
+            });
             $('#photo').change(function(event) {
                 let reader = new FileReader()
                 reader.onload = function(event) {
-                    $('#preview').attr('src', event.target.result)
+                    $('#preview').attr('src', event.target.result);
                 }
-                reader.readAsDataURL(this.files[0])
+                reader.readAsDataURL(this.files[0]);
             })
             // - - -
             @if (session('message'))
@@ -202,10 +162,10 @@
                     })
                     // - - -
                     $('.btn-file').click(function() {
-                        $('#file').click()
+                        $('#file').click();
                     });
                     $('#file').change(function(event) {
-                        $(this).parent().submit()
+                        $(this).parent().submit();
                     });
                 // - - -
         </script>

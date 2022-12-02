@@ -15,9 +15,10 @@ use Carbon\Carbon;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'welcome']);
 
 Route::get('hello', function () {
     return '<h1> Hello Laravel</h1>';
@@ -84,6 +85,9 @@ Route::get('export/users/pdf', [\App\Http\Controllers\UserController::class, 'pd
 Route::get('export/users/excel', [\App\Http\Controllers\UserController::class, 'excel']);
 // Import
 Route::post('import/users', [\App\Http\Controllers\UserController::class, 'import']);
+
+// Games By Category
+Route::post('gamesbycat', [\App\Http\Controllers\HomeController::class, 'gamesbycat']);
 
 Auth::routes();
 

@@ -1,54 +1,9 @@
-@extends('layouts.app')
-@section('title', 'LARAPP - All Games')
-
-@section('content')
-    <div class="m-4">
-    <h1 class="text-[#614883] text-center my-10 font-bold text-4xl flex justify-center items-center gap-2"> 
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-        </svg>
-        All Games 
-    </h1>
-    <a href="{{ route('games.create') }}" class="bg-green-700 text-white p-4 rounded-md my-10 mx-auto flex justify-center items-center gap-2 w-96 hover:bg-green-600 hover:scale-105 transition ">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
-        </svg>
-        Add Game
-    </a>
-    
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-10/12 mx-auto bg-white/60">
-    <div class="p-4">
-        <label for="table-search" class="sr-only">Search</label>
-        <div class="relative mt-1 flex gap-2 items-center">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-            </div>
-
-            <input type="hidden" id="tmodel" value="games">
-            <input type="text" id="table-search" class="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-80 pl-10 p-2.5" placeholder="Search for games">
-        </div>
-    </div>
-    <div class="loader hidden flex justify-center items-center my-10">
-        <img src="{{ asset('images/loader.svg') }}" alt="">
-    </div>
-    <table class="table bg-white/60 w-full text-sm text-left text-[#614883]">
-        <thead class="text-xs text-white uppercase bg-[#614883]">
-            <tr>
-                <th class="px-6 py-3">ID</th>
-                <th class="px-6 py-3">NAME</th>
-                <th class="px-6 py-3">IMAGE</th>
-                <th class="px-6 py-3 lg:table-cell hidden">CATEGORY</th>
-                <th class="px-6 py-3 lg:table-cell hidden">SLIDER</th>
-                <th class="px-6 py-3">ACTIONS</th>
-            </tr>
-        </thead>
-        <tbody id="content">
-            @foreach ($games as $game)
-                <tr class="even:bg-white/40">
+@forelse ($games as $game)
+    <tr class="even:bg-white/40">
                     <td class="px-6 py-3">{{ $game->id }}</td>
                     <td class="px-6 py-3">{{ $game->name }}</td>
                     <td class="px-6 py-3">
-                        <img src="{{ asset($game->image) }}" class="w-8 rounded">
+                        <img src="{{ asset($game->image) }}" class="w-8 rounded-full">
                     </td>
                     <td class="px-6 py-3 lg:table-cell hidden">
                         <img src="{{ asset($game->category->image) }}" alt="" width="60px">
@@ -91,18 +46,11 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="6" class="text-center">
-                    <div class="flex justify-center items-center py-4">
-                        {{ $games->links() }}
-                    </div>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-    </div>
-    
-@endsection
+
+@empty
+    <tr>
+        <td colspan="6" class="text-center p-2 text-md">
+            <span>No Results</span>
+        </td>
+    </tr>
+@endforelse

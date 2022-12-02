@@ -5,3 +5,7 @@ body {
     background-size: cover;
 }
 
+
+.owl-dot.active span {
+    background-color: #614883 !important;
+}
